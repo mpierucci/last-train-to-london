@@ -5,5 +5,16 @@ Pet project to apply new Android architectures, frameworks etc.
 
 * Kotlin DSL for gradle files
 * Colour Scheme for Materail Component Theme
-* Base mvvm module with extension function to get view model
+* Base mvvm module with extension function to get ViewModels
 * UseCase module (Only RxUseCases atm, courutines comming)
+
+
+# Soon:
+* ViewModel + LiveData
+* Room
+* WorkManager
+* Corountines
+* DarkMode
+* Dynamic Modules
+* InApp updates
+
