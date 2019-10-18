@@ -1,2 +1,2 @@
-include (":app", ":mvvm")
+include (":app", ":mvvm", ":usecase")
 rootProject.name = "lttl"
