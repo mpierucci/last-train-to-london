@@ -3,6 +3,8 @@ object Libs {
 
     const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
+    const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.0-beta-3"
+
     object AndroidX {
         const val appCompat = "androidx.appcompat:appcompat:1.1.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
@@ -33,5 +35,18 @@ object Libs {
         const val java = "io.reactivex.rxjava2:rxjava:2.2.13"
         const val android = "io.reactivex.rxjava2:rxandroid:2.1.1"
         const val bindings = "com.jakewharton.rxbinding3:rxbinding:3.0.0"
+    }
+
+    object Stetho {
+        private const val stethoVersion = "1.5.1"
+        const val stetho = "com.facebook.stetho:stetho:$stethoVersion"
+        const val stethoOk = "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+    }
+
+    object Retrofit {
+        private  const val retrofitVersion = "2.6.1"
+        const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+        const val converter = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+        const val rxAdapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     }
 }

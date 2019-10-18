@@ -11,5 +11,9 @@ android {
 
 dependencies {
     implementation(Libs.kotlinStdlib)
+    implementation(Libs.Retrofit.retrofit)
+
+    debugImplementation(Libs.Stetho.stetho)
+    debugImplementation(Libs.Stetho.stethoOk)
     testImplementation(TestLibs.jUnit)
 }

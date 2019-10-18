@@ -34,7 +34,11 @@ dependencies {
     implementation(Libs.AndroidX.Ktx.core)
     implementation(Libs.AndroidX.constraintLayout)
     implementation(Libs.AndroidX.material)
+
+    debugImplementation(Libs.leakCanary)
+
     testImplementation(TestLibs.jUnit)
+
     androidTestImplementation(TestLibs.testRunner)
     androidTestImplementation(TestLibs.Esspresso.core)
 }
