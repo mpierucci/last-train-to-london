@@ -7,4 +7,20 @@
     <color name="white">#FFFFFF</color>
     <color name="pomegranate">#F44336</color>
     <color name="black">#000000</color>
+    
+    <!-- TFL scheme -->
+    <color name="bakerloo">#B36305</color>
+    <color name="central">#E32017</color>
+    <color name="circle">#FFD300</color>
+    <color name="district">#00782A</color>
+    <color name="hammerAndCity">#F3A9BB</color>
+    <color name="jubilee">#A0A5A9</color>
+    <color name="picadilly">#003688</color>
+    <color name="victoria">#0098D4</color>
+    <color name="waterlooAndCity">#95CDBA</color>
+    <color name="dlr">#00A4A7</color>
+    <color name="overground">#EE7C0E</color>
+    <color name="tramlink">#84B817</color>
+    <color name="cableCar">#E21836</color>
+    <color name="crossRail">#7156A5</color>
 </resources>
