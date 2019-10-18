@@ -2,7 +2,6 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
 }
-
 android {
     compileSdkVersion(Android.compileSdkVersion)
     buildToolsVersion(Android.buildToolsVersion)
@@ -11,10 +10,6 @@ android {
 }
 
 dependencies {
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(Libs.AndroidX.appCompat)
     implementation(Libs.kotlinStdlib)
-    implementation(Libs.AndroidX.Ktx.fragment)
-    implementation(Libs.Rx.java)
-    implementation(Libs.AndroidX.LifeCycle.lifeCycle)
+    testImplementation(TestLibs.jUnit)
 }
