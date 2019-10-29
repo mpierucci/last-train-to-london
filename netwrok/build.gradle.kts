@@ -1,4 +1,5 @@
 import properties.loadLocalProperties
+import kotlin.lazy
 
 plugins {
     id("com.android.library")
@@ -8,7 +9,7 @@ android {
     compileSdkVersion(Android.compileSdkVersion)
     buildToolsVersion(Android.buildToolsVersion)
 
-    val localProperties = loadLocalProperties("$rootDir")
+    val localProperties  by lazy { loadLocalProperties("$rootDir")}
 
     defaultConfig {
         buildConfigField("String","TFL_APP_ID",
