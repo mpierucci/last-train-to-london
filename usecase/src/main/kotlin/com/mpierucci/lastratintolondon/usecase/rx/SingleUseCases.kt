@@ -10,5 +10,3 @@ interface SingleUseCase<REQUEST, RESULT> {
 interface SingleNoArgUseCase<RESULT> {
     fun execute(): Single<Result<RESULT>>
 }
-
-

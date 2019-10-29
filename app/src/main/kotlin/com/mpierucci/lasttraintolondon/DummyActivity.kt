@@ -18,5 +18,4 @@ class DummyActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
     }
-
 }
