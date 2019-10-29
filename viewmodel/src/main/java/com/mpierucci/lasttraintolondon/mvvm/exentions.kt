@@ -17,7 +17,6 @@ inline fun <reified T : ViewModel> Fragment.viewModel(
     }
 }
 
-
 inline fun <reified T : ViewModel> FragmentActivity.viewModel(
     crossinline provider: () -> T
 ) = viewModels<T> {

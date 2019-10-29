@@ -24,6 +24,7 @@ allprojects {
         mavenCentral()
     }
     apply(file("$rootDir/qa/detekt/detekt.gradle"))
+    apply(file("$rootDir/qa/ktlint/ktlint.gradle.kts"))
 }
 
 dependencies {
