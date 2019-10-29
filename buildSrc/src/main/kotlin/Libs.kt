@@ -5,6 +5,8 @@ object Libs {
 
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.0-beta-3"
 
+    const val ktlint = "com.github.shyiko:ktlint:0.31.0"
+
     object AndroidX {
         const val appCompat = "androidx.appcompat:appcompat:1.1.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
