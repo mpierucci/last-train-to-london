@@ -21,6 +21,11 @@ android {
             isMinifyEnabled =  true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
+
+        getByName("debug"){
+            applicationIdSuffix = ".debug"
+
+        }
     }
 
     sourceSets["main"].java.srcDir("src/main/kotlin")
@@ -34,7 +39,11 @@ dependencies {
     implementation(Libs.AndroidX.Ktx.core)
     implementation(Libs.AndroidX.constraintLayout)
     implementation(Libs.AndroidX.material)
+
+    debugImplementation(Libs.leakCanary)
+
     testImplementation(TestLibs.jUnit)
+
     androidTestImplementation(TestLibs.testRunner)
     androidTestImplementation(TestLibs.Esspresso.core)
 }
