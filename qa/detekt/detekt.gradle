@@ -1,0 +1,20 @@
+// iusses when using kotlin dsl here
+apply plugin: 'io.gitlab.arturbosch.detekt'
+detekt {
+    toolVersion = "1.1.1"
+    input = files("$projectDir")
+    config = files("$rootDir/qa/detekt/detekt.yml")
+    reports {
+        xml {
+            enabled = true
+            destination = file("$project.buildDir/reports/detekt/detekt-report.xml")
+        }
+        html {
+            enabled = true
+            destination = file("$project.buildDir/reports/detekt/detekt-report.html")
+        }
+    }
+}
+
+
+

@@ -12,8 +12,10 @@ buildscript {
     dependencies {
         classpath (BuildPlugins.androidGradle)
         classpath (BuildPlugins.kotlin)
+        classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.1.1")
     }
 }
+
 
 allprojects {
     repositories {
@@ -21,6 +23,7 @@ allprojects {
         jcenter()
         mavenCentral()
     }
+    apply(file("$rootDir/qa/detekt/detekt.gradle"))
 }
 
 dependencies {
