@@ -49,6 +49,8 @@ dependencies {
 
     debugImplementation(Libs.leakCanary)
 
+    testImplementation(TestLibs.mockitoKotlin)
+    testImplementation(TestLibs.coroutinesTest)
     testImplementation(TestLibs.jUnit)
 
     androidTestImplementation(TestLibs.testRunner)

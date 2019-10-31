@@ -1,23 +1,24 @@
 package com.mpierucci.lasttraintolondon.data
 
+import com.mpierucci.lasttraintolondon.domain.LineStatus
+import com.mpierucci.lasttraintolondon.domain.Mapper
+import com.mpierucci.lasttraintolondon.domain.Status
 import javax.inject.Inject
-import com.mpierucci.lasttraintolondon.domain.LineStatus as DomainLineStatus
-import com.mpierucci.lasttraintolondon.domain.Status as DomainStatus
 
-class LineStatusMapper @Inject constructor() {
+class LineStatusMapper @Inject constructor() : Mapper<RestLineStatus, LineStatus> {
 
-    fun map(lineStatus: LineStatus): DomainLineStatus {
-        return DomainLineStatus(
-            id = lineStatus.id.orEmpty(),
-            name = lineStatus.name.orEmpty(),
-            statuses = lineStatus.statuses?.map {
+    override fun map(from: RestLineStatus): LineStatus {
+        return LineStatus(
+            id = from.id.orEmpty(),
+            name = from.name.orEmpty(),
+            statuses = from.restStatuses?.map {
                 mapStatus(it)
             } ?: emptyList()
         )
     }
 
-    private fun mapStatus(status: Status): DomainStatus {
-        return DomainStatus(
+    private fun mapStatus(status: RestStatus): Status {
+        return Status(
             id = status.id,
             severity = status.severity,
             severityDescription = status.severityDescription.orEmpty()
