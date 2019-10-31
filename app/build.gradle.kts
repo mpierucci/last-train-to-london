@@ -34,7 +34,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":netwrok"))
+    implementation(project(":network"))
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libs.kotlinStdlib)
