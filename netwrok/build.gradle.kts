@@ -22,10 +22,11 @@ android {
 }
 
 dependencies {
+    api(Libs.okHttp)
     implementation(Libs.kotlinStdlib)
     implementation(Libs.Retrofit.retrofit)
     implementation(Libs.Retrofit.rxAdapter)
-    implementation(Libs.Retrofit.converter)
+    implementation(Libs.Retrofit.gsonConverter)
     implementation(Libs.Dagger.core)
 
     debugImplementation(Libs.Stetho.stetho)

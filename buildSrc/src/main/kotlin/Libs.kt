@@ -7,6 +7,8 @@ object Libs {
 
     const val ktlint = "com.github.shyiko:ktlint:0.31.0"
 
+    const val okHttp = "com.squareup.okhttp3:okhttp:4.2.2"
+
     object AndroidX {
         const val appCompat = "androidx.appcompat:appcompat:1.1.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
@@ -26,11 +28,9 @@ object Libs {
     }
 
     object Dagger {
-        private const val daggerVersion = "2.24"
+        private const val daggerVersion = "2.25.2"
         const val core = "com.google.dagger:dagger:$daggerVersion"
         const val compiler = "com.google.dagger:dagger-compiler:$daggerVersion"
-        const val androidCompiler = "com.google.dagger:dagger-android-processor:$daggerVersion"
-        const val androidSupport = "com.google.dagger:dagger-android-support:$daggerVersion"
     }
 
     object Rx {
@@ -48,7 +48,7 @@ object Libs {
     object Retrofit {
         private const val retrofitVersion = "2.6.1"
         const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
-        const val converter = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+        const val gsonConverter = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
         const val rxAdapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     }
 
