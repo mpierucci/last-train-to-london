@@ -1,4 +1,4 @@
-package com.mpierucci.lastratintolondon.usecase.rx
+package com.mpierucci.lastratintolondon.usecase.failure
 
 sealed class Failure {
 

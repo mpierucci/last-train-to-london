@@ -46,9 +46,15 @@ object Libs {
     }
 
     object Retrofit {
-        private  const val retrofitVersion = "2.6.1"
+        private const val retrofitVersion = "2.6.1"
         const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
         const val converter = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
         const val rxAdapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    }
+
+    object Coroutines {
+        private const val version = "1.3.2"
+
+        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
     }
 }
