@@ -23,14 +23,16 @@ android {
 
 dependencies {
     api(Libs.okHttp)
+    api(Libs.Retrofit.retrofit)
+
     implementation(Libs.kotlinStdlib)
-    implementation(Libs.Retrofit.retrofit)
     implementation(Libs.Retrofit.rxAdapter)
     implementation(Libs.Retrofit.gsonConverter)
     implementation(Libs.Dagger.core)
 
     debugImplementation(Libs.Stetho.stetho)
     debugImplementation(Libs.Stetho.stethoOk)
+
     testImplementation(TestLibs.jUnit)
 }
 

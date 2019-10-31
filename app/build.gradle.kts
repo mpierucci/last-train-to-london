@@ -43,6 +43,7 @@ dependencies {
     implementation(Libs.AndroidX.constraintLayout)
     implementation(Libs.AndroidX.material)
     implementation(Libs.Dagger.core)
+    implementation(Libs.gson)
 
     kapt(Libs.Dagger.compiler)
 

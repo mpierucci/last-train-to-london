@@ -9,6 +9,8 @@ object Libs {
 
     const val okHttp = "com.squareup.okhttp3:okhttp:4.2.2"
 
+    const val gson = "com.google.code.gson:gson:2.8.6"
+
     object AndroidX {
         const val appCompat = "androidx.appcompat:appcompat:1.1.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
