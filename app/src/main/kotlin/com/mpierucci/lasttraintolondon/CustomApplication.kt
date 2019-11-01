@@ -9,12 +9,4 @@ class CustomApplication : Application(), AppComponent.ComponentProvider {
     override val component by lazy {
         DaggerAppComponent.factory().create(this)
     }
-
-    override fun onCreate() {
-        super.onCreate()
-
-        DaggerAppComponent
-            .factory()
-            .create(this)
-    }
 }
