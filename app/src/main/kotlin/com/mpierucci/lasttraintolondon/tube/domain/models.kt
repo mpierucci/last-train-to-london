@@ -1,4 +1,4 @@
-package com.mpierucci.lasttraintolondon.domain
+package com.mpierucci.lasttraintolondon.tube.domain
 
 data class LineStatus(val id: String, val name: String, val statuses: List<Status>)
 

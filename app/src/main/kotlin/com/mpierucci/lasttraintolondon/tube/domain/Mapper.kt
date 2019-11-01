@@ -1,4 +1,4 @@
-package com.mpierucci.lasttraintolondon.domain
+package com.mpierucci.lasttraintolondon.tube.domain
 
 // TODO extract to core module when writing features
 interface Mapper<in FROM, out TO> {

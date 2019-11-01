@@ -1,8 +1,8 @@
-package com.mpierucci.lasttraintolondon.data
+package com.mpierucci.lasttraintolondon.tube.data
 
-import com.mpierucci.lasttraintolondon.domain.LineStatus
-import com.mpierucci.lasttraintolondon.domain.Mapper
-import com.mpierucci.lasttraintolondon.domain.Status
+import com.mpierucci.lasttraintolondon.tube.domain.LineStatus
+import com.mpierucci.lasttraintolondon.tube.domain.Mapper
+import com.mpierucci.lasttraintolondon.tube.domain.Status
 import javax.inject.Inject
 
 class LineStatusMapper @Inject constructor() : Mapper<RestLineStatus, LineStatus> {

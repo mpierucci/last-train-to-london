@@ -1,9 +1,9 @@
-package com.mpierucci.lasttraintolondon.data
+package com.mpierucci.lasttraintolondon.tube.data
 
-import com.mpierucci.lasttraintolondon.domain.LineStatusRepository
-import com.mpierucci.lasttraintolondon.domain.Mapper
+import com.mpierucci.lasttraintolondon.tube.domain.LineStatusRepository
+import com.mpierucci.lasttraintolondon.tube.domain.Mapper
 import javax.inject.Inject
-import com.mpierucci.lasttraintolondon.domain.LineStatus as DomainLineStatus
+import com.mpierucci.lasttraintolondon.tube.domain.LineStatus as DomainLineStatus
 
 class LineStatusRepositoryImpl @Inject constructor(
     private val lineStatusApi: LineStatusApi,

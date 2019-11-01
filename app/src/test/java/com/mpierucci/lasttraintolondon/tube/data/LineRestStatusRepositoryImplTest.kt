@@ -1,7 +1,7 @@
-package com.mpierucci.lasttraintolondon.data
+package com.mpierucci.lasttraintolondon.tube.data
 
-import com.mpierucci.lasttraintolondon.domain.LineStatus
-import com.mpierucci.lasttraintolondon.domain.Mapper
+import com.mpierucci.lasttraintolondon.tube.domain.LineStatus
+import com.mpierucci.lasttraintolondon.tube.domain.Mapper
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify

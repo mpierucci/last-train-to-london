@@ -1,4 +1,4 @@
-package com.mpierucci.lasttraintolondon.data
+package com.mpierucci.lasttraintolondon.tube.data
 
 import com.google.gson.annotations.SerializedName
 

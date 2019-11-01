@@ -1,4 +1,4 @@
-package com.mpierucci.lasttraintolondon.domain
+package com.mpierucci.lasttraintolondon.tube.domain
 
 interface LineStatusRepository {
 
