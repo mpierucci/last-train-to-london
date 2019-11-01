@@ -10,7 +10,6 @@ class PresentationLineStatusMapper : Mapper<LineStatus, PresentationLineStatus> 
     override fun map(from: LineStatus): PresentationLineStatus {
         return PresentationLineStatus(
             badgeId = mapBadgeResource(from.id),
-            statusColor = R.color.district,
             name = from.name,
             status = from.statuses.firstOrNull()?.severityDescription.orEmpty(),
             disruptionVisibility = if (from.hasDisruptions) View.VISIBLE else View.GONE
