@@ -45,6 +45,8 @@ dependencies {
     implementation(Libs.AndroidX.material)
     implementation(Libs.Dagger.core)
     implementation(Libs.gson)
+    implementation(Libs.AndroidX.LifeCycle.lifeCycle)
+    implementation(Libs.AndroidX.LifeCycle.liveData)
 
     kapt(Libs.Dagger.compiler)
 

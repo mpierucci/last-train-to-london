@@ -5,5 +5,5 @@ import retrofit2.http.GET
 interface LineStatusApi {
 
     @GET("line/mode/tube/status")
-    fun getStatus(): List<RestLineStatus>
+    suspend fun getStatus(): List<RestLineStatus>
 }

@@ -22,10 +22,11 @@ object Libs {
         }
 
         object LifeCycle {
-            private const val lifeCycleVersion = "2.1.0"
+            private const val lifeCycleVersion = "2.2.0-rc01"
             const val lifeCycle = "androidx.lifecycle:lifecycle-extensions:$lifeCycleVersion"
-            const val liveData = "androidx.lifecycle:lifecycle-livedata:$lifeCycleVersion"
-            const val test = "androidx.arch.core:core-testing:2.0.1"
+            const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:$lifeCycleVersion"
+            const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycleVersion"
+            const val test = "androidx.arch.core:core-testing:$lifeCycleVersion"
         }
     }
 
