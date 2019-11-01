@@ -8,9 +8,7 @@ import javax.inject.Inject
 import javax.inject.Provider
 import kotlin.reflect.KClass
 
-
 typealias FragmentsProviderMap = Map<Class<out Fragment>, @JvmSuppressWildcards Provider<Fragment>>
-
 
 @Target(AnnotationTarget.FUNCTION)
 @MapKey

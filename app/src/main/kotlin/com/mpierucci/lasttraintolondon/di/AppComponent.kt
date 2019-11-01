@@ -5,7 +5,6 @@ import com.mpierucci.lasttraintolondon.init.AppInitializerModule
 import com.mpierucci.lasttraintolondon.init.CustomApplication
 import com.mpierucci.lasttraintolondon.netwrok.NetworkModule
 import com.mpierucci.lasttraintolondon.tube.di.LinesActivityComponent
-import com.mpierucci.lasttraintolondon.tube.di.LineStatusesModule
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton

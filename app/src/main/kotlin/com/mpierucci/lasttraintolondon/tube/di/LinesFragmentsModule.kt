@@ -7,7 +7,6 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 
-
 @Module
 abstract class LinesFragmentsModule {
 
@@ -15,5 +14,4 @@ abstract class LinesFragmentsModule {
     @IntoMap
     @FragmentClassKey(LineStatusFragment::class)
     abstract fun bindLineStatusFragment(fragment: LineStatusFragment): Fragment
-
 }
