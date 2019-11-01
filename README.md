@@ -9,6 +9,7 @@ Pet project to apply new Android architectures, frameworks etc.
 * UseCase module (Only RxUseCases atm, courutines comming)
 * Detekt configuration
 * Ktlint configuration
+* Coroutines repositories
 
 # Soon:
 * ViewModel + LiveData
