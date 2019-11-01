@@ -4,6 +4,6 @@ object Android {
     const val targetSdkVersion = 29
     const val compileSdkVersion = 29
     const val applicationId = "com.mpierucci.lasttraintolondon"
-    const val versionCode = 1
+    const val versionCode = 3
     const val versionName = "1.0"
 }
