@@ -2,10 +2,12 @@ package com.mpierucci.lasttraintolondon.tube.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mpierucci.lasttraintolondon.R
+import com.mpierucci.lasttraintolondon.core.fragment.fragmentFactory
 import com.mpierucci.lasttraintolondon.di.injector
 import com.mpierucci.lasttraintolondon.mvvm.viewModel
 import com.mpierucci.lasttraintolondon.tube.di.LineStatusesModule
@@ -16,22 +18,25 @@ import javax.inject.Provider
 class LinesActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var vmProvider: Provider<LinesStatusViewModel>
+    lateinit var fragmentProvider: Provider<LineStatusFragment>
 
-    private val viewModel by viewModel { vmProvider.get() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportFragmentManager.fragmentFactory = fragmentFactory { fragmentProvider.get() }
         injector.plus(LineStatusesModule)
             .inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lines)
         setSupportActionBar(toolbar)
 
-        viewModel.lineStatus.observe(this, Observer {
-            val adapter = LineStatusAdapter()
-            statusList.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-            statusList.adapter = adapter
-            adapter.submitList(it)
-        })
+        if (savedInstanceState == null) {
+            supportFragmentManager.commit {
+                val fragment = supportFragmentManager.fragmentFactory.instantiate(
+                    classLoader,
+                    LineStatusFragment::class.java.canonicalName.orEmpty()
+                )
+                add(R.id.lineFragmentContainer, fragment)
+            }
+        }
     }
 }

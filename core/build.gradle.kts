@@ -10,6 +10,7 @@ android {
 
 dependencies {
     implementation(Libs.kotlinStdlib)
+    implementation(Libs.AndroidX.Ktx.fragment)
     implementation(Libs.Dagger.core)
 
     testImplementation(TestLibs.jUnit)
