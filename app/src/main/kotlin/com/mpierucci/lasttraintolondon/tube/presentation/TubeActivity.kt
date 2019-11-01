@@ -1,23 +1,25 @@
 package com.mpierucci.lasttraintolondon.tube.presentation
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import com.mpierucci.lasttraintolondon.R
-import com.mpierucci.lasttraintolondon.di.DaggerAppComponent
+import com.mpierucci.lasttraintolondon.di.injector
+import com.mpierucci.lasttraintolondon.mvvm.viewModel
 import com.mpierucci.lasttraintolondon.tube.di.LineStatusesModule
-import com.mpierucci.lasttraintolondon.tube.domain.LineStatusRepository
-
 import kotlinx.android.synthetic.main.activity_dummy.*
 import javax.inject.Inject
+import javax.inject.Provider
 
 class TubeActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var repository: LineStatusRepository
+    lateinit var vmProvider: Provider<TubeStatusViewModel>
+
+    val viewModel by viewModel { vmProvider.get() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        DaggerAppComponent.factory().create(applicationContext).plus(LineStatusesModule)
+        injector.plus(LineStatusesModule)
             .inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dummy)

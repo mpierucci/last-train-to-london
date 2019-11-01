@@ -18,4 +18,9 @@ interface AppComponent {
     }
 
     fun plus(module: LineStatusesModule): TubeActivityComponent
+
+
+    interface ComponentProvider {
+        val component: AppComponent
+    }
 }
