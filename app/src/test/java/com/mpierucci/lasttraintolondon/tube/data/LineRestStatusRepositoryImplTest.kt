@@ -20,7 +20,7 @@ class LineRestStatusRepositoryImplTest {
     @Test
     fun testGetAll() = runBlockingTest {
 
-        val lineStatus = RestLineStatus("", "", null)
+        val lineStatus = RestLineStatus("", "", null, listOf())
 
         whenever(api.getStatus()).thenReturn(listOf(lineStatus))
 

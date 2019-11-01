@@ -2,8 +2,9 @@ package com.mpierucci.lasttraintolondon.tube.data
 
 import com.google.gson.GsonBuilder
 import com.mpierucci.lasttraintolondon.loadModelFromTestFile
-import org.junit.Assert
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Assert.assertFalse
 import org.junit.Test
 
 class LineStatusMapperTest {
@@ -18,6 +19,7 @@ class LineStatusMapperTest {
         assertEquals("bakerloo", lineStatus.id)
         assertEquals("Bakerloo", lineStatus.name)
         assertEquals(1, lineStatus.statuses.size)
+        assertEquals(true, lineStatus.hasDisruptions)
 
         val status = lineStatus.statuses.firstOrNull()
 
@@ -36,6 +38,7 @@ class LineStatusMapperTest {
             )
         assertEquals("", lineStatus.id)
         assertEquals("", lineStatus.name)
-        Assert.assertTrue(lineStatus.statuses.isEmpty())
+        assertTrue(lineStatus.statuses.isEmpty())
+        assertFalse(lineStatus.hasDisruptions)
     }
 }
