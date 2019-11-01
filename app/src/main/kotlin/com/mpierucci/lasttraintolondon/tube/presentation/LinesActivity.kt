@@ -9,14 +9,14 @@ import com.mpierucci.lasttraintolondon.R
 import com.mpierucci.lasttraintolondon.di.injector
 import com.mpierucci.lasttraintolondon.mvvm.viewModel
 import com.mpierucci.lasttraintolondon.tube.di.LineStatusesModule
-import kotlinx.android.synthetic.main.activity_tube.*
+import kotlinx.android.synthetic.main.activity_lines.*
 import javax.inject.Inject
 import javax.inject.Provider
 
-class TubeActivity : AppCompatActivity() {
+class LinesActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var vmProvider: Provider<TubeStatusViewModel>
+    lateinit var vmProvider: Provider<LinesStatusViewModel>
 
     private val viewModel by viewModel { vmProvider.get() }
 
@@ -24,7 +24,7 @@ class TubeActivity : AppCompatActivity() {
         injector.plus(LineStatusesModule)
             .inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tube)
+        setContentView(R.layout.activity_lines)
         setSupportActionBar(toolbar)
 
         viewModel.lineStatus.observe(this, Observer {
