@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/listPreferredItemHeight">
+
+    <ImageView
+        android:id="@+id/lineIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/grid_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:importantForAccessibility="no"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/bakerloo_line_roundel" />
+
+    <TextView
+        android:id="@+id/lineName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/grid_2"
+        android:layout_marginTop="@dimen/grid_0_5"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        app:layout_constraintStart_toEndOf="@id/lineIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Bakerloo" />
+
+    <TextView
+        android:id="@+id/lineStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        app:layout_constraintStart_toStartOf="@id/lineName"
+        app:layout_constraintTop_toBottomOf="@id/lineName"
+        android:layout_marginTop="@dimen/grid_0_5"
+        tools:text="Good Service" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

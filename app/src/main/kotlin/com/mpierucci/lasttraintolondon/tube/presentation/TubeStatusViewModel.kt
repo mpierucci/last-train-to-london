@@ -6,6 +6,7 @@ import com.mpierucci.lasttraintolondon.tube.domain.LineStatusRepository
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 
+// TODO test
 class TubeStatusViewModel @Inject constructor(private val repository: LineStatusRepository) :
     ViewModel() {
 
