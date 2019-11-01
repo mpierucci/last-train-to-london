@@ -12,5 +12,4 @@ class TubeStatusViewModel @Inject constructor(private val repository: LineStatus
     val lineStatus = liveData(Dispatchers.IO) {
         emit(repository.getAll())
     }
-
 }

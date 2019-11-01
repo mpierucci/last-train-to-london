@@ -32,7 +32,6 @@ class TubeActivity : AppCompatActivity() {
         }
 
         viewModel.lineStatus.observe(this, Observer {
-
         })
     }
 }

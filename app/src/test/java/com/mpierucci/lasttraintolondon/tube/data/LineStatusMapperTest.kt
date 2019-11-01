@@ -1,6 +1,5 @@
 package com.mpierucci.lasttraintolondon.tube.data
 
-
 import com.google.gson.GsonBuilder
 import com.mpierucci.lasttraintolondon.loadModelFromTestFile
 import org.junit.Assert
@@ -15,8 +14,6 @@ class LineStatusMapperTest {
     fun `test map for valid gson `() {
         val lineStatus =
             mapper.map(loadModelFromTestFile(this.javaClass, "lineStatus"))
-
-
 
         assertEquals("bakerloo", lineStatus.id)
         assertEquals("Bakerloo", lineStatus.name)
