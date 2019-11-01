@@ -1,3 +1,5 @@
+import properties.loadLocalProperties
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -13,19 +15,35 @@ android {
         minSdkVersion(Android.minSdkVersion)
         targetSdkVersion(Android.targetSdkVersion)
         versionCode = Android.versionCode
-        versionName =  Android.versionName
+        versionName = Android.versionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    val localProperties by lazy { loadLocalProperties("$rootDir") }
+
+    signingConfigs {
+        create("release") {
+            keyAlias = System.getenv("UPLOAD_KEY_ALIAS") ?: "${localProperties["uploadKey.alias"]}"
+            keyPassword = System.getenv("UPLOAD_KEY_ALIAS_PASSWORD")
+                ?: "${localProperties["uploadKey.aliasPassword"]}"
+            storeFile = file(System.getenv("UPLOAD_KEY_PATH") ?: "lttlUploadKey")
+            storePassword = System.getenv("UPLOAD_KEY_PASSWORD")
+                ?: "${localProperties["uploadKey.password"]}"
+        }
     }
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled =  true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            isMinifyEnabled = true
+            signingConfig = signingConfigs.getByName("release")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
 
-        getByName("debug"){
+        getByName("debug") {
             applicationIdSuffix = ".debug"
-
         }
     }
 
