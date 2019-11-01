@@ -10,7 +10,11 @@ import javax.inject.Inject
 class TubeStatusViewModel @Inject constructor(private val repository: LineStatusRepository) :
     ViewModel() {
 
+    private val lineStatusMapper = PresentationLineStatusMapper()
     val lineStatus = liveData(Dispatchers.IO) {
-        emit(repository.getAll())
+        val lineStatus = repository.getAll().map {
+            lineStatusMapper.map(it)
+        }
+        emit(lineStatus)
     }
 }

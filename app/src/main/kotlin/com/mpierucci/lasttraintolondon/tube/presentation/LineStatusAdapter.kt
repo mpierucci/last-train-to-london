@@ -3,9 +3,9 @@ package com.mpierucci.lasttraintolondon.tube.presentation
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.mpierucci.lasttraintolondon.tube.domain.LineStatus
 
-class LineStatusAdapter : ListAdapter<LineStatus, LineStatusViewHolder>(LINE_STATUS_DIFF) {
+class LineStatusAdapter :
+    ListAdapter<PresentationLineStatus, LineStatusViewHolder>(LINE_STATUS_DIFF) {
 
     override fun onBindViewHolder(holder: LineStatusViewHolder, position: Int) {
         holder.bindLineStatus(getItem(position))
@@ -16,14 +16,21 @@ class LineStatusAdapter : ListAdapter<LineStatus, LineStatusViewHolder>(LINE_STA
     }
 
     companion object {
-        private val LINE_STATUS_DIFF = object : DiffUtil.ItemCallback<LineStatus>() {
+        private val LINE_STATUS_DIFF =
+            object : DiffUtil.ItemCallback<PresentationLineStatus>() {
 
-            override fun areContentsTheSame(oldItem: LineStatus, newItem: LineStatus): Boolean {
+            override fun areContentsTheSame(
+                oldItem: PresentationLineStatus,
+                newItem: PresentationLineStatus
+            ): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areItemsTheSame(oldItem: LineStatus, newItem: LineStatus): Boolean {
-                return oldItem.id == newItem.id
+            override fun areItemsTheSame(
+                oldItem: PresentationLineStatus,
+                newItem: PresentationLineStatus
+            ): Boolean {
+                return oldItem.badgeId == newItem.badgeId
             }
         }
     }

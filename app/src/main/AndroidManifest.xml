@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".tube.presentation.TubeActivity"
-            android:label="@string/title_activity_dummy"
+            android:label="@string/title_activity_tube"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
