@@ -26,6 +26,8 @@ dependencies {
     api(Libs.okHttp)
     api(Libs.Retrofit.retrofit)
 
+
+    implementation(project(":core"))
     implementation(Libs.kotlinStdlib)
     implementation(Libs.Retrofit.rxAdapter)
     implementation(Libs.Retrofit.gsonConverter)
