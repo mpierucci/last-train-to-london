@@ -7,6 +7,8 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libs.Rx.java)
     implementation(Libs.kotlinStdlib)
+
+    api(Libs.Coroutines.core)
 }
 
 java {

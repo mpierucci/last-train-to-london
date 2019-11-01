@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Last Train to London</string>
-    <string name="title_activity_dummy">DummyActivity</string>
+    <string name="title_activity_tube">Live Status</string>
 </resources>

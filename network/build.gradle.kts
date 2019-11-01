@@ -4,6 +4,7 @@ import kotlin.lazy
 plugins {
     id("com.android.library")
     id("kotlin-android")
+    id("kotlin-kapt")
 }
 android {
     compileSdkVersion(Android.compileSdkVersion)
@@ -22,14 +23,19 @@ android {
 }
 
 dependencies {
+    api(Libs.okHttp)
+    api(Libs.Retrofit.retrofit)
+
     implementation(Libs.kotlinStdlib)
-    implementation(Libs.Retrofit.retrofit)
     implementation(Libs.Retrofit.rxAdapter)
-    implementation(Libs.Retrofit.converter)
+    implementation(Libs.Retrofit.gsonConverter)
     implementation(Libs.Dagger.core)
+
+    kapt(Libs.Dagger.compiler)
 
     debugImplementation(Libs.Stetho.stetho)
     debugImplementation(Libs.Stetho.stethoOk)
+
     testImplementation(TestLibs.jUnit)
 }
 

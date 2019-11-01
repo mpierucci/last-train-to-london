@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-android-extensions")
+    id("kotlin-kapt")
 }
 
 android {
@@ -33,15 +34,27 @@ android {
 }
 
 dependencies {
+    implementation(project(":network"))
+    implementation(project(":viewmodel"))
+
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libs.kotlinStdlib)
     implementation(Libs.AndroidX.appCompat)
     implementation(Libs.AndroidX.Ktx.core)
     implementation(Libs.AndroidX.constraintLayout)
     implementation(Libs.AndroidX.material)
+    implementation(Libs.Dagger.core)
+    implementation(Libs.gson)
+    implementation(Libs.AndroidX.LifeCycle.lifeCycle)
+    implementation(Libs.AndroidX.LifeCycle.viewModel)
+    implementation(Libs.AndroidX.LifeCycle.liveData)
+
+    kapt(Libs.Dagger.compiler)
 
     debugImplementation(Libs.leakCanary)
 
+    testImplementation(TestLibs.mockitoKotlin)
+    testImplementation(TestLibs.coroutinesTest)
     testImplementation(TestLibs.jUnit)
 
     androidTestImplementation(TestLibs.testRunner)

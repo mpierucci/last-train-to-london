@@ -7,7 +7,9 @@
     <color name="white">#FFFFFF</color>
     <color name="pomegranate">#F44336</color>
     <color name="black">#000000</color>
-    
+    <color name="gold">#EED202</color>
+    <color name="apple">#4BB543</color>
+
     <!-- TFL scheme -->
     <color name="bakerloo">#B36305</color>
     <color name="central">#E32017</color>

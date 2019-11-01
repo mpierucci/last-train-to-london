@@ -7,6 +7,10 @@ object Libs {
 
     const val ktlint = "com.github.shyiko:ktlint:0.31.0"
 
+    const val okHttp = "com.squareup.okhttp3:okhttp:4.2.2"
+
+    const val gson = "com.google.code.gson:gson:2.8.6"
+
     object AndroidX {
         const val appCompat = "androidx.appcompat:appcompat:1.1.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
@@ -18,19 +22,18 @@ object Libs {
         }
 
         object LifeCycle {
-            private const val lifeCycleVersion = "2.1.0"
+            private const val lifeCycleVersion = "2.2.0-rc01"
             const val lifeCycle = "androidx.lifecycle:lifecycle-extensions:$lifeCycleVersion"
-            const val liveData = "androidx.lifecycle:lifecycle-livedata:$lifeCycleVersion"
-            const val test = "androidx.arch.core:core-testing:2.0.1"
+            const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:$lifeCycleVersion"
+            const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycleVersion"
+            const val test = "androidx.arch.core:core-testing:$lifeCycleVersion"
         }
     }
 
     object Dagger {
-        private const val daggerVersion = "2.24"
+        private const val daggerVersion = "2.25.2"
         const val core = "com.google.dagger:dagger:$daggerVersion"
         const val compiler = "com.google.dagger:dagger-compiler:$daggerVersion"
-        const val androidCompiler = "com.google.dagger:dagger-android-processor:$daggerVersion"
-        const val androidSupport = "com.google.dagger:dagger-android-support:$daggerVersion"
     }
 
     object Rx {
@@ -46,9 +49,15 @@ object Libs {
     }
 
     object Retrofit {
-        private  const val retrofitVersion = "2.6.1"
+        private const val retrofitVersion = "2.6.1"
         const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
-        const val converter = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+        const val gsonConverter = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
         const val rxAdapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    }
+
+    object Coroutines {
+        private const val version = "1.3.2"
+
+        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
     }
 }
