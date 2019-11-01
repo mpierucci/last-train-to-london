@@ -13,7 +13,8 @@ class LineStatusMapper @Inject constructor() : Mapper<RestLineStatus, LineStatus
             name = from.name.orEmpty(),
             statuses = from.restStatuses?.map {
                 mapStatus(it)
-            } ?: emptyList()
+            } ?: emptyList(),
+            hasDisruptions = from.disruptions?.isNotEmpty() == true
         )
     }
 

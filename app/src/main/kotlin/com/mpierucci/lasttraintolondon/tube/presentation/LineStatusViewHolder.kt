@@ -15,5 +15,6 @@ class LineStatusViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
         itemView.lineName.text = lineStatus.name
         itemView.lineStatus.text = lineStatus.status
         itemView.lineIcon.setImageResource(lineStatus.badgeId)
+        itemView.disruptionsIcon.visibility = lineStatus.disruptionVisibility
     }
 }

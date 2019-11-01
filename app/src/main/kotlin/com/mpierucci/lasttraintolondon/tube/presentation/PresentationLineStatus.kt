@@ -6,6 +6,7 @@ import androidx.annotation.DrawableRes
 data class PresentationLineStatus(
     @DrawableRes val badgeId: Int,
     @ColorRes val statusColor: Int,
+    val disruptionVisibility: Int,
     val name: String,
     val status: String
 )

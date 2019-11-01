@@ -1,6 +1,6 @@
 package com.mpierucci.lasttraintolondon.tube.presentation
 
-import android.util.Log
+import android.view.View
 import com.mpierucci.lasttraintolondon.R
 import com.mpierucci.lasttraintolondon.tube.domain.LineIds
 import com.mpierucci.lasttraintolondon.tube.domain.LineStatus
@@ -12,7 +12,8 @@ class PresentationLineStatusMapper : Mapper<LineStatus, PresentationLineStatus> 
             badgeId = mapBadgeResource(from.id),
             statusColor = R.color.district,
             name = from.name,
-            status = from.statuses.firstOrNull()?.severityDescription.orEmpty()
+            status = from.statuses.firstOrNull()?.severityDescription.orEmpty(),
+            disruptionVisibility = if (from.hasDisruptions) View.VISIBLE else View.GONE
         )
     }
 
