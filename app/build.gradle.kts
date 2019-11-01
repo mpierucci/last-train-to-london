@@ -36,6 +36,7 @@ android {
 dependencies {
     implementation(project(":network"))
     implementation(project(":viewmodel"))
+    implementation(project(":core"))
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libs.kotlinStdlib)
