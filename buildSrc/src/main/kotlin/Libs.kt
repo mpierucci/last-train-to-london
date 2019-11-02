@@ -63,4 +63,8 @@ object Libs {
 
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
     }
+
+    object FireBase {
+        const val analytics = "com.google.firebase:firebase-analytics:17.2.1"
+    }
 }

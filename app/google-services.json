@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "333554081597",
+    "firebase_url": "https://last-train-to-london.firebaseio.com",
+    "project_id": "last-train-to-london",
+    "storage_bucket": "last-train-to-london.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333554081597:android:7f25f33f5bb7b3e7bf2f54",
+        "android_client_info": {
+          "package_name": "com.mpierucci.lasttraintolondon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "333554081597-bu4e5gf45fhn40f8dnbgelk4hbhn24b7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_2a8ETXq11btu4-TkwgkSNwv0uYWUma8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "333554081597-bu4e5gf45fhn40f8dnbgelk4hbhn24b7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333554081597:android:720240c8eac407b7bf2f54",
+        "android_client_info": {
+          "package_name": "com.mpierucci.lasttraintolondon.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "333554081597-bu4e5gf45fhn40f8dnbgelk4hbhn24b7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_2a8ETXq11btu4-TkwgkSNwv0uYWUma8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "333554081597-bu4e5gf45fhn40f8dnbgelk4hbhn24b7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

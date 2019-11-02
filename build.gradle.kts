@@ -13,6 +13,7 @@ buildscript {
         classpath (BuildPlugins.androidGradle)
         classpath (BuildPlugins.kotlin)
         classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.1.1")
+        classpath(BuildPlugins.googlePlay)
     }
 }
 
