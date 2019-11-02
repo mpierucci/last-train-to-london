@@ -20,10 +20,9 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    val localProperties by lazy { loadLocalProperties("$rootDir") }
-
     signingConfigs {
         create("release") {
+            val localProperties by lazy { loadLocalProperties("$rootDir") }
             keyAlias = System.getenv("UPLOAD_KEY_ALIAS") ?: "${localProperties["uploadKey.alias"]}"
             keyPassword = System.getenv("UPLOAD_KEY_ALIAS_PASSWORD")
                 ?: "${localProperties["uploadKey.aliasPassword"]}"
@@ -80,6 +79,7 @@ dependencies {
     implementation(Libs.AndroidX.LifeCycle.lifeCycle)
     implementation(Libs.AndroidX.LifeCycle.viewModel)
     implementation(Libs.AndroidX.LifeCycle.liveData)
+    implementation(Libs.timber)
 
     kapt(Libs.Dagger.compiler)
 
