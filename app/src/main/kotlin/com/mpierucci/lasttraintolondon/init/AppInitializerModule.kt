@@ -11,5 +11,9 @@ abstract class AppInitializerModule {
 
     @Binds
     @IntoSet
-    abstract fun bindInterceptorInitializer(inializer: InspectorInitializer): AppInitializer
+    abstract fun bindInterceptorInitializer(initializer: InspectorInitializer): AppInitializer
+
+    @Binds
+    @IntoSet
+    abstract fun bindTimberInitializer(initializer: TimberInitializer): AppInitializer
 }

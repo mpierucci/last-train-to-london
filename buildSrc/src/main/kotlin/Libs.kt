@@ -11,6 +11,8 @@ object Libs {
 
     const val gson = "com.google.code.gson:gson:2.8.6"
 
+    const val timber = "com.jakewharton.timber:timber:4.7.1"
+
     object AndroidX {
         const val appCompat = "androidx.appcompat:appcompat:1.1.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"

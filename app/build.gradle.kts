@@ -20,15 +20,14 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    val localProperties by lazy { loadLocalProperties("$rootDir") }
-
     signingConfigs {
         create("release") {
-            keyAlias = System.getenv("UPLOAD_KEY_ALIAS") ?: "${localProperties["uploadKey.alias"]}"
-            keyPassword = System.getenv("UPLOAD_KEY_ALIAS_PASSWORD")
+            val localProperties by lazy { loadLocalProperties("$rootDir") }
+            keyAlias = System.getenv("BITRISEIO_ANDROID_KEYSTORE_ALIAS") ?: "${localProperties["uploadKey.alias"]}"
+            keyPassword = System.getenv("BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
                 ?: "${localProperties["uploadKey.aliasPassword"]}"
-            storeFile = file(System.getenv("UPLOAD_KEY_PATH") ?: "lttlUploadKey")
-            storePassword = System.getenv("UPLOAD_KEY_PASSWORD")
+            storeFile = file(System.getenv("DOWNLOADED_KEYSTORE_PATH") ?: "lttlUploadKey")
+            storePassword = System.getenv("BITRISEIO_ANDROID_KEYSTORE_PASSWORD")
                 ?: "${localProperties["uploadKey.password"]}"
         }
     }
@@ -80,6 +79,7 @@ dependencies {
     implementation(Libs.AndroidX.LifeCycle.lifeCycle)
     implementation(Libs.AndroidX.LifeCycle.viewModel)
     implementation(Libs.AndroidX.LifeCycle.liveData)
+    implementation(Libs.timber)
 
     kapt(Libs.Dagger.compiler)
 
