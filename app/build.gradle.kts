@@ -23,11 +23,11 @@ android {
     signingConfigs {
         create("release") {
             val localProperties by lazy { loadLocalProperties("$rootDir") }
-            keyAlias = System.getenv("UPLOAD_KEY_ALIAS") ?: "${localProperties["uploadKey.alias"]}"
-            keyPassword = System.getenv("UPLOAD_KEY_ALIAS_PASSWORD")
+            keyAlias = System.getenv("BITRISEIO_ANDROID_KEYSTORE_ALIAS") ?: "${localProperties["uploadKey.alias"]}"
+            keyPassword = System.getenv("BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
                 ?: "${localProperties["uploadKey.aliasPassword"]}"
-            storeFile = file(System.getenv("UPLOAD_KEY_PATH") ?: "lttlUploadKey")
-            storePassword = System.getenv("UPLOAD_KEY_PASSWORD")
+            storeFile = file(System.getenv("BITRISEIO_ANDROID_KEYSTORE_URL") ?: "lttlUploadKey")
+            storePassword = System.getenv("BITRISEIO_ANDROID_KEYSTORE_PASSWORD")
                 ?: "${localProperties["uploadKey.password"]}"
         }
     }
