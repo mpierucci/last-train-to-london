@@ -6,6 +6,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("kotlin-kapt")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -80,6 +81,7 @@ dependencies {
     implementation(Libs.AndroidX.LifeCycle.viewModel)
     implementation(Libs.AndroidX.LifeCycle.liveData)
     implementation(Libs.timber)
+    implementation(Libs.FireBase.analytics)
 
     kapt(Libs.Dagger.compiler)
 
