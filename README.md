@@ -10,6 +10,7 @@ Pet project to apply new Android architectures, frameworks etc.
 * Detekt configuration
 * Ktlint configuration
 * Coroutines repositories
+* Frgment constructorinjection
 
 # Soon:
 * ViewModel + LiveData
