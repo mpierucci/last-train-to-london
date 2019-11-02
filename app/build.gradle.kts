@@ -26,7 +26,7 @@ android {
             keyAlias = System.getenv("BITRISEIO_ANDROID_KEYSTORE_ALIAS") ?: "${localProperties["uploadKey.alias"]}"
             keyPassword = System.getenv("BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
                 ?: "${localProperties["uploadKey.aliasPassword"]}"
-            storeFile = file(System.getenv("BITRISEIO_ANDROID_KEYSTORE_URL") ?: "lttlUploadKey")
+            storeFile = file(System.getenv("DOWNLOADED_KEYSTORE_PATH") ?: "lttlUploadKey")
             storePassword = System.getenv("BITRISEIO_ANDROID_KEYSTORE_PASSWORD")
                 ?: "${localProperties["uploadKey.password"]}"
         }
