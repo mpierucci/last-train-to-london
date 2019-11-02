@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tube.presentation.TubeActivity">
+    tools:context=".tube.presentation.LinesActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/toolbarWrapper"
@@ -22,12 +22,11 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/statusList"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/lineFragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbarWrapper" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

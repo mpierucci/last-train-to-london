@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import properties.loadLocalProperties
 
 plugins {
@@ -49,7 +50,18 @@ android {
 
     sourceSets["main"].java.srcDir("src/main/kotlin")
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
 
 dependencies {
     implementation(project(":network"))
@@ -59,6 +71,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libs.kotlinStdlib)
     implementation(Libs.AndroidX.appCompat)
+    implementation(Libs.AndroidX.Ktx.fragment)
     implementation(Libs.AndroidX.Ktx.core)
     implementation(Libs.AndroidX.constraintLayout)
     implementation(Libs.AndroidX.material)

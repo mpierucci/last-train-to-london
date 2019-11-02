@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
 
 // TODO test
-class TubeStatusViewModel @Inject constructor(private val repository: LineStatusRepository) :
+class LinesStatusViewModel @Inject constructor(private val repository: LineStatusRepository) :
     ViewModel() {
 
     private val lineStatusMapper = PresentationLineStatusMapper()
