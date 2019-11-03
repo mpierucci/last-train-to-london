@@ -12,5 +12,6 @@ object LineIds {
     const val BAKERLOO = "bakerloo"
     const val WATERLOO = "waterloo-city"
     const val JUBILEE = "jubilee"
-    const val OVERGROUND = "overground"
+    const val OVERGROUND = "london-overground"
+    const val DLR = "dlr"
 }

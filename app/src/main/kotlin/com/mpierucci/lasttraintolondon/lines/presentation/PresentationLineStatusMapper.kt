@@ -8,11 +8,13 @@ import com.mpierucci.lasttraintolondon.lines.domain.Mapper
 
 class PresentationLineStatusMapper : Mapper<Line, PresentationLineStatus> {
     override fun map(from: Line): PresentationLineStatus {
+        val topStatus = from.statuses.firstOrNull()
         return PresentationLineStatus(
             badgeId = mapBadgeResource(from.id),
             name = from.name,
-            status = from.statuses.firstOrNull()?.severityDescription.orEmpty(),
-            disruptionVisibility = if (from.disruptions.isNotEmpty()) View.VISIBLE else View.GONE
+            status = topStatus?.severityDescription.orEmpty(),
+            disruptionVisibility = if (topStatus?.disruption != null)
+                View.VISIBLE else View.GONE
         )
     }
 
@@ -30,6 +32,7 @@ class PresentationLineStatusMapper : Mapper<Line, PresentationLineStatus> {
             LineIds.WATERLOO -> R.drawable.w_and_c_line_roundel
             LineIds.JUBILEE -> R.drawable.jubilee_line_roundel
             LineIds.OVERGROUND -> R.drawable.london_overground_roundel
+            LineIds.DLR -> R.drawable.dlr_roundel
             else -> R.drawable.default_roundel
         }
     }

@@ -10,9 +10,7 @@ class LineStatusMapper @Inject constructor() : Mapper<RestLine, Line> {
             id = from.id.orEmpty(),
             name = from.name.orEmpty(),
             statuses = from.restStatuses?.map { mapStatus(it) } ?: emptyList(),
-            mode = from.mode?.toMode() ?: LineMode.Undefinied,
-            disruptions = from.disruptions?.map { mapDisruption(it) } ?: emptyList()
-
+            mode = from.mode?.toMode() ?: LineMode.Undefined
         )
     }
 
@@ -20,7 +18,8 @@ class LineStatusMapper @Inject constructor() : Mapper<RestLine, Line> {
         return Status(
             id = status.id,
             severity = status.severity,
-            severityDescription = status.severityDescription.orEmpty()
+            severityDescription = status.severityDescription.orEmpty(),
+            disruption = status.disruption?.let { mapDisruption(it) }
         )
     }
 

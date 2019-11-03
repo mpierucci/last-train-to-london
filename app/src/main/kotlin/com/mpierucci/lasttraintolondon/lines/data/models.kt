@@ -7,14 +7,14 @@ data class RestLine(
     @SerializedName("id") val id: String?,
     @SerializedName("name") val name: String?,
     @SerializedName("lineStatuses") val restStatuses: List<RestStatus>?,
-    @SerializedName("disruptions") val disruptions: List<RestDisruption>?,
     @SerializedName("modeName") val mode: RestLineMode?
 )
 
 data class RestStatus(
     @SerializedName("id") val id: Int,
     @SerializedName("statusSeverity") val severity: Int,
-    @SerializedName("statusSeverityDescription") val severityDescription: String?
+    @SerializedName("statusSeverityDescription") val severityDescription: String?,
+    @SerializedName("disruption") val disruption: RestDisruption?
 )
 
 data class RestDisruption(
@@ -33,7 +33,7 @@ fun RestLineMode.toMode(): LineMode {
         "dlr" -> LineMode.Dlr
         "overground" -> LineMode.Overground
         "bus" -> LineMode.Bus
-        else -> LineMode.Undefinied
+        else -> LineMode.Undefined
     }
 }
 

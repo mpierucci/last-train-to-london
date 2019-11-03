@@ -4,14 +4,14 @@ data class Line(
     val id: String,
     val name: String,
     val mode: LineMode,
-    val statuses: List<Status>,
-    val disruptions: List<Disruption>
+    val statuses: List<Status>
 )
 
 data class Status(
     val id: Int,
     val severity: Int,
-    val severityDescription: String
+    val severityDescription: String,
+    val disruption: Disruption?
 )
 
 sealed class LineMode {
@@ -19,7 +19,7 @@ sealed class LineMode {
     object Dlr : LineMode()
     object Overground : LineMode()
     object Bus : LineMode()
-    object Undefinied : LineMode()
+    object Undefined : LineMode()
 }
 
 sealed class Disruption {
