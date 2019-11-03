@@ -12,7 +12,7 @@ class PresentationLineStatusMapper : Mapper<Line, PresentationLineStatus> {
             badgeId = mapBadgeResource(from.id),
             name = from.name,
             status = from.statuses.firstOrNull()?.severityDescription.orEmpty(),
-            disruptionVisibility = if (from.hasDisruptions) View.VISIBLE else View.GONE
+            disruptionVisibility = if (from.disruptions.isNotEmpty()) View.VISIBLE else View.GONE
         )
     }
 
