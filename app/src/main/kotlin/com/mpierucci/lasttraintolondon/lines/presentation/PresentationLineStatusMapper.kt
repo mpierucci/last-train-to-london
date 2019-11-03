@@ -1,13 +1,13 @@
-package com.mpierucci.lasttraintolondon.tube.presentation
+package com.mpierucci.lasttraintolondon.lines.presentation
 
 import android.view.View
 import com.mpierucci.lasttraintolondon.R
-import com.mpierucci.lasttraintolondon.tube.domain.LineIds
-import com.mpierucci.lasttraintolondon.tube.domain.LineStatus
-import com.mpierucci.lasttraintolondon.tube.domain.Mapper
+import com.mpierucci.lasttraintolondon.lines.domain.LineIds
+import com.mpierucci.lasttraintolondon.lines.domain.Line
+import com.mpierucci.lasttraintolondon.lines.domain.Mapper
 
-class PresentationLineStatusMapper : Mapper<LineStatus, PresentationLineStatus> {
-    override fun map(from: LineStatus): PresentationLineStatus {
+class PresentationLineStatusMapper : Mapper<Line, PresentationLineStatus> {
+    override fun map(from: Line): PresentationLineStatus {
         return PresentationLineStatus(
             badgeId = mapBadgeResource(from.id),
             name = from.name,

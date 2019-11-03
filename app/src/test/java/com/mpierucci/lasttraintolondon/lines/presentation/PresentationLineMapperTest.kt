@@ -1,20 +1,20 @@
-package com.mpierucci.lasttraintolondon.tube.presentation
+package com.mpierucci.lasttraintolondon.lines.presentation
 
 import android.view.View
 import com.mpierucci.lasttraintolondon.R
-import com.mpierucci.lasttraintolondon.tube.domain.LineIds
-import com.mpierucci.lasttraintolondon.tube.domain.LineStatus
-import com.mpierucci.lasttraintolondon.tube.domain.Status
+import com.mpierucci.lasttraintolondon.lines.domain.LineIds
+import com.mpierucci.lasttraintolondon.lines.domain.Line
+import com.mpierucci.lasttraintolondon.lines.domain.Status
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class PresentationLineStatusMapperTest {
+class PresentationLineMapperTest {
 
     private val mapper = PresentationLineStatusMapper()
 
     @Test
     fun `Test mapping with valid line id and no disruption`() {
-        val domainModel = LineStatus(
+        val domainModel = Line(
             id = LineIds.BAKERLOO,
             name = BAKERLOO_NAME,
             hasDisruptions = false,
@@ -31,7 +31,7 @@ class PresentationLineStatusMapperTest {
 
     @Test
     fun `Test mapping with invalid line id and disruptions`() {
-        val domainModel = LineStatus(
+        val domainModel = Line(
             id = "rubbish",
             name = BAKERLOO_NAME,
             hasDisruptions = true,

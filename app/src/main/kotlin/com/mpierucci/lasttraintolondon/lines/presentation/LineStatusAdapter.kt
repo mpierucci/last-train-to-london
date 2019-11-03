@@ -1,4 +1,4 @@
-package com.mpierucci.lasttraintolondon.tube.presentation
+package com.mpierucci.lasttraintolondon.lines.presentation
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil

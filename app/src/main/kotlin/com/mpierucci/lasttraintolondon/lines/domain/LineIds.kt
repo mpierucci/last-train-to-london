@@ -1,4 +1,4 @@
-package com.mpierucci.lasttraintolondon.tube.domain
+package com.mpierucci.lasttraintolondon.lines.domain
 
 object LineIds {
     const val CENTRAL = "central"

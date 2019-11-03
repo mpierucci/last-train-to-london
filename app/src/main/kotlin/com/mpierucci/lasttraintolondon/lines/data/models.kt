@@ -1,8 +1,8 @@
-package com.mpierucci.lasttraintolondon.tube.data
+package com.mpierucci.lasttraintolondon.lines.data
 
 import com.google.gson.annotations.SerializedName
 
-data class RestLineStatus(
+data class RestLine(
     @SerializedName("id") val id: String?,
     @SerializedName("name") val name: String?,
     @SerializedName("lineStatuses") val restStatuses: List<RestStatus>?,
