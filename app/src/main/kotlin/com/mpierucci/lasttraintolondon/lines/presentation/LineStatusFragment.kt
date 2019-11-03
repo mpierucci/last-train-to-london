@@ -32,11 +32,18 @@ class LineStatusFragment @Inject constructor(
         val viewModel by viewModel { vmProvider.get() }
 
         viewModel.lineStatus.observe(viewLifecycleOwner, Observer {
-            val adapter = LineStatusAdapter()
-            linesStatus.layoutManager =
-                LinearLayoutManager(requireActivity(), RecyclerView.VERTICAL, false)
-            linesStatus.adapter = adapter
-            adapter.submitList(it)
+            val statusAdapter = LineStatusAdapter()
+
+            linesStatus.apply {
+                layoutManager = LinearLayoutManager(
+                    requireActivity(),
+                    RecyclerView.VERTICAL, false
+                )
+                addItemDecoration(LineStatusDecorator(R.dimen.grid_1))
+                adapter = statusAdapter
+            }
+
+            statusAdapter.submitList(it)
         })
     }
 }

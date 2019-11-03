@@ -1,23 +1,21 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/electricViolet</item>
-        <item name="colorPrimaryVariant">@color/purple</item>
+        <item name="colorPrimary">@color/daisyBush</item>
+        <item name="colorPrimaryVariant">@color/navyBlue</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondary">@color/robinsEggBlu</item>
-        <item name="colorSecondaryVariant">@color/teal</item>
+        <item name="colorSecondary">@color/persianRed</item>
+        <item name="colorSecondaryVariant">@color/sangria</item>
         <item name="colorOnSecondary">@color/black</item>
-        <item name="android:colorBackground">@color/white</item>
+        <item name="android:colorBackground">@color/alabaster</item>
         <item name="colorOnBackground">@color/black</item>
         <item name="colorError">@color/pomegranate</item>
         <item name="colorOnError">@color/white</item>
         <item name="colorSurface">@color/white</item>
         <item name="colorOnSurface">@color/black</item>
-    </style>
 
-    <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
