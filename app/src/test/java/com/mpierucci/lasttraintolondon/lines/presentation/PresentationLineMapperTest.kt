@@ -12,6 +12,7 @@ class PresentationLineMapperTest {
 
     private val mapper = PresentationLineStatusMapper()
 
+    /*
     @Test
     fun `Test mapping with valid line id and no disruption`() {
         val domainModel = Line(
@@ -45,6 +46,8 @@ class PresentationLineMapperTest {
         assertEquals(View.VISIBLE, presentationModel.disruptionVisibility)
         assertEquals(R.drawable.default_roundel, presentationModel.badgeId)
     }
+
+    */
 
     companion object {
         private const val BAKERLOO_NAME = "Bakerloo"

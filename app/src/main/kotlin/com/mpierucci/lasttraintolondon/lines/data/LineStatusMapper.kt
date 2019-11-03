@@ -31,27 +31,27 @@ class LineStatusMapper @Inject constructor() : Mapper<RestLine, Line> {
 
         return when (restDisruption.category) {
             "RealTime" -> Disruption.RealTime(catDescription, description, summary, additionalInfo)
-            "PlannedWork" -> Disruption.RealTime(
+            "PlannedWork" -> Disruption.PlannedWork(
                 catDescription,
                 description,
                 summary,
                 additionalInfo
             )
-            "Information" -> Disruption.RealTime(
+            "Information" -> Disruption.Information(
                 catDescription,
                 description,
                 summary,
                 additionalInfo
             )
-            "Event" -> Disruption.RealTime(catDescription, description, summary, additionalInfo)
-            "Crowding" -> Disruption.RealTime(catDescription, description, summary, additionalInfo)
-            "StatusAlert" -> Disruption.RealTime(
+            "Event" -> Disruption.Event(catDescription, description, summary, additionalInfo)
+            "Crowding" -> Disruption.Crowding(catDescription, description, summary, additionalInfo)
+            "StatusAlert" -> Disruption.StatusAlert(
                 catDescription,
                 description,
                 summary,
                 additionalInfo
             )
-            else -> Disruption.RealTime(catDescription, description, summary, additionalInfo)
+            else -> Disruption.Undefined(catDescription, description, summary, additionalInfo)
         }
     }
 }
