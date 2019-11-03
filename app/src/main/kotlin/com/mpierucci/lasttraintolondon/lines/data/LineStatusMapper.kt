@@ -1,14 +1,14 @@
-package com.mpierucci.lasttraintolondon.tube.data
+package com.mpierucci.lasttraintolondon.lines.data
 
-import com.mpierucci.lasttraintolondon.tube.domain.LineStatus
-import com.mpierucci.lasttraintolondon.tube.domain.Mapper
-import com.mpierucci.lasttraintolondon.tube.domain.Status
+import com.mpierucci.lasttraintolondon.lines.domain.Line
+import com.mpierucci.lasttraintolondon.lines.domain.Mapper
+import com.mpierucci.lasttraintolondon.lines.domain.Status
 import javax.inject.Inject
 
-class LineStatusMapper @Inject constructor() : Mapper<RestLineStatus, LineStatus> {
+class LineStatusMapper @Inject constructor() : Mapper<RestLine, Line> {
 
-    override fun map(from: RestLineStatus): LineStatus {
-        return LineStatus(
+    override fun map(from: RestLine): Line {
+        return Line(
             id = from.id.orEmpty(),
             name = from.name.orEmpty(),
             statuses = from.restStatuses?.map {

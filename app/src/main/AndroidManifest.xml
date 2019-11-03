@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".tube.presentation.LinesActivity"
+            android:name=".lines.presentation.LinesActivity"
             android:label="@string/title_activity_tube"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

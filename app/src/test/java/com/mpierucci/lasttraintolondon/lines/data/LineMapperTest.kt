@@ -1,4 +1,4 @@
-package com.mpierucci.lasttraintolondon.tube.data
+package com.mpierucci.lasttraintolondon.lines.data
 
 import com.google.gson.GsonBuilder
 import com.mpierucci.lasttraintolondon.loadModelFromTestFile
@@ -7,7 +7,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Assert.assertFalse
 import org.junit.Test
 
-class LineStatusMapperTest {
+class LineMapperTest {
 
     private val mapper = LineStatusMapper()
 
@@ -34,7 +34,7 @@ class LineStatusMapperTest {
             mapper.map(
                 GsonBuilder()
                     .create()
-                    .fromJson("{}", RestLineStatus::class.java)
+                    .fromJson("{}", RestLine::class.java)
             )
         assertEquals("", lineStatus.id)
         assertEquals("", lineStatus.name)
