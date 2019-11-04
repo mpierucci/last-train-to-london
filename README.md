@@ -13,10 +13,8 @@ Pet project to apply new Android architectures, frameworks etc.
 * Frgment constructorinjection
 
 # Soon:
-* ViewModel + LiveData
 * Room
 * WorkManager
-* Corountines
 * DarkMode
 * Dynamic Modules
 * InApp updates
