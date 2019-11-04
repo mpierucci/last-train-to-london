@@ -1,6 +1,7 @@
 package com.mpierucci.lasttraintolondon.lines.presentation
 
 import android.view.View
+import androidx.annotation.ColorRes
 import com.mpierucci.lasttraintolondon.R
 import com.mpierucci.lasttraintolondon.lines.domain.LineIds
 import com.mpierucci.lasttraintolondon.lines.domain.Line
@@ -14,8 +15,19 @@ class PresentationLineStatusMapper : Mapper<Line, PresentationLineStatus> {
             name = from.name,
             status = topStatus?.severityDescription.orEmpty(),
             disruptionVisibility = if (topStatus?.disruption != null)
-                View.VISIBLE else View.GONE
+                View.VISIBLE else View.GONE,
+            statusColor = mapStatusColor(topStatus?.severity ?: 0)
         )
+    }
+
+    @ColorRes
+    private fun mapStatusColor(statusSeverity: Int): Int {
+        return when (statusSeverity) {
+            in StatusSeverityRanges.good -> R.color.apple
+            in StatusSeverityRanges.caution -> R.color.blazeOrange
+            in StatusSeverityRanges.bad -> R.color.sangria
+            else -> 0
+        }
     }
 
     private fun mapBadgeResource(lineId: String): Int {
