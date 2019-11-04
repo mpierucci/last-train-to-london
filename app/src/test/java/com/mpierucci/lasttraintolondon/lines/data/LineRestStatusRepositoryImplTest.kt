@@ -19,8 +19,7 @@ class LineRestStatusRepositoryImplTest {
     @ExperimentalCoroutinesApi
     @Test
     fun testGetAll() = runBlockingTest {
-
-        val lineStatus = RestLine("", "", null, listOf())
+        val lineStatus = RestLine("", "", null, RestLineMode(""))
 
         whenever(api.getStatus()).thenReturn(listOf(lineStatus))
 
