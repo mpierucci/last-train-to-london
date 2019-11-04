@@ -214,5 +214,6 @@ class LineMapperTest {
         assertEquals("", lineStatus.id)
         assertEquals("", lineStatus.name)
         assertTrue(lineStatus.statuses.isEmpty())
+        assertEquals(LineMode.Undefined, lineStatus.mode)
     }
 }
