@@ -79,6 +79,8 @@ dependencies {
     implementation(Libs.AndroidX.Ktx.preferences)
     implementation(Libs.AndroidX.constraintLayout)
     implementation(Libs.AndroidX.material)
+    implementation(Libs.AndroidX.Ktx.Navigaiton.fragment)
+    implementation(Libs.AndroidX.Ktx.Navigaiton.ui)
     implementation(Libs.Dagger.core)
     implementation(Libs.gson)
     implementation(Libs.AndroidX.LifeCycle.lifeCycle)

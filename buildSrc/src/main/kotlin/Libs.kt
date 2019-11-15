@@ -23,6 +23,13 @@ object Libs {
             const val fragment = "androidx.fragment:fragment-ktx:1.2.0-rc01"
             const val activity = "androidx.activity:activity-ktx:1.1.0"
             const val preferences = "androidx.preference:preference-ktx:1.1.0"
+            const val viewPager2 = "androidx.viewpager2:viewpager2:1.0.0-rc01"
+
+            object Navigaiton {
+                private const val version = "2.2.0-rc02"
+                const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
+                const val ui = "androidx.navigation:navigation-ui-ktx:$version"
+            }
         }
 
         object LifeCycle {

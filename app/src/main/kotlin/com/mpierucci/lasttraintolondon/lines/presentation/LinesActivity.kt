@@ -21,6 +21,7 @@ class LinesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_lines)
         setSupportActionBar(toolbar)
 
+        /*
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
                 val fragment = supportFragmentManager.fragmentFactory.instantiate(
@@ -30,5 +31,7 @@ class LinesActivity : AppCompatActivity() {
                 add(R.id.lineFragmentContainer, fragment)
             }
         }
+        */
+
     }
 }
