@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/lineStatusFragment"
+        android:id="@+id/liveStatus"
         android:icon="@drawable/live_status_white"
         android:title="@string/title_live_status" />
     <item
-        android:id="@+id/linesPreferencesFragment"
+        android:id="@+id/settings"
         android:icon="@drawable/settings_white"
         android:title="@string/title_settings" />
 </menu>
