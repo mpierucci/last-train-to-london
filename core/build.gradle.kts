@@ -10,6 +10,7 @@ android {
 }
 
 dependencies {
+    api(project(":usecase"))
     implementation(Libs.kotlinStdlib)
     implementation(Libs.AndroidX.Ktx.fragment)
     implementation(Libs.Dagger.core)

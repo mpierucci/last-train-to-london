@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mpierucci.lasttraintolondon.R
+import com.mpierucci.lasttraintolondon.core.presentation.ViewContract
 import com.mpierucci.lasttraintolondon.mvvm.viewModel
 import kotlinx.android.synthetic.main.fragment_lines_status.*
 import javax.inject.Inject
@@ -34,16 +35,21 @@ class LineStatusFragment @Inject constructor(
         viewModel.lineStatus.observe(viewLifecycleOwner, Observer {
             val statusAdapter = LineStatusAdapter()
 
-            linesStatus.apply {
-                layoutManager = LinearLayoutManager(
-                    requireActivity(),
-                    RecyclerView.VERTICAL, false
-                )
-                addItemDecoration(LineStatusDecorator(R.dimen.grid_1))
-                adapter = statusAdapter
+            when (it) {
+                is ViewContract.Success<List<PresentationLineStatus>> -> {
+                    linesStatus.apply {
+                        layoutManager = LinearLayoutManager(
+                            requireActivity(),
+                            RecyclerView.VERTICAL, false
+                        )
+                        addItemDecoration(LineStatusDecorator(R.dimen.grid_1))
+                        adapter = statusAdapter
+                    }
+                    statusAdapter.submitList(it.result)
+                }
+                is ViewContract.Error -> {
+                }
             }
-
-            statusAdapter.submitList(it)
         })
     }
 }

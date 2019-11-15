@@ -1,7 +1,14 @@
 package com.mpierucci.lastratintolondon.usecase
 
 // TODO investigate Arrow
-sealed class Either<out A, out B> {
-    data class Left<A>(val value: A) : Either<A, Nothing>()
-    data class Right<B>(val value: B) : Either<Nothing, B>()
+sealed class Either<out L, out R> {
+    data class Left<L>(val value: L) : Either<L, Nothing>()
+    data class Right<R>(val value: R) : Either<Nothing, R>()
+
+    fun either(lefFunc: (L) -> Any, rightFunc: (R) -> Any): Any {
+        return when (this) {
+            is Left -> lefFunc(value)
+            is Right -> rightFunc(value)
+        }
+    }
 }
