@@ -24,7 +24,8 @@ android {
     signingConfigs {
         create("release") {
             val localProperties by lazy { loadLocalProperties("$rootDir") }
-            keyAlias = System.getenv("BITRISEIO_ANDROID_KEYSTORE_ALIAS") ?: "${localProperties["uploadKey.alias"]}"
+            keyAlias = System.getenv("BITRISEIO_ANDROID_KEYSTORE_ALIAS")
+                ?: "${localProperties["uploadKey.alias"]}"
             keyPassword = System.getenv("BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
                 ?: "${localProperties["uploadKey.aliasPassword"]}"
             storeFile = file(System.getenv("DOWNLOADED_KEYSTORE_PATH") ?: "lttlUploadKey")
@@ -75,6 +76,7 @@ dependencies {
     implementation(Libs.AndroidX.appCompat)
     implementation(Libs.AndroidX.Ktx.fragment)
     implementation(Libs.AndroidX.Ktx.core)
+    implementation(Libs.AndroidX.Ktx.preferences)
     implementation(Libs.AndroidX.constraintLayout)
     implementation(Libs.AndroidX.material)
     implementation(Libs.Dagger.core)

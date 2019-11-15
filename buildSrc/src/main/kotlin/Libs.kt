@@ -22,6 +22,7 @@ object Libs {
             const val core = "androidx.core:core-ktx:1.1.0"
             const val fragment = "androidx.fragment:fragment-ktx:1.2.0-rc01"
             const val activity = "androidx.activity:activity-ktx:1.1.0"
+            const val preferences = "androidx.preference:preference-ktx:1.1.0"
         }
 
         object LifeCycle {
