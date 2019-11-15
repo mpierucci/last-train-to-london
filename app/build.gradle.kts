@@ -67,6 +67,7 @@ tasks.withType<KotlinCompile> {
 dependencies {
     implementation(project(":network"))
     implementation(project(":viewmodel"))
+    implementation(project(":usecase"))
     implementation(project(":core"))
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
