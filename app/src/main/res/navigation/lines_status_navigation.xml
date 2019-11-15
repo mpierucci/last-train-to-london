@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/lines_status_navigation"
+    app:startDestination="@id/lineStatusFragment">
+
+    <fragment
+        android:id="@+id/lineStatusFragment"
+        android:name="com.mpierucci.lasttraintolondon.lines.presentation.LineStatusFragment"
+        android:label="LineStatusFragment" />
+    <fragment
+        android:id="@+id/linesPreferencesFragment"
+        android:name="com.mpierucci.lasttraintolondon.settings.LinesPreferencesFragment"
+        android:label="LinesPreferencesFragment" />
+</navigation>

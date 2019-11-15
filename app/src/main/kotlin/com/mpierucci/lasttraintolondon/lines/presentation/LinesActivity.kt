@@ -2,7 +2,6 @@ package com.mpierucci.lasttraintolondon.lines.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.commit
 import com.mpierucci.lasttraintolondon.R
 import com.mpierucci.lasttraintolondon.core.fragment.GenericFragmentFactory
 import com.mpierucci.lasttraintolondon.di.injector
@@ -20,7 +19,6 @@ class LinesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lines)
         setSupportActionBar(toolbar)
-
         /*
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
