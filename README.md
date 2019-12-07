@@ -18,4 +18,6 @@ Pet project to apply new Android architectures, frameworks etc.
 * DarkMode
 * Dynamic Modules
 * InApp updates
+* Flow
+* Kotlin serializaiton
 
