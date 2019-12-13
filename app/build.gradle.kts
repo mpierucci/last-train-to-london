@@ -67,7 +67,6 @@ tasks.withType<KotlinCompile> {
 
 dependencies {
     implementation(project(":network"))
-    implementation(project(":viewmodel"))
     implementation(project(":usecase"))
     implementation(project(":core"))
 
@@ -88,6 +87,8 @@ dependencies {
     implementation(Libs.AndroidX.LifeCycle.liveData)
     implementation(Libs.timber)
     implementation(Libs.FireBase.analytics)
+
+    implementation("com.mpierucci.android.architecture:viewmodel:0.1.1")
 
     kapt(Libs.Dagger.compiler)
 
