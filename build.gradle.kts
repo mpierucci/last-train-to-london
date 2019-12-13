@@ -21,8 +21,10 @@ buildscript {
 
 
 allprojects {
-    val githubProperties = Properties().apply {
-        load(FileInputStream(rootProject.file("github.properties")))
+    val githubProperties by lazy {
+        Properties().apply {
+            load(FileInputStream(rootProject.file("github.properties")))
+        }
     }
 
     repositories {
@@ -33,8 +35,8 @@ allprojects {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/mpierucci/Android-Architecture")
             credentials {
-                username = githubProperties.getProperty("gpr.usr") ?: System.getenv("GPR_USER")
-                password = githubProperties.getProperty("gpr.key") ?: System.getenv("GPR_API_KEY")
+                username = System.getenv("GPR_USER") ?: githubProperties.getProperty("gpr.usr")
+                password = System.getenv("GPR_API_KEY") ?: githubProperties.getProperty("gpr.key")
             }
         }
     }
