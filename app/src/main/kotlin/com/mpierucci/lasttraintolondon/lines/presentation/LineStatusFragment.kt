@@ -5,13 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mpierucci.android.architecture.viewmodel.viewModel
 import com.mpierucci.lasttraintolondon.R
 import com.mpierucci.lasttraintolondon.core.presentation.ViewContract
-
 import kotlinx.android.synthetic.main.fragment_lines_status.*
 import javax.inject.Inject
 import javax.inject.Provider
@@ -28,29 +27,31 @@ class LineStatusFragment @Inject constructor(
         return inflater.inflate(R.layout.fragment_lines_status, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(linesStatus) {
+            layoutManager = LinearLayoutManager(
+                requireActivity(),
+                RecyclerView.VERTICAL, false
+            )
+            addItemDecoration(LineStatusDecorator(R.dimen.grid_1))
+            adapter = LineStatusAdapter()
+        }
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         val viewModel by viewModel { vmProvider.get() }
 
-        viewModel.lineStatus.observe(viewLifecycleOwner, Observer {
-            val statusAdapter = LineStatusAdapter()
-
+        viewModel.lineStatus.observe(viewLifecycleOwner) {
             when (it) {
                 is ViewContract.Success<List<PresentationLineStatus>> -> {
-                    linesStatus.apply {
-                        layoutManager = LinearLayoutManager(
-                            requireActivity(),
-                            RecyclerView.VERTICAL, false
-                        )
-                        addItemDecoration(LineStatusDecorator(R.dimen.grid_1))
-                        adapter = statusAdapter
-                    }
-                    statusAdapter.submitList(it.result)
+                    (linesStatus.adapter as LineStatusAdapter).submitList(it.result)
                 }
                 is ViewContract.Error -> {
                 }
             }
-        })
+        }
     }
 }
