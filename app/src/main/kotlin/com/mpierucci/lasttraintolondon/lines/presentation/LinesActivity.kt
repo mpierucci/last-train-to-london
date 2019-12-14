@@ -2,7 +2,8 @@ package com.mpierucci.lasttraintolondon.lines.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.commit
+import androidx.navigation.Navigation
+import androidx.navigation.ui.setupWithNavController
 import com.mpierucci.lasttraintolondon.R
 import com.mpierucci.lasttraintolondon.core.fragment.GenericFragmentFactory
 import com.mpierucci.lasttraintolondon.di.injector
@@ -20,15 +21,11 @@ class LinesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lines)
         setSupportActionBar(toolbar)
+        val navigationController = Navigation.findNavController(
+            this,
+            R.id.linesNavigationHost
+        )
 
-        if (savedInstanceState == null) {
-            supportFragmentManager.commit {
-                val fragment = supportFragmentManager.fragmentFactory.instantiate(
-                    classLoader,
-                    LineStatusFragment::class.java.canonicalName.orEmpty()
-                )
-                add(R.id.lineFragmentContainer, fragment)
-            }
-        }
+        linesBottomNavigation.setupWithNavController(navigationController)
     }
 }

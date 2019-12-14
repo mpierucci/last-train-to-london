@@ -1,5 +1,5 @@
 object Libs {
-    const val kotlinVersion = "1.3.50"
+    const val kotlinVersion = "1.3.61"
 
     const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
@@ -20,12 +20,20 @@ object Libs {
 
         object Ktx {
             const val core = "androidx.core:core-ktx:1.1.0"
-            const val fragment = "androidx.fragment:fragment-ktx:1.2.0-rc01"
+            const val fragment = "androidx.fragment:fragment-ktx:1.2.0-rc03"
             const val activity = "androidx.activity:activity-ktx:1.1.0"
+            const val preferences = "androidx.preference:preference-ktx:1.1.0"
+            const val viewPager2 = "androidx.viewpager2:viewpager2:1.0.0"
+
+            object Navigaiton {
+                private const val version = "2.2.0-rc03"
+                const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
+                const val ui = "androidx.navigation:navigation-ui-ktx:$version"
+            }
         }
 
         object LifeCycle {
-            private const val lifeCycleVersion = "2.2.0-rc01"
+            private const val lifeCycleVersion = "2.2.0-rc03"
             const val lifeCycle = "androidx.lifecycle:lifecycle-extensions:$lifeCycleVersion"
             const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:$lifeCycleVersion"
             const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycleVersion"

@@ -24,7 +24,8 @@ android {
     signingConfigs {
         create("release") {
             val localProperties by lazy { loadLocalProperties("$rootDir") }
-            keyAlias = System.getenv("BITRISEIO_ANDROID_KEYSTORE_ALIAS") ?: "${localProperties["uploadKey.alias"]}"
+            keyAlias = System.getenv("BITRISEIO_ANDROID_KEYSTORE_ALIAS")
+                ?: "${localProperties["uploadKey.alias"]}"
             keyPassword = System.getenv("BITRISEIO_ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD")
                 ?: "${localProperties["uploadKey.aliasPassword"]}"
             storeFile = file(System.getenv("DOWNLOADED_KEYSTORE_PATH") ?: "lttlUploadKey")
@@ -66,7 +67,6 @@ tasks.withType<KotlinCompile> {
 
 dependencies {
     implementation(project(":network"))
-    implementation(project(":viewmodel"))
     implementation(project(":usecase"))
     implementation(project(":core"))
 
@@ -75,8 +75,11 @@ dependencies {
     implementation(Libs.AndroidX.appCompat)
     implementation(Libs.AndroidX.Ktx.fragment)
     implementation(Libs.AndroidX.Ktx.core)
+    implementation(Libs.AndroidX.Ktx.preferences)
     implementation(Libs.AndroidX.constraintLayout)
     implementation(Libs.AndroidX.material)
+    implementation(Libs.AndroidX.Ktx.Navigaiton.fragment)
+    implementation(Libs.AndroidX.Ktx.Navigaiton.ui)
     implementation(Libs.Dagger.core)
     implementation(Libs.gson)
     implementation(Libs.AndroidX.LifeCycle.lifeCycle)
@@ -84,6 +87,8 @@ dependencies {
     implementation(Libs.AndroidX.LifeCycle.liveData)
     implementation(Libs.timber)
     implementation(Libs.FireBase.analytics)
+
+    implementation("com.mpierucci.android.architecture:viewmodel:0.1.1")
 
     kapt(Libs.Dagger.compiler)
 

@@ -23,7 +23,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".lines.presentation.LinesActivity"
-            android:label="@string/title_activity_tube">
+            android:label="@string/title_live_status">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

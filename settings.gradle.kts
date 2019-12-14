@@ -1,2 +1,2 @@
-include (":app", ":viewmodel", ":usecase", ":network",":core")
+include (":app", ":usecase", ":network",":core")
 rootProject.name = "lttl"
