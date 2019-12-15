@@ -1,6 +1,6 @@
 package com.mpierucci.lasttraintolondon.core.presentation
 
-import com.mpierucci.lastratintolondon.usecase.failure.Failure
+import com.mpierucci.android.architecture.usecase.failure.Failure
 
 sealed class ViewContract<out T> {
     data class Success<T>(val result: T) : ViewContract<T>()

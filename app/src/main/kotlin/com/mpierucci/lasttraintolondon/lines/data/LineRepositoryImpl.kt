@@ -4,6 +4,7 @@ import com.mpierucci.lasttraintolondon.lines.domain.LineRepository
 import com.mpierucci.lasttraintolondon.lines.domain.Mapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.yield
 import javax.inject.Inject
 import com.mpierucci.lasttraintolondon.lines.domain.Line as DomainLineStatus
 
@@ -13,7 +14,9 @@ class LineRepositoryImpl @Inject constructor(
 ) : LineRepository {
     override suspend fun getAll(): List<DomainLineStatus> {
         val lines = lineStatusApi.getStatus()
-        return withContext(Dispatchers.Default) { lines.map { restLineMapper.map(it) } }
+        return withContext(Dispatchers.Default) {
+            yield()
+            lines.map { restLineMapper.map(it) }
+        }
     }
-
 }

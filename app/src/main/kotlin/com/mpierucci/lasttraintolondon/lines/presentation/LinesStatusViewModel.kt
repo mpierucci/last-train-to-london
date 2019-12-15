@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mpierucci.lastratintolondon.usecase.Either
-import com.mpierucci.lastratintolondon.usecase.failure.Failure
+import com.mpierucci.android.architecture.usecase.failure.Failure
+import com.mpierucci.android.architecture.usecase.functional.map
 import com.mpierucci.lasttraintolondon.core.presentation.ViewContract
 import com.mpierucci.lasttraintolondon.lines.domain.GetLinesStatusUseCase
-import com.mpierucci.lasttraintolondon.lines.domain.Line
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.yield
 import javax.inject.Inject
 
 
@@ -28,37 +28,25 @@ class LinesStatusViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             _lineStatus.value = ViewContract.Loading(true)
-            getLinesStatusUseCase.execute().suspendedEither(::handleError, ::handleSuccess)
+            with(getLinesStatusUseCase.execute(Unit)) {
+                yield()
+                withContext(Dispatchers.Default) {
+                    map { lines ->
+                        lines.map { lineStatusMapper.map(it) }
+                    }
+                }
+            }.fold(::handleError, ::handleSuccess)
+
             _lineStatus.value = ViewContract.Loading(false)
         }
     }
 
 
-    private suspend fun handleSuccess(status: List<Line>) {
-        val result = withContext(Dispatchers.Default) {
-            status.map { lineStatusMapper.map(it) }
-        }
-        _lineStatus.value = ViewContract.Success(result)
+    private fun handleSuccess(status: List<PresentationLineStatus>) {
+        _lineStatus.value = ViewContract.Success(status)
     }
 
     private fun handleError(failure: Failure) {
         _lineStatus.value = ViewContract.Error(failure)
-    }
-
-
-    /*
-    TODO
-    This is really a limitation based on the need to map the presentation model
-    Don´t really want to pollute Either´s API
-    Research some improvement
-     */
-    private suspend fun <L, R> Either<L, R>.suspendedEither(
-        lefFunc: (L) -> Any,
-        rightFunc: suspend (R) -> Any
-    ): Any {
-        return when (this) {
-            is Either.Left -> lefFunc(value)
-            is Either.Right -> rightFunc(value)
-        }
     }
 }
