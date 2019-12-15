@@ -11,6 +11,7 @@ android {
 
 dependencies {
     api(project(":usecase"))
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libs.kotlinStdlib)
     implementation(Libs.AndroidX.Ktx.fragment)
     implementation(Libs.Dagger.core)
