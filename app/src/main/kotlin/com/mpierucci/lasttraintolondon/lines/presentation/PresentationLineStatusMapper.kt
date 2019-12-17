@@ -1,6 +1,5 @@
 package com.mpierucci.lasttraintolondon.lines.presentation
 
-import android.util.Log
 import android.view.View
 import androidx.annotation.ColorRes
 import com.mpierucci.lasttraintolondon.R

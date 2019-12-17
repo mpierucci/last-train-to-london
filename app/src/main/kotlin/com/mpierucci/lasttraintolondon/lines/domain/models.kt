@@ -76,5 +76,4 @@ sealed class Disruption {
         override val summary: String,
         override val additionalInfo: String
     ) : Disruption()
-
 }

@@ -36,4 +36,3 @@ fun RestLineMode.toMode(): LineMode {
         else -> LineMode.Undefined
     }
 }
-

@@ -14,7 +14,6 @@ import kotlinx.coroutines.withContext
 import kotlinx.coroutines.yield
 import javax.inject.Inject
 
-
 // TODO test
 class LinesStatusViewModel @Inject constructor(
     private val getLinesStatusUseCase: GetLinesStatusUseCase
@@ -40,7 +39,6 @@ class LinesStatusViewModel @Inject constructor(
             _lineStatus.value = ViewContract.Loading(false)
         }
     }
-
 
     private fun handleSuccess(status: List<PresentationLineStatus>) {
         _lineStatus.value = ViewContract.Success(status)
