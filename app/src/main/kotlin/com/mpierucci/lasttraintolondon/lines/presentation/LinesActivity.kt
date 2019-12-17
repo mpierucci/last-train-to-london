@@ -16,6 +16,7 @@ class LinesActivity : AppCompatActivity() {
     lateinit var fragmentFactory: GenericFragmentFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         injector.plus().inject(this)
         supportFragmentManager.fragmentFactory = fragmentFactory
         super.onCreate(savedInstanceState)
