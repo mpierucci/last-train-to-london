@@ -1,6 +1,10 @@
 package com.mpierucci.lasttraintolondon.lines.data
 
-import com.mpierucci.lasttraintolondon.lines.domain.*
+import com.mpierucci.lasttraintolondon.lines.domain.Disruption
+import com.mpierucci.lasttraintolondon.lines.domain.Line
+import com.mpierucci.lasttraintolondon.lines.domain.LineMode
+import com.mpierucci.lasttraintolondon.lines.domain.Mapper
+import com.mpierucci.lasttraintolondon.lines.domain.Status
 import javax.inject.Inject
 
 class LineStatusMapper @Inject constructor() : Mapper<RestLine, Line> {

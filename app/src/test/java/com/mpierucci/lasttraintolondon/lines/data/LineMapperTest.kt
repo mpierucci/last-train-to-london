@@ -4,7 +4,9 @@ import com.google.gson.GsonBuilder
 import com.mpierucci.lasttraintolondon.lines.domain.Disruption
 import com.mpierucci.lasttraintolondon.lines.domain.LineMode
 import com.mpierucci.lasttraintolondon.loadModelFromTestFile
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
@@ -16,7 +18,6 @@ class LineMapperTest {
     @Before
     fun setUp() {
         rawLines = loadModelFromTestFile(this.javaClass, "lineStatus")
-
     }
 
     @Test
@@ -34,7 +35,6 @@ class LineMapperTest {
         assertEquals(10, status?.severity)
         assertEquals("Good Service", status?.severityDescription)
         assertNull(status?.disruption)
-
     }
 
     @Test
@@ -56,7 +56,10 @@ class LineMapperTest {
 
         assertEquals("PlannedWork", disruption?.categoryDescription)
         assertEquals(
-            "Circle Line: Saturday 2 and Sunday 3 November, no Circle Line service. A special combined District and Hammersmith & City line service will operate between Upminster and Hammersmith (Hammersmith & City line station) via King's Cross St. Pancras.",
+            "Circle Line: Saturday 2 and Sunday 3 November, " +
+                    "no Circle Line service. A special combined District and Hammersmith " +
+                    "& City line service will operate between Upminster and Hammersmith " +
+                    "(Hammersmith & City line station) via King's Cross St. Pancras.",
             disruption?.description
         )
         assertEquals("fakeSummary", disruption?.summary)
@@ -76,7 +79,13 @@ class LineMapperTest {
 
         assertEquals("PlannedWork", disruption?.categoryDescription)
         assertEquals(
-            "District Line: Sunday 3 November, no service between Earl's Court and Aldgate East. A reduced service will operate between Earl's Court and Ealing Broadway. A special combined District and Hammersmith & City Line service will operate between Upminster and Hammersmith (Hammersmith & Citry line station) via King's Cross St. Pancras,",
+            "District Line: Sunday 3 November, no service " +
+                    "between Earl's Court and Aldgate East. " +
+                    "A reduced service will operate between Earl's" +
+                    " Court and Ealing Broadway. A special combined" +
+                    " District and Hammersmith & City Line service will" +
+                    " operate between Upminster and Hammersmith (Hammersmith &" +
+                    " Citry line station) via King's Cross St. Pancras,",
             disruption?.description
         )
         assertEquals("", disruption?.summary)
@@ -95,13 +104,17 @@ class LineMapperTest {
         val disruption = status?.disruption
 
         assertEquals(
-            "LONDON OVERGROUND: Sunday 3 November, no service between Surrey Quays and Clapham Junction. Replacement buses operate between Canada Water and Clapham Junction.",
+            "LONDON OVERGROUND: Sunday 3 November, no service between Surrey Quays and " +
+                    "Clapham Junction. Replacement " +
+                    "buses operate between Canada Water and Clapham Junction.",
             disruption?.description
         )
         assertEquals("Event", disruption?.categoryDescription)
         assertEquals("", disruption?.summary)
         assertEquals(
-            "Replacement buses operateService M: Canada Water - Surrey Quays - Queens Road Peckham - Peckham Rye - Denmark Hill - Clapham High Street - Wandsworth Road - Clapham Junction.",
+            "Replacement buses operateService M: Canada Water - Surrey Quays - Queens " +
+                    "Road Peckham - Peckham Rye - Denmark Hill - Clapham High Street - Wandsworth" +
+                    " Road - Clapham Junction.",
             disruption?.additionalInfo
         )
         assertTrue(disruption is Disruption.Event)
@@ -119,7 +132,10 @@ class LineMapperTest {
 
         assertEquals("Information", disruption?.categoryDescription)
         assertEquals(
-            "Circle Line: Saturday 2 and Sunday 3 November, no Circle Line service. A special combined District and Hammersmith & City line service will operate between Upminster and Hammersmith (Hammersmith & City line station) via King's Cross St. Pancras.",
+            "Circle Line: Saturday 2 and Sunday 3 November, no Circle Line service. " +
+                    "A special combined District and Hammersmith & City line service will operate" +
+                    " between Upminster and Hammersmith (Hammersmith & City line station) " +
+                    "via King's Cross St. Pancras.",
             disruption?.description
         )
         assertEquals("", disruption?.summary)
@@ -139,14 +155,16 @@ class LineMapperTest {
 
         assertEquals("RealTime", disruption?.categoryDescription)
         assertEquals(
-            "Circle Line: Saturday 2 and Sunday 3 November, no Circle Line service. A special combined District and Hammersmith & City line service will operate between Upminster and Hammersmith (Hammersmith & City line station) via King's Cross St. Pancras.",
+            "Circle Line: Saturday 2 and Sunday 3 November, no Circle Line service. " +
+                    "A special combined District and Hammersmith & City line service will operate" +
+                    " between Upminster and Hammersmith (Hammersmith & City line station) " +
+                    "via King's Cross St. Pancras.",
             disruption?.description
         )
         assertEquals("", disruption?.summary)
         assertEquals("", disruption?.additionalInfo)
         assertTrue(disruption is Disruption.RealTime)
     }
-
 
     @Test
     fun `test Crowding disruption`() {
@@ -158,7 +176,13 @@ class LineMapperTest {
 
         assertEquals("Crowding", disruption?.categoryDescription)
         assertEquals(
-            "Circle Line: Saturday 2 and Sunday 3 November, no Circle Line service. A special combined District and Hammersmith & City line service will operate between Upminster and Hammersmith (Hammersmith & City line station) via King's Cross St. Pancras.",
+            "Circle Line: Saturday 2 and Sunday 3 November," +
+                    " no Circle Line service. " +
+                    "A special combined District and" +
+                    " Hammersmith & City line service will operate " +
+                    "between Upminster and Hammersmith " +
+                    "(Hammersmith & City line station) " +
+                    "via King's Cross St. Pancras.",
             disruption?.description
         )
         assertEquals("", disruption?.summary)
@@ -176,7 +200,10 @@ class LineMapperTest {
 
         assertEquals("StatusAlert", disruption?.categoryDescription)
         assertEquals(
-            "Circle Line: Saturday 2 and Sunday 3 November, no Circle Line service. A special combined District and Hammersmith & City line service will operate between Upminster and Hammersmith (Hammersmith & City line station) via King's Cross St. Pancras.",
+            "Circle Line: Saturday 2 and Sunday 3 November, no Circle Line service. " +
+                    "A special combined District and Hammersmith & City line service will" +
+                    " operate between Upminster and Hammersmith (Hammersmith & City line station)" +
+                    " via King's Cross St. Pancras.",
             disruption?.description
         )
         assertEquals("", disruption?.summary)
@@ -194,14 +221,17 @@ class LineMapperTest {
 
         assertEquals("Undefined", disruption?.categoryDescription)
         assertEquals(
-            "Circle Line: Saturday 2 and Sunday 3 November, no Circle Line service. A special combined District and Hammersmith & City line service will operate between Upminster and Hammersmith (Hammersmith & City line station) via King's Cross St. Pancras.",
+            "Circle Line: Saturday 2 and Sunday 3 November, no Circle Line service." +
+                    " A special combined District and Hammersmith " +
+                    "& City line service will operate" +
+                    " between Upminster and Hammersmith (Hammersmith & City line station) " +
+                    "via King's Cross St. Pancras.",
             disruption?.description
         )
         assertEquals("", disruption?.summary)
         assertEquals("", disruption?.additionalInfo)
         assertTrue(disruption is Disruption.Undefined)
     }
-
 
     @Test
     fun `test map for empty values`() {

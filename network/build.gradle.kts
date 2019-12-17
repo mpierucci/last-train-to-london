@@ -27,6 +27,7 @@ dependencies {
     api(Libs.Retrofit.retrofit)
 
 
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(project(":core"))
     implementation(Libs.kotlinStdlib)
     implementation(Libs.Retrofit.rxAdapter)

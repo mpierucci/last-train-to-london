@@ -4,12 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mpierucci.lastratintolondon.usecase.failure.Failure
+import com.mpierucci.android.architecture.usecase.failure.Failure
+import com.mpierucci.android.architecture.usecase.functional.map
 import com.mpierucci.lasttraintolondon.core.presentation.ViewContract
 import com.mpierucci.lasttraintolondon.lines.domain.GetLinesStatusUseCase
-import com.mpierucci.lasttraintolondon.lines.domain.Line
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.yield
 import javax.inject.Inject
 
 // TODO test
@@ -23,20 +25,26 @@ class LinesStatusViewModel @Inject constructor(
     val lineStatus: LiveData<ViewContract<List<PresentationLineStatus>>> = _lineStatus
 
     init {
-        viewModelScope.launch(Dispatchers.IO) {
-            getLinesStatusUseCase.execute().either(::handleError, ::handleSuccess)
+        viewModelScope.launch {
+            _lineStatus.value = ViewContract.Loading(true)
+            with(getLinesStatusUseCase.execute(Unit)) {
+                yield()
+                withContext(Dispatchers.Default) {
+                    map { lines ->
+                        lines.map { lineStatusMapper.map(it) }
+                    }
+                }
+            }.fold(::handleError, ::handleSuccess)
+
+            _lineStatus.value = ViewContract.Loading(false)
         }
     }
 
-    private fun handleSuccess(status: List<Line>) {
-        _lineStatus.postValue(
-            ViewContract.Success(status.map { lineStatusMapper.map(it) })
-        )
+    private fun handleSuccess(status: List<PresentationLineStatus>) {
+        _lineStatus.value = ViewContract.Success(status)
     }
 
     private fun handleError(failure: Failure) {
-        _lineStatus.postValue(
-            ViewContract.Error(failure)
-        )
+        _lineStatus.value = ViewContract.Error(failure)
     }
 }
