@@ -31,6 +31,7 @@ dependencies {
     api(Libs.AndroidX.Ktx.core)
     api(Libs.AndroidX.appCompat)
     api(Libs.Coroutines.core)
+    api(Libs.timber)
 
 
     debugImplementation(Libs.Stetho.stetho)
