@@ -1,11 +1,11 @@
 package com.mpierucci.lasttraintolondon.di
 
 import com.mpierucci.lasttraintolondon.lines.di.LineStatusesModule
-import com.mpierucci.lasttraintolondon.lines.di.LinesFragmentsModule
-import com.mpierucci.lasttraintolondon.lines.presentation.LinesActivity
+import com.mpierucci.lasttraintolondon.lines.di.BindFragmentsModule
+import com.mpierucci.lasttraintolondon.ui.SingleActivity
 import dagger.Subcomponent
 
-@Subcomponent(modules = [LineStatusesModule::class, LinesFragmentsModule::class])
+@Subcomponent(modules = [LineStatusesModule::class, BindFragmentsModule::class])
 interface SingleActivityComponent {
-    fun inject(activity: LinesActivity)
+    fun inject(activity: SingleActivity)
 }

@@ -1,4 +1,4 @@
-package com.mpierucci.lasttraintolondon.lines.presentation
+package com.mpierucci.lasttraintolondon.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +10,7 @@ import com.mpierucci.lasttraintolondon.di.injector
 import kotlinx.android.synthetic.main.activity_lines.*
 import javax.inject.Inject
 
-class LinesActivity : AppCompatActivity() {
+class SingleActivity : AppCompatActivity() {
 
     @Inject
     lateinit var fragmentFactory: GenericFragmentFactory
