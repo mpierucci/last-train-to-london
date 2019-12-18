@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,7 +45,7 @@ class LineStatusScreen @Inject constructor(
 
         val viewModel by viewModel { vmProvider.get() }
 
-        viewModel.lineStatus.observe(viewLifecycleOwner) {
+        viewModel.lineStatuses.observe(viewLifecycleOwner) {
             when (it) {
                 is ViewContract.Success<List<PresentationLineStatus>> -> {
                     (linesStatus.adapter as LineStatusAdapter).submitList(it.result)
