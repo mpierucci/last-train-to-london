@@ -66,30 +66,17 @@ tasks.withType<KotlinCompile> {
 
 
 dependencies {
-    implementation(project(":network"))
-    implementation(project(":core"))
-
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation(project(":core"))
+    implementation(project(":lines"))
     implementation(Libs.kotlinStdlib)
-    implementation(Libs.AndroidX.appCompat)
-    implementation(Libs.AndroidX.Ktx.fragment)
-    implementation(Libs.AndroidX.Ktx.core)
+
     implementation(Libs.AndroidX.Ktx.preferences)
-    implementation(Libs.AndroidX.constraintLayout)
-    implementation(Libs.AndroidX.material)
-    implementation(Libs.AndroidX.Ktx.Navigaiton.fragment)
-    implementation(Libs.AndroidX.Ktx.Navigaiton.ui)
-    implementation(Libs.Dagger.core)
-    implementation(Libs.gson)
-    implementation(Libs.AndroidX.LifeCycle.lifeCycle)
-    implementation(Libs.AndroidX.LifeCycle.viewModel)
-    implementation(Libs.AndroidX.LifeCycle.liveData)
     implementation(Libs.timber)
     implementation(Libs.FireBase.analytics)
 
-    implementation("com.mpierucci.android.architecture:viewmodel:0.1.1")
-
     kapt(Libs.Dagger.compiler)
+
 
     debugImplementation(Libs.leakCanary)
 

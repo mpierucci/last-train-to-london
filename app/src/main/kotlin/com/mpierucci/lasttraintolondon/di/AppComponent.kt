@@ -1,26 +1,27 @@
 package com.mpierucci.lasttraintolondon.di
 
 import android.content.Context
+import com.mpierucci.lasttraintolondon.core.di.CoreComponent
 import com.mpierucci.lasttraintolondon.init.AppInitializerModule
 import com.mpierucci.lasttraintolondon.init.CustomApplication
-import com.mpierucci.lasttraintolondon.netwrok.NetworkModule
-import com.mpierucci.lasttraintolondon.lines.di.LinesActivityComponent
 import dagger.BindsInstance
 import dagger.Component
-import javax.inject.Singleton
 
-@Component(modules = [NetworkModule::class, AppInitializerModule::class])
-@Singleton
+@Component(
+    modules = [AppInitializerModule::class],
+    dependencies = [CoreComponent::class]
+)
+@FeatureScope
 interface AppComponent {
 
     @Component.Factory
     interface Factory {
-        fun create(@BindsInstance appContext: Context): AppComponent
+        fun create(@BindsInstance appContext: Context, component: CoreComponent): AppComponent
     }
 
     fun inject(application: CustomApplication)
 
-    fun plus(): LinesActivityComponent
+    fun plus(): SingleActivityComponent
 
     interface ComponentProvider {
         val component: AppComponent
