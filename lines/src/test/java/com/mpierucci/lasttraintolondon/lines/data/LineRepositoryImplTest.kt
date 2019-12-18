@@ -10,7 +10,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Test
 
-class LineRestStatusRepositoryImplTest {
+class LineRepositoryImplTest {
 
     private val api: LineStatusApi = mock()
     private val mapper: Mapper<RestLine, Line> = mock()

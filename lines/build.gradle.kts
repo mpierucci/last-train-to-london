@@ -26,8 +26,15 @@ dependencies {
     implementation(project(":core"))
     implementation(Libs.kotlinStdlib)
     implementation(Libs.AndroidX.Ktx.fragment)
+    implementation(Libs.AndroidX.cardView)
+    implementation(Libs.AndroidX.constraintLayout)
 
     kapt(Libs.Dagger.compiler)
 
+    testImplementation(TestLibs.mockitoKotlin)
+    testImplementation(TestLibs.coroutinesTest)
     testImplementation(TestLibs.jUnit)
+
+    androidTestImplementation(TestLibs.testRunner)
+    androidTestImplementation(TestLibs.Esspresso.core)
 }

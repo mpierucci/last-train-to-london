@@ -1,23 +1,24 @@
 package com.mpierucci.lasttraintolondon.lines.data
 
 import com.google.gson.GsonBuilder
+import com.mpierucci.lasttraintolondon.lines.loadModelFromTestFile
 import com.mpierucci.lasttraintolondon.lines.domain.Disruption
 import com.mpierucci.lasttraintolondon.lines.domain.LineMode
-import com.mpierucci.lasttraintolondon.loadModelFromTestFile
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
-class LineMapperTest {
+class LineStatusMapperTest {
 
     private val mapper = LineStatusMapper()
     lateinit var rawLines: List<RestLine>
 
     @Before
     fun setUp() {
-        rawLines = loadModelFromTestFile(this.javaClass, "lineStatus")
+        rawLines = loadModelFromTestFile(
+            this.javaClass,
+            "lineStatus"
+        )
     }
 
     @Test

@@ -1,7 +1,7 @@
 package com.mpierucci.lasttraintolondon.lines.presentation
 
 import android.view.View
-import com.mpierucci.lasttraintolondon.R
+import com.mpierucci.lasttraintolondon.lines.R
 import com.mpierucci.lasttraintolondon.lines.domain.Line
 import com.mpierucci.lasttraintolondon.lines.domain.LineIds
 import com.mpierucci.lasttraintolondon.lines.domain.LineMode
@@ -10,7 +10,7 @@ import com.nhaarman.mockitokotlin2.mock
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class PresentationLineMapperTest {
+class PresentationLineStatusMapperTest {
 
     private val mapper = PresentationLineStatusMapper()
 
