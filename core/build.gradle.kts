@@ -30,7 +30,8 @@ dependencies {
     api(Libs.AndroidX.Ktx.Navigaiton.ui)
     api(Libs.AndroidX.Ktx.core)
     api(Libs.AndroidX.appCompat)
-    api(Libs.AndroidX.constraintLayout)
+    api(Libs.Coroutines.core)
+
 
     debugImplementation(Libs.Stetho.stetho)
 

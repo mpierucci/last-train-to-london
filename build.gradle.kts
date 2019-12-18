@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import properties.gitHubProperties
 
 plugins {
     kotlin("jvm") version Libs.kotlinVersion
@@ -25,6 +26,12 @@ allprojects {
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/mpierucci/Android-Architecture")
+            credentials {
+                username =
+                    System.getenv("GPR_USER") ?: project.gitHubProperties.getProperty("gpr.usr")
+                password =
+                    System.getenv("GPR_API_KEY") ?: project.gitHubProperties.getProperty("gpr.key")
+            }
         }
     }
     apply(file("$rootDir/qa/detekt/detekt.gradle"))
