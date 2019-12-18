@@ -70,9 +70,7 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":lines"))
     implementation(Libs.kotlinStdlib)
-
     implementation(Libs.AndroidX.Ktx.preferences)
-    implementation(Libs.timber)
     implementation(Libs.FireBase.analytics)
 
     kapt(Libs.Dagger.compiler)

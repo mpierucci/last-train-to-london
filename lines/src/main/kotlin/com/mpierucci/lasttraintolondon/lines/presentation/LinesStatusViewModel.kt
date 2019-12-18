@@ -36,8 +36,6 @@ class LinesStatusViewModel @Inject constructor(
                     }
                 }
             }.fold(::handleError, ::handleSuccess)
-
-            _lineStatus.value = ViewContract.Loading(false)
         }
     }
 
