@@ -20,6 +20,8 @@ android {
     }
 
     sourceSets["main"].java.srcDir("src/main/kotlin")
+    sourceSets["debug"].java.srcDir("src/debug/kotlin")
+    sourceSets["release"].java.srcDir("src/release/kotlin")
 }
 
 dependencies {
@@ -28,11 +30,12 @@ dependencies {
 
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(project(":core"))
     implementation(Libs.kotlinStdlib)
     implementation(Libs.Retrofit.rxAdapter)
     implementation(Libs.Retrofit.gsonConverter)
-    implementation(Libs.Dagger.core)
+
+    api(Libs.gson)
+    api(Libs.Dagger.core)
 
     kapt(Libs.Dagger.compiler)
 

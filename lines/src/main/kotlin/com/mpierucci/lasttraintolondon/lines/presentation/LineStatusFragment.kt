@@ -9,8 +9,8 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mpierucci.android.architecture.viewmodel.viewModel
-import com.mpierucci.lasttraintolondon.R
 import com.mpierucci.lasttraintolondon.core.presentation.ViewContract
+import com.mpierucci.lasttraintolondon.lines.R
 import kotlinx.android.synthetic.main.fragment_lines_status.*
 import javax.inject.Inject
 import javax.inject.Provider

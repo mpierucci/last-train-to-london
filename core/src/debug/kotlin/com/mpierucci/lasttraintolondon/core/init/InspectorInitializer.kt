@@ -1,4 +1,4 @@
-package com.mpierucci.lasttraintolondon.network.interceptor
+package com.mpierucci.lasttraintolondon.core.init
 
 import android.app.Application
 import com.facebook.stetho.Stetho

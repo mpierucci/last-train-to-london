@@ -1,7 +1,7 @@
 package com.mpierucci.lasttraintolondon.init
 
 import com.mpierucci.lasttraintolondon.core.init.AppInitializer
-import com.mpierucci.lasttraintolondon.network.interceptor.InspectorInitializer
+import com.mpierucci.lasttraintolondon.core.init.InspectorInitializer
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoSet

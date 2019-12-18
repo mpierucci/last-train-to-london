@@ -4,7 +4,6 @@ import android.content.Context
 import com.mpierucci.lasttraintolondon.init.AppInitializerModule
 import com.mpierucci.lasttraintolondon.init.CustomApplication
 import com.mpierucci.lasttraintolondon.netwrok.NetworkModule
-import com.mpierucci.lasttraintolondon.lines.di.LinesActivityComponent
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -19,8 +18,6 @@ interface AppComponent {
     }
 
     fun inject(application: CustomApplication)
-
-    fun plus(): LinesActivityComponent
 
     interface ComponentProvider {
         val component: AppComponent

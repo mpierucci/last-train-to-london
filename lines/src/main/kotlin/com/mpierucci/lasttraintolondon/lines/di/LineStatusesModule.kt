@@ -1,8 +1,8 @@
 package com.mpierucci.lasttraintolondon.lines.di
 
+import com.mpierucci.lasttraintolondon.lines.data.LineRepositoryImpl
 import com.mpierucci.lasttraintolondon.lines.data.LineStatusApi
 import com.mpierucci.lasttraintolondon.lines.data.LineStatusMapper
-import com.mpierucci.lasttraintolondon.lines.data.LineRepositoryImpl
 import com.mpierucci.lasttraintolondon.lines.domain.LineRepository
 import dagger.Module
 import dagger.Provides

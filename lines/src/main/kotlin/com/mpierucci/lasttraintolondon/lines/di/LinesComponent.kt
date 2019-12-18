@@ -4,6 +4,6 @@ import com.mpierucci.lasttraintolondon.lines.presentation.LinesActivity
 import dagger.Subcomponent
 
 @Subcomponent(modules = [LineStatusesModule::class, LinesFragmentsModule::class])
-interface LinesActivityComponent {
+interface LinesComponent {
     fun inject(activity: LinesActivity)
 }

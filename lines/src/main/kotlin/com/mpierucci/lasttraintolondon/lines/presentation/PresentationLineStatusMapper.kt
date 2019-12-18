@@ -2,7 +2,7 @@ package com.mpierucci.lasttraintolondon.lines.presentation
 
 import android.view.View
 import androidx.annotation.ColorRes
-import com.mpierucci.lasttraintolondon.R
+import com.mpierucci.lasttraintolondon.lines.R
 import com.mpierucci.lasttraintolondon.lines.domain.LineIds
 import com.mpierucci.lasttraintolondon.lines.domain.Line
 import com.mpierucci.lasttraintolondon.lines.domain.Mapper
