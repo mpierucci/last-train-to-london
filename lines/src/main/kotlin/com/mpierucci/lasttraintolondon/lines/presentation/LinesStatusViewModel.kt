@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mpierucci.android.architecture.usecase.failure.Failure
 import com.mpierucci.android.architecture.usecase.functional.map
+import com.mpierucci.lasttraintolondon.core.dispatcher.DispatcherProvider
 import com.mpierucci.lasttraintolondon.core.presentation.ViewContract
 import com.mpierucci.lasttraintolondon.lines.domain.GetLinesStatusUseCase
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.yield
@@ -16,7 +16,8 @@ import javax.inject.Inject
 
 // TODO test
 class LinesStatusViewModel @Inject constructor(
-    private val getLinesStatusUseCase: GetLinesStatusUseCase
+    private val getLinesStatusUseCase: GetLinesStatusUseCase,
+    private val dispatcherProvider: DispatcherProvider
 ) :
     ViewModel() {
 
@@ -29,7 +30,7 @@ class LinesStatusViewModel @Inject constructor(
             _lineStatus.value = ViewContract.Loading(true)
             with(getLinesStatusUseCase.execute(Unit)) {
                 yield()
-                withContext(Dispatchers.Default) {
+                withContext(dispatcherProvider.default()) {
                     map { lines ->
                         lines.map { lineStatusMapper.map(it) }
                     }

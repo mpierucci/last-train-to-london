@@ -1,6 +1,7 @@
 package com.mpierucci.lasttraintolondon.core.di
 
 import com.mpierucci.lasttraintolondon.core.dispatcher.DispatcherModule
+import com.mpierucci.lasttraintolondon.core.dispatcher.DispatcherProvider
 import com.mpierucci.lasttraintolondon.netwrok.NetworkModule
 import dagger.Component
 import retrofit2.Retrofit
@@ -16,4 +17,6 @@ interface CoreComponent {
     }
 
     fun provideRetrofit(): Retrofit
+
+    fun provideDispatcherProvider(): DispatcherProvider
 }

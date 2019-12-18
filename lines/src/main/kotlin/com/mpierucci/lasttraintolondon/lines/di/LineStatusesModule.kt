@@ -1,5 +1,6 @@
 package com.mpierucci.lasttraintolondon.lines.di
 
+import com.mpierucci.lasttraintolondon.core.dispatcher.DispatcherProvider
 import com.mpierucci.lasttraintolondon.lines.data.LineRepositoryImpl
 import com.mpierucci.lasttraintolondon.lines.data.LineStatusApi
 import com.mpierucci.lasttraintolondon.lines.data.LineStatusMapper
@@ -20,6 +21,7 @@ object LineStatusesModule {
     @Provides
     @Reusable
     fun provideLineStatusRepository(
-        api: LineStatusApi
-    ): LineRepository = LineRepositoryImpl(api, LineStatusMapper())
+        api: LineStatusApi,
+        dispatcherProvider: DispatcherProvider
+    ): LineRepository = LineRepositoryImpl(api, LineStatusMapper(), dispatcherProvider)
 }
