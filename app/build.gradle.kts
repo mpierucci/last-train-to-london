@@ -68,6 +68,7 @@ tasks.withType<KotlinCompile> {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(project(":core"))
+    implementation(project(":lines"))
     implementation(Libs.kotlinStdlib)
 
     implementation(Libs.AndroidX.Ktx.preferences)

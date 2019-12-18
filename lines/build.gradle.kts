@@ -27,5 +27,7 @@ dependencies {
     implementation(Libs.kotlinStdlib)
     implementation(Libs.AndroidX.Ktx.fragment)
 
+    kapt(Libs.Dagger.compiler)
+
     testImplementation(TestLibs.jUnit)
 }
