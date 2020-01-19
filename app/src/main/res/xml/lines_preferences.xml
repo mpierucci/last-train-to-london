@@ -5,4 +5,9 @@
         android:key="dummy_key"
         android:summary="PLACE HOLDER TEXT"
         android:title="Place Holder Text" />
+
+    <SwitchPreference
+        android:key="dummy_key_2"
+        android:summary="Enable/Disable dark theme"
+        android:title="Dark Mode" />
 </PreferenceScreen>
