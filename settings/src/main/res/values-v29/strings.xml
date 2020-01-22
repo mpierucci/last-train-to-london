@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="entry_system_default_theme">System default</string>
+
+    <string-array name="entries_app_theme">
+        <item>@string/entry_light_theme</item>
+        <item>@string/entry_dark_theme</item>
+        <item>@string/entry_system_default_theme</item>
+    </string-array>
+
+</resources>

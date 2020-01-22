@@ -69,8 +69,9 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(project(":core"))
     implementation(project(":lines"))
+    implementation(project(":settings"))
     implementation(Libs.kotlinStdlib)
-    implementation(Libs.AndroidX.Ktx.preferences)
+    implementation(Libs.AndroidX.appCompat)
     implementation(Libs.FireBase.analytics)
 
     kapt(Libs.Dagger.compiler)

@@ -10,6 +10,6 @@
         android:label="LineStatusFragment" />
     <fragment
         android:id="@+id/settings"
-        android:name="com.mpierucci.lasttraintolondon.settings.LinesPreferencesFragment"
-        android:label="LinesPreferencesFragment" />
+        android:name="com.mpierucci.lasttraintolondon.settings.ui.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>
