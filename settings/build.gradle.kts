@@ -25,6 +25,7 @@ dependencies {
     implementation(project(":core"))
     implementation(Libs.kotlinStdlib)
     implementation(Libs.AndroidX.appCompat)
+    implementation(Libs.AndroidX.Ktx.preferences)
 
     kapt(Libs.Dagger.compiler)
 

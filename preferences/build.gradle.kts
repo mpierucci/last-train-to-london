@@ -27,6 +27,7 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libs.kotlinStdlib)
+    implementation(Libs.AndroidX.Ktx.preferences)
 
     api(Libs.gson)
     api(Libs.Dagger.core)

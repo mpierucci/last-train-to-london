@@ -1,10 +1,8 @@
 package com.mpierucci.lasttraintolondon.di
 
-import android.content.Context
 import com.mpierucci.lasttraintolondon.core.di.CoreComponent
 import com.mpierucci.lasttraintolondon.init.AppInitializerModule
 import com.mpierucci.lasttraintolondon.init.CustomApplication
-import dagger.BindsInstance
 import dagger.Component
 
 @Component(
@@ -16,7 +14,7 @@ interface AppComponent {
 
     @Component.Factory
     interface Factory {
-        fun create(@BindsInstance appContext: Context, component: CoreComponent): AppComponent
+        fun create(component: CoreComponent): AppComponent
     }
 
     fun inject(application: CustomApplication)
