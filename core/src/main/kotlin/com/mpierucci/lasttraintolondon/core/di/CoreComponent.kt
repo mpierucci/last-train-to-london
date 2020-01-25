@@ -23,6 +23,8 @@ interface CoreComponent {
 
     fun provideRetrofit(): Retrofit
 
+    fun provideContext(): Context
+
     @DefaultPreferences
     fun defaultPreferences(): SharedPreferences
 
