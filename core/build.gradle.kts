@@ -19,6 +19,7 @@ dependencies {
 
     //SHARED DEPENDENCIES
     api(project(":network"))
+    api(project(":preferences"))
     api("com.mpierucci.android.architecture:usecase:0.1.0")
     api("com.mpierucci.android.architecture:viewmodel:0.1.1")
     api(Libs.AndroidX.LifeCycle.lifeCycle)
