@@ -32,7 +32,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libs.kotlinStdlib)
     implementation(Libs.Retrofit.rxAdapter)
-    implementation(Libs.Retrofit.gsonConverter)
+    api(Libs.Retrofit.gsonConverter)
 
     api(Libs.gson)
     api(Libs.Dagger.core)
@@ -43,6 +43,7 @@ dependencies {
     debugImplementation(Libs.Stetho.stethoOk)
 
     testImplementation(TestLibs.jUnit)
+    testImplementation(TestLibs.mockWebServer)
 }
 
 
