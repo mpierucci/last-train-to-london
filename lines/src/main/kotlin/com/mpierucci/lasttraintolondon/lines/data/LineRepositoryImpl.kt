@@ -11,11 +11,11 @@ import com.mpierucci.lasttraintolondon.lines.domain.Line as DomainLineStatus
 class LineRepositoryImpl @Inject constructor(
     private val lineStatusApi: LineStatusApi,
     private val restLineMapper: Mapper<RestLine, DomainLineStatus>,
-    private val dispachter: DispatcherProvider
+    private val dispatcher: DispatcherProvider
 ) : LineRepository {
     override suspend fun getAll(): List<DomainLineStatus> {
         val lines = lineStatusApi.getStatus()
-        return withContext(dispachter.default()) {
+        return withContext(dispatcher.default()) {
             yield()
             lines.map { restLineMapper.map(it) }
         }

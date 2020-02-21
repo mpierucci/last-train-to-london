@@ -7,7 +7,7 @@ object Libs {
 
     const val ktlint = "com.github.shyiko:ktlint:0.31.0"
 
-    const val okHttp = "com.squareup.okhttp3:okhttp:4.2.2"
+    const val okHttp = "com.squareup.okhttp3:okhttp:$okHttpVersion"
 
     const val gson = "com.google.code.gson:gson:2.8.6"
 
@@ -21,7 +21,7 @@ object Libs {
 
         object Ktx {
             const val core = "androidx.core:core-ktx:1.1.0"
-            const val fragment = "androidx.fragment:fragment-ktx:1.2.0-rc03"
+            const val fragment = "androidx.fragment:fragment-ktx:$fragmentXVersion"
             const val activity = "androidx.activity:activity-ktx:1.1.0"
             const val preferences = "androidx.preference:preference-ktx:1.1.0"
             const val viewPager2 = "androidx.viewpager2:viewpager2:1.0.0"
