@@ -21,12 +21,12 @@ interface CoreComponent {
         fun create(@BindsInstance context: Context): CoreComponent
     }
 
-    fun provideRetrofit(): Retrofit
+    val retrofit: Retrofit
 
-    fun provideContext(): Context
+    val context: Context
 
-    @DefaultPreferences
-    fun defaultPreferences(): SharedPreferences
+    @get:DefaultPreferences
+    val defaultPreferences: SharedPreferences
 
-    fun provideDispatcherProvider(): DispatcherProvider
+    val dispatcherProvider: DispatcherProvider
 }

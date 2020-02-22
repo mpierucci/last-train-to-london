@@ -1,8 +1,9 @@
 package com.mpierucci.lasttraintolondon.lines.data
 
-import com.mpierucci.lasttraintolondon.lines.CoroutineTestRule
+
 import com.mpierucci.lasttraintolondon.lines.domain.Line
 import com.mpierucci.lasttraintolondon.lines.domain.Mapper
+import com.mpierucci.lasttraintolondon.ristretto.rules.CoroutineTestRule
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify

@@ -10,11 +10,12 @@ Pet project to apply new Android architectures, frameworks etc.
 * Coroutines repositories
 * Fragment constructor Injection
 * Githug package for arch modules
+* DarkMode
+* UI Test
 
 # Soon:
 * Room
 * WorkManager
-* DarkMode
 * Dynamic Modules
 * InApp updates
 * Flow

@@ -1,7 +1,5 @@
-package com.mpierucci.lasttraintolondon.lines
+package com.mpierucci.lasttraintolondon.ristretto.rules
 
-import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
 import com.mpierucci.lasttraintolondon.core.dispatcher.DispatcherProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -11,22 +9,7 @@ import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
-import java.io.InputStreamReader
 
-//TODO https://github.com/mpierucci/last-train-to-london/issues/33
-
-
-inline fun <reified T> loadModelFromTestFile(caller: Class<*>, fileName: String): T {
-    val inputStream = caller.classLoader?.getResourceAsStream(fileName)
-    val inputStreamReader = InputStreamReader(inputStream)
-
-    return try {
-        GsonBuilder().create().fromJson<T>(inputStreamReader, object : TypeToken<T>() {}.type)
-    } finally {
-        inputStream?.close()
-        inputStreamReader.close()
-    }
-}
 
 @ExperimentalCoroutinesApi
 class CoroutineTestRule(
@@ -40,7 +23,7 @@ class CoroutineTestRule(
         override fun unconfined(): CoroutineDispatcher = testCoroutineDispatcher
     }
 
-    override fun starting(  description: Description?) {
+    override fun starting(description: Description?) {
         super.starting(description)
         Dispatchers.setMain(testCoroutineDispatcher)
     }
@@ -50,5 +33,5 @@ class CoroutineTestRule(
         Dispatchers.resetMain()
         testCoroutineDispatcher.cleanupTestCoroutines()
     }
-    
+
 }

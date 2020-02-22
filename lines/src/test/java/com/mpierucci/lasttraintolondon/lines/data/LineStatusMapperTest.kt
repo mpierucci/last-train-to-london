@@ -1,9 +1,9 @@
 package com.mpierucci.lasttraintolondon.lines.data
 
 import com.google.gson.GsonBuilder
-import com.mpierucci.lasttraintolondon.lines.loadModelFromTestFile
 import com.mpierucci.lasttraintolondon.lines.domain.Disruption
 import com.mpierucci.lasttraintolondon.lines.domain.LineMode
+import com.mpierucci.lasttraintolondon.ristretto.FileReaderUtil.loadModelFromTestFile
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test

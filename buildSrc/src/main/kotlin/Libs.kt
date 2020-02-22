@@ -3,11 +3,11 @@ object Libs {
 
     const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
 
-    const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.0-beta-3"
+    const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.2"
 
     const val ktlint = "com.github.shyiko:ktlint:0.31.0"
 
-    const val okHttp = "com.squareup.okhttp3:okhttp:4.2.2"
+    const val okHttp = "com.squareup.okhttp3:okhttp:$okHttpVersion"
 
     const val gson = "com.google.code.gson:gson:2.8.6"
 
@@ -16,25 +16,25 @@ object Libs {
     object AndroidX {
         const val appCompat = "androidx.appcompat:appcompat:1.1.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
-        const val material = "com.google.android.material:material:1.1.0-beta01"
+        const val material = "com.google.android.material:material:1.1.0"
         const val cardView = "androidx.cardview:cardview:1.0.0"
 
         object Ktx {
             const val core = "androidx.core:core-ktx:1.1.0"
-            const val fragment = "androidx.fragment:fragment-ktx:1.2.0-rc03"
+            const val fragment = "androidx.fragment:fragment-ktx:$fragmentXVersion"
             const val activity = "androidx.activity:activity-ktx:1.1.0"
             const val preferences = "androidx.preference:preference-ktx:1.1.0"
             const val viewPager2 = "androidx.viewpager2:viewpager2:1.0.0"
 
-            object Navigaiton {
-                private const val version = "2.2.0-rc03"
+            object Navigation {
+                private const val version = "2.2.1"
                 const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
                 const val ui = "androidx.navigation:navigation-ui-ktx:$version"
             }
         }
 
         object LifeCycle {
-            private const val lifeCycleVersion = "2.2.0-rc03"
+            private const val lifeCycleVersion = "2.2.0"
             const val lifeCycle = "androidx.lifecycle:lifecycle-extensions:$lifeCycleVersion"
             const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:$lifeCycleVersion"
             const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycleVersion"

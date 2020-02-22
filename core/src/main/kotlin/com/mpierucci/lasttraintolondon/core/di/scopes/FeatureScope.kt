@@ -1,4 +1,4 @@
-package com.mpierucci.lasttraintolondon.di
+package com.mpierucci.lasttraintolondon.core.di.scopes
 
 import javax.inject.Scope
 
