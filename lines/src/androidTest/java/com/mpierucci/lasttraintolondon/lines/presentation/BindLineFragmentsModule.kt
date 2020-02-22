@@ -11,6 +11,6 @@ abstract class BindLineFragmentsModule {
 
     @Binds
     @IntoMap
-    @FragmentClassKey(LineStatusScreen::class)
-    abstract fun bindLineStatusFragment(screen: LineStatusScreen): Fragment
+    @FragmentClassKey(LineStatusFragment::class)
+    abstract fun bindLineStatusFragment(fragment: LineStatusFragment): Fragment
 }

@@ -22,7 +22,7 @@ import javax.inject.Inject
 
 
 @RunWith(AndroidJUnit4::class)
-class LineStatusScreenTest {
+class LineStatusFragmentTest {
 
     @Inject
     lateinit var fragmentFactory: GenericFragmentFactory
@@ -46,7 +46,7 @@ class LineStatusScreenTest {
 
     @Test
     fun displayLineStatuses() {
-        val scenario = launchFragmentInContainer<LineStatusScreen>(
+        val scenario = launchFragmentInContainer<LineStatusFragment>(
             factory = fragmentFactory,
             themeResId = R.style.Theme_AppCompat // Theme needed since you are testing fragment in isolation
         )

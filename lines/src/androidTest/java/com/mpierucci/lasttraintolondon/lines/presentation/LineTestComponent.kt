@@ -29,5 +29,5 @@ interface LineTestComponent : CoreComponent {
         ): LineTestComponent
     }
 
-    fun inject(se: LineStatusScreenTest)
+    fun inject(se: LineStatusFragmentTest)
 }
