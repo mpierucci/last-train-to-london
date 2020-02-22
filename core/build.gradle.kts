@@ -6,6 +6,12 @@ plugins {
 android {
     compileSdkVersion(Android.compileSdkVersion)
     buildToolsVersion(Android.buildToolsVersion)
+
+    defaultConfig {
+        minSdkVersion(Android.minSdkVersion)
+        targetSdkVersion(Android.targetSdkVersion)
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
     sourceSets["main"].java.srcDir("src/main/kotlin")
     sourceSets["debug"].java.srcDir("src/debug/kotlin")
     sourceSets["release"].java.srcDir("src/release/kotlin")
@@ -34,6 +40,8 @@ dependencies {
     api(Libs.Coroutines.core)
     api(Libs.timber)
 
+
+    api(TestLibs.coroutinesTest)
 
     debugImplementation(Libs.Stetho.stetho)
 

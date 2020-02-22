@@ -11,6 +11,8 @@ object TestLibs {
 
     const val mockWebServer = "com.squareup.okhttp3:mockwebserver:$okHttpVersion"
 
+    const val uiAutomator = "androidx.test.uiautomator:uiautomator:2.2.0"
+
     object Esspresso {
         const val core = "androidx.test.espresso:espresso-core:3.2.0"
         const val jUnit = "androidx.test.ext:junit:1.0.0"
