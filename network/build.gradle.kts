@@ -13,6 +13,9 @@ android {
     val localProperties  by lazy { loadLocalProperties("$rootDir")}
 
     defaultConfig {
+        minSdkVersion(Android.minSdkVersion)
+        targetSdkVersion(Android.targetSdkVersion)
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String","TFL_APP_ID",
             System.getenv("TFL_APP_ID")?:"${localProperties["tfl.appId"]}")
         buildConfigField("String","TFL_APP_KEY",

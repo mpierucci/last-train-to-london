@@ -9,6 +9,13 @@ android {
     compileSdkVersion(Android.compileSdkVersion)
     buildToolsVersion(Android.buildToolsVersion)
 
+
+    defaultConfig {
+        minSdkVersion(Android.minSdkVersion)
+        targetSdkVersion(Android.targetSdkVersion)
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
     sourceSets["main"].java.srcDir("src/main/kotlin")
 }
 
