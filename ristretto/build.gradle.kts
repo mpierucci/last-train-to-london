@@ -23,8 +23,6 @@ dependencies {
     implementation(project(":core"))
 
     implementation(Libs.Dagger.core)
-    implementation(TestLibs.mockitoKotlin)
-    implementation(TestLibs.mockWebServer)
     implementation(TestLibs.testRunner)
     implementation(TestLibs.uiAutomator)
     implementation(TestLibs.Esspresso.jUnit)
