@@ -14,6 +14,10 @@ android {
     }
 
     sourceSets["main"].java.srcDir("src/main/kotlin")
+
+    lintOptions {
+        isAbortOnError =  true
+    }
 }
 
 dependencies {
@@ -23,6 +27,7 @@ dependencies {
     implementation(project(":core"))
 
     implementation(Libs.Dagger.core)
+    implementation(TestLibs.mockWebServer)
     implementation(TestLibs.testRunner)
     implementation(TestLibs.uiAutomator)
     implementation(TestLibs.Esspresso.jUnit)
