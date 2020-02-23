@@ -6,6 +6,9 @@ import com.mpierucci.android.architecture.usecase.functional.map
 import com.mpierucci.lasttraintolondon.core.dispatcher.DispatcherProvider
 import com.mpierucci.lasttraintolondon.core.presentation.ViewContract
 import com.mpierucci.lasttraintolondon.lines.domain.GetLinesStatusUseCase
+import com.mpierucci.lasttraintolondon.lines.domain.LineRepository
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.yield
 import javax.inject.Inject
@@ -13,6 +16,7 @@ import javax.inject.Inject
 // TODO test
 class LinesStatusViewModel @Inject constructor(
     private val getLinesStatusUseCase: GetLinesStatusUseCase,
+    private val lineRepository: LineRepository,
     private val dispatcherProvider: DispatcherProvider
 ) :
     ViewModel() {
@@ -20,13 +24,13 @@ class LinesStatusViewModel @Inject constructor(
     private val lineStatusMapper = PresentationLineStatusMapper()
 
     val lineStatuses = liveData {
-        emit(ViewContract.Loading(true))
-        with(getLinesStatusUseCase.execute(Unit)) {
+        lineRepository.getAll().map { lineResult ->
             yield()
             withContext(dispatcherProvider.default()) {
-                map { lines -> lines.map { lineStatusMapper.map(it) } }
-                    .fold({ emit(ViewContract.Error(it)) }, { emit(ViewContract.Success(it)) })
+                lineResult.map { lines -> lines.map { lineStatusMapper.map(it) }}
             }
+        }.collect { either ->
+            either.fold({ emit(ViewContract.Error(it)) }, { emit(ViewContract.Success(it)) })
         }
     }
 }
