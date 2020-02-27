@@ -23,7 +23,7 @@ interface AppComponent {
 
     fun inject(application: CustomApplication)
 
-    fun plus(): SingleActivityComponent
+    fun singleActivityComponent(): SingleActivityComponent
 
     interface ComponentProvider {
         val component: AppComponent

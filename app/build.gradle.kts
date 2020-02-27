@@ -4,7 +4,6 @@ import properties.loadLocalProperties
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("kotlin-android-extensions")
     id("kotlin-kapt")
     id("com.google.gms.google-services")
 }
@@ -55,6 +54,8 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    viewBinding.isEnabled = true
 }
 
 tasks.withType<KotlinCompile> {
