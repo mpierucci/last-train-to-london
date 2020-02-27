@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("kotlin-android-extensions")
     id("kotlin-kapt")
 }
 android {
@@ -15,6 +14,8 @@ android {
     }
 
     sourceSets["main"].java.srcDir("src/main/kotlin")
+
+    viewBinding.isEnabled = true
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
@@ -33,6 +34,7 @@ dependencies {
     implementation(Libs.AndroidX.Ktx.fragment)
     implementation(Libs.AndroidX.constraintLayout)
     implementation(TestLibs.Esspresso.idlingResources)
+    implementation(Libs.store)
 
     kapt(Libs.Dagger.compiler)
 

@@ -12,7 +12,7 @@ import androidx.test.espresso.idling.CountingIdlingResource
 import com.mpierucci.android.architecture.viewmodel.viewModel
 import com.mpierucci.lasttraintolondon.core.presentation.ViewContract
 import com.mpierucci.lasttraintolondon.lines.R
-import kotlinx.android.synthetic.main.fragment_lines_status.*
+import com.mpierucci.lasttraintolondon.lines.databinding.FragmentLinesStatusBinding
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -22,18 +22,21 @@ class LineStatusFragment @Inject constructor(
 
     //TODO https://github.com/mpierucci/last-train-to-london/issues/37
     val idlingResource = CountingIdlingResource("linesScreen")
+    private var _viewBinding: FragmentLinesStatusBinding? = null
+
+    /*
+    Android recommendation, only access this between onCreateView and onDestroy
+    Keep an eye for improvements
+     */
+    private val viewBinding get() = _viewBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_lines_status, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        with(linesStatus) {
+        _viewBinding = FragmentLinesStatusBinding.inflate(inflater, container, false)
+        with(viewBinding.linesStatus) {
             layoutManager = LinearLayoutManager(
                 requireActivity(),
                 RecyclerView.VERTICAL, false
@@ -41,6 +44,13 @@ class LineStatusFragment @Inject constructor(
             addItemDecoration(LineStatusDecorator(R.dimen.grid_1))
             adapter = LineStatusAdapter()
         }
+
+        return viewBinding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _viewBinding = null
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -52,14 +62,13 @@ class LineStatusFragment @Inject constructor(
         viewModel.lineStatuses.observe(viewLifecycleOwner) {
             when (it) {
                 is ViewContract.Success<List<PresentationLineStatus>> -> {
-                    (linesStatus.adapter as LineStatusAdapter).submitList(it.result)
+                    (viewBinding.linesStatus.adapter as LineStatusAdapter).submitList(it.result)
                     idlingResource.decrement()
                 }
                 is ViewContract.Error -> {
                     idlingResource.decrement()
                 }
             }
-
         }
     }
 }
