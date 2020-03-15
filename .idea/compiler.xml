@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="app" target="1.8" />
+      <module name="core" target="1.7" />
+      <module name="lines" target="1.7" />
+      <module name="lttl" target="1.8" />
+      <module name="lttl_buildSrc" target="1.8" />
+      <module name="network" target="1.7" />
+      <module name="preferences" target="1.7" />
+      <module name="ristretto" target="1.7" />
+      <module name="settings" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

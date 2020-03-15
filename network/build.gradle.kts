@@ -22,6 +22,11 @@ android {
             System.getenv("TFL_APP_KEY")?:"${localProperties["tfl.appKey"]}")
     }
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
     sourceSets["main"].java.srcDir("src/main/kotlin")
     sourceSets["debug"].java.srcDir("src/debug/kotlin")
     sourceSets["release"].java.srcDir("src/release/kotlin")

@@ -12,6 +12,11 @@ android {
         targetSdkVersion(Android.targetSdkVersion)
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
     sourceSets["main"].java.srcDir("src/main/kotlin")
     sourceSets["debug"].java.srcDir("src/debug/kotlin")
     sourceSets["release"].java.srcDir("src/release/kotlin")
