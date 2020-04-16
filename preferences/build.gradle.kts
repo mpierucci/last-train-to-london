@@ -29,7 +29,6 @@ dependencies {
     implementation(Libs.kotlinStdlib)
     implementation(Libs.AndroidX.Ktx.preferences)
 
-    api(Libs.gson)
     api(Libs.Dagger.core)
 
     kapt(Libs.Dagger.compiler)

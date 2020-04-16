@@ -1,7 +1,9 @@
 object Libs {
     const val kotlinVersion = "1.3.72"
 
-    const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+
+    const val kotlinxSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0"
 
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.2"
 
@@ -9,7 +11,6 @@ object Libs {
 
     const val okHttp = "com.squareup.okhttp3:okhttp:$okHttpVersion"
 
-    const val gson = "com.google.code.gson:gson:2.8.6"
 
     const val timber = "com.jakewharton.timber:timber:4.7.1"
 

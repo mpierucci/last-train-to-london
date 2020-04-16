@@ -34,7 +34,6 @@ dependencies {
     implementation(Libs.Retrofit.rxAdapter)
     api(Libs.Retrofit.gsonConverter)
 
-    api(Libs.gson)
     api(Libs.Dagger.core)
 
     kapt(Libs.Dagger.compiler)
