@@ -12,6 +12,8 @@ Pet project to apply new Android architectures, frameworks etc.
 * Githug package for arch modules
 * DarkMode
 * UI Test
+* Kotlin serializaiton
+* Inline classes
 
 # Soon:
 * Room
@@ -19,5 +21,3 @@ Pet project to apply new Android architectures, frameworks etc.
 * Dynamic Modules
 * InApp updates
 * Flow
-* Kotlin serializaiton
-
