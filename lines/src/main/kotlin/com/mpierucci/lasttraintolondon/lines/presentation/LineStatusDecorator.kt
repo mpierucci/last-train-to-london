@@ -5,7 +5,7 @@ import android.view.View
 import androidx.annotation.DimenRes
 import androidx.recyclerview.widget.RecyclerView
 
-class LineStatusDecorator(
+internal class LineStatusDecorator(
     @DimenRes val offsetRes: Int
 ) : RecyclerView.ItemDecoration() {
 

@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_lines_status.*
 import javax.inject.Inject
 import javax.inject.Provider
 
-class LineStatusScreen @Inject constructor(
+ class LineStatusScreen @Inject constructor(
     private val vmProvider: Provider<LinesStatusViewModel>
 ) : Fragment() {
 

@@ -9,7 +9,7 @@ import com.mpierucci.lasttraintolondon.lines.domain.LineId
 import com.mpierucci.lasttraintolondon.lines.domain.LineIds
 import com.mpierucci.lasttraintolondon.lines.domain.StatusSeverity
 
-fun Line.toPresentationModel(): PresentationLineStatus {
+internal fun Line.toPresentationModel(): PresentationLineStatus {
     val topStatus = statuses.firstOrNull()
     return PresentationLineStatus(
         badgeId = id.toIconResource(),

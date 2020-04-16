@@ -14,11 +14,9 @@ import javax.inject.Inject
 class LinesStatusViewModel @Inject constructor(
     private val getLinesStatusUseCase: GetLinesStatusUseCase,
     private val dispatcherProvider: DispatcherProvider
-) :
-    ViewModel() {
+) : ViewModel() {
 
-
-    val lineStatuses = liveData {
+    internal val lineStatuses = liveData {
         emit(ViewContract.Loading(true))
         with(getLinesStatusUseCase.execute(Unit)) {
             yield()

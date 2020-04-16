@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 
-class LineStatusAdapter :
+internal class LineStatusAdapter :
     ListAdapter<PresentationLineStatus, LineStatusViewHolder>(LINE_STATUS_DIFF) {
 
     override fun onBindViewHolder(holder: LineStatusViewHolder, position: Int) {
@@ -19,19 +19,19 @@ class LineStatusAdapter :
         private val LINE_STATUS_DIFF =
             object : DiffUtil.ItemCallback<PresentationLineStatus>() {
 
-            override fun areContentsTheSame(
-                oldItem: PresentationLineStatus,
-                newItem: PresentationLineStatus
-            ): Boolean {
-                return oldItem == newItem
-            }
+                override fun areContentsTheSame(
+                    oldItem: PresentationLineStatus,
+                    newItem: PresentationLineStatus
+                ): Boolean {
+                    return oldItem == newItem
+                }
 
-            override fun areItemsTheSame(
-                oldItem: PresentationLineStatus,
-                newItem: PresentationLineStatus
-            ): Boolean {
-                return oldItem.badgeId == newItem.badgeId
+                override fun areItemsTheSame(
+                    oldItem: PresentationLineStatus,
+                    newItem: PresentationLineStatus
+                ): Boolean {
+                    return oldItem.badgeId == newItem.badgeId
+                }
             }
-        }
     }
 }
