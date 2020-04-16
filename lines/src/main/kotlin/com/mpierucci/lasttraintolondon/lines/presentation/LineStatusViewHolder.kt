@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mpierucci.lasttraintolondon.lines.R
 import kotlinx.android.synthetic.main.line_status_list_item.view.*
 
-class LineStatusViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
+internal class LineStatusViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
     LayoutInflater
         .from(parent.context).inflate(R.layout.line_status_list_item, parent, false)
 ) {

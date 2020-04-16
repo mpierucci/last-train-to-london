@@ -12,6 +12,7 @@ buildscript {
     dependencies {
         classpath(BuildPlugins.androidGradle)
         classpath(BuildPlugins.kotlin)
+        classpath(BuildPlugins.kotlinSerialization)
         classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.1.1")
         classpath(BuildPlugins.googlePlay)
     }

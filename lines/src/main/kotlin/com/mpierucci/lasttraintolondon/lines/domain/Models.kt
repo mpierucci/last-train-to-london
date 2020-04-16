@@ -1,15 +1,19 @@
 package com.mpierucci.lasttraintolondon.lines.domain
 
+inline class LineId(val value: String)
+
 data class Line(
-    val id: String,
+    val id: LineId,
     val name: String,
     val mode: LineMode,
     val statuses: List<Status>
 )
 
+inline class StatusSeverity(val value: Int)
+
 data class Status(
     val id: Int,
-    val severity: Int,
+    val severity: StatusSeverity,
     val severityDescription: String,
     val disruption: Disruption?
 )

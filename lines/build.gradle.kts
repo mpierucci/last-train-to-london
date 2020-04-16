@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("kotlin-kapt")
+    kotlin("plugin.serialization") // no version specified cause it's being added in the classpath
 }
 android {
     compileSdkVersion(Android.compileSdkVersion)
@@ -30,6 +31,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(project(":core"))
     implementation(Libs.kotlinStdlib)
+    implementation(Libs.kotlinxSerialization)
     implementation(Libs.AndroidX.Ktx.fragment)
     implementation(Libs.AndroidX.constraintLayout)
     implementation(TestLibs.Esspresso.idlingResources)

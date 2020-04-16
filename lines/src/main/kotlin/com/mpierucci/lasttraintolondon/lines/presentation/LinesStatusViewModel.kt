@@ -14,17 +14,14 @@ import javax.inject.Inject
 class LinesStatusViewModel @Inject constructor(
     private val getLinesStatusUseCase: GetLinesStatusUseCase,
     private val dispatcherProvider: DispatcherProvider
-) :
-    ViewModel() {
+) : ViewModel() {
 
-    private val lineStatusMapper = PresentationLineStatusMapper()
-
-    val lineStatuses = liveData {
+    internal val lineStatuses = liveData {
         emit(ViewContract.Loading(true))
         with(getLinesStatusUseCase.execute(Unit)) {
             yield()
             withContext(dispatcherProvider.default()) {
-                map { lines -> lines.map { lineStatusMapper.map(it) } }
+                map { lines -> lines.map { it.toPresentationModel() } }
                     .fold({ emit(ViewContract.Error(it)) }, { emit(ViewContract.Success(it)) })
             }
         }
