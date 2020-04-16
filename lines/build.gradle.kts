@@ -31,7 +31,6 @@ dependencies {
     implementation(project(":core"))
     implementation(Libs.kotlinStdlib)
     implementation(Libs.AndroidX.Ktx.fragment)
-    implementation(Libs.AndroidX.cardView)
     implementation(Libs.AndroidX.constraintLayout)
     implementation(TestLibs.Esspresso.idlingResources)
 
