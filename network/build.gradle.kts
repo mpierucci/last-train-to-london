@@ -32,6 +32,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libs.kotlinStdlib)
     implementation(Libs.Retrofit.rxAdapter)
+    implementation(Libs.Jake.kotlinxConverter)
     api(Libs.Retrofit.gsonConverter)
 
     api(Libs.Dagger.core)

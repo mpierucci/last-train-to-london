@@ -75,4 +75,9 @@ object Libs {
     object FireBase {
         const val analytics = "com.google.firebase:firebase-analytics:17.2.1"
     }
+
+    object Jake {
+        const val kotlinxConverter =
+            "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.5.0"
+    }
 }
