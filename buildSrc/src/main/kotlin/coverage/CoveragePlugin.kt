@@ -19,7 +19,6 @@ class CoveragePlugin : Plugin<Project> {
         //creates extension to configure plugin in each module
         target.extensions.create(COVERAGE, CoverageExtension::class.java)
 
-
         applyJacocoPlugin(target)
         enableCoverageOnDebug(target)
     }
