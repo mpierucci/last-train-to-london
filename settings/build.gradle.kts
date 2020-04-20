@@ -5,6 +5,9 @@ plugins {
     id("kotlin-android-extensions")
     id("kotlin-kapt")
 }
+
+apply<coverage.CoveragePlugin>()
+
 android {
     compileSdkVersion(Android.compileSdkVersion)
     buildToolsVersion(Android.buildToolsVersion)
@@ -17,6 +20,15 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         jvmTarget = "1.8"
         freeCompilerArgs = listOf("-XXLanguage:+InlineClasses")
     }
+}
+
+configure<coverage.CoveragePlugin.CoverageExtension> {
+    excludes = mutableListOf("**/di/**",
+        "**/*Fragment*",
+        "**/*ViewHolder*",
+        "**/*_Factory*",
+        "**/BuildConfig*"
+    )
 }
 
 

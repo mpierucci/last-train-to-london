@@ -28,19 +28,37 @@ class CoveragePlugin : Plugin<Project> {
         val coverageExtension = target.extensions.getByType(CoverageExtension::class.java)
         if (!coverageExtension.isEnabled) return@afterEvaluate
 
+        val additionalSourceDirs = coverageExtension.additionalSourceDirs
+
         target.plugins.apply(JacocoPlugin::class.java)
         target.plugins.all {
-            if (this is LibraryPlugin) configureLibraryPlugin(target, coverageExtension.excludes)
-            else if (this is AppPlugin) configureAppPlugin(target, coverageExtension.excludes)
+            if (this is LibraryPlugin) configureLibraryPlugin(
+                target,
+                coverageExtension.excludes,
+                additionalSourceDirs
+            )
+            else if (this is AppPlugin) configureAppPlugin(
+                target,
+                coverageExtension.excludes,
+                additionalSourceDirs
+            )
         }
     }
 
-    private fun configureLibraryPlugin(project: Project, excludes: List<String>) {
+    private fun configureLibraryPlugin(
+        project: Project,
+        excludes: List<String>,
+        additionalSourceDirs: List<String>? = null
+    ) {
         val libraryExtension = project.extensions.getByType(LibraryExtension::class.java)
         configureJacoco(project, libraryExtension.libraryVariants, excludes)
     }
 
-    private fun configureAppPlugin(project: Project, excludes: List<String>) {
+    private fun configureAppPlugin(
+        project: Project,
+        excludes: List<String>,
+        additionalSourceDirs: List<String>? = null
+    ) {
         val appExtension = project.extensions.getByType(AppExtension::class.java)
         configureJacoco(project, appExtension.applicationVariants, excludes)
     }
@@ -57,7 +75,7 @@ class CoveragePlugin : Plugin<Project> {
         val variantNameCapitalize = name.capitalize()
 
 
-        project.tasks.register("jacoco${variantNameCapitalize}Report",JacocoReport::class.java){
+        project.tasks.register("jacoco${variantNameCapitalize}Report", JacocoReport::class.java) {
             dependsOn(project.tasks["test${variantNameCapitalize}UnitTest"])
 
             group = "coverage"
@@ -72,7 +90,7 @@ class CoveragePlugin : Plugin<Project> {
                 project.fileTree("${dir}/intermediates/javac/$variantName") { setExcludes(excludes) },
                 project.fileTree("${dir}/tmp/kotlin-classes/$variantName") { setExcludes(excludes) }
             )
-            sourceDirectories.setFrom(KOTLIN_SOURCE_DIR)
+            sourceDirectories.setFrom(listOf(KOTLIN_SOURCE_DIR, JAVA_SOURCE_DIR))
             additionalSourceDirs.setFrom(KOTLIN_SOURCE_DIR)
 
             reports.xml.isEnabled = true
@@ -89,6 +107,8 @@ class CoveragePlugin : Plugin<Project> {
     open class CoverageExtension {
 
         open var isEnabled: Boolean = true
+
+        open var additionalSourceDirs: List<String> = listOf(KOTLIN_SOURCE_DIR, JAVA_SOURCE_DIR)
 
         open var excludes: MutableList<String> = mutableListOf()
 

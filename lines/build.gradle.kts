@@ -25,9 +25,10 @@ configure<coverage.CoveragePlugin.CoverageExtension> {
         "**/*Screen*",
         "**/*ViewHolder*",
         "**/*Decorator*",
-        "**/*Decorator*",
+        "**/*Adapter",
+        "**/*_Factory*",
         "**/*RestLineMode*",
-        "**/*BuildConfig*"
+        "**/BuildConfig*"
         )
 }
 

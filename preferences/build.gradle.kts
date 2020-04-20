@@ -1,27 +1,37 @@
 import properties.loadLocalProperties
-import kotlin.lazy
 
 plugins {
     id("com.android.library")
     id("kotlin-android")
     id("kotlin-kapt")
 }
+
+apply<coverage.CoveragePlugin>()
+
 android {
     compileSdkVersion(Android.compileSdkVersion)
     buildToolsVersion(Android.buildToolsVersion)
 
-    val localProperties  by lazy { loadLocalProperties("$rootDir")}
+    val localProperties by lazy { loadLocalProperties("$rootDir") }
 
     defaultConfig {
-        buildConfigField("String","TFL_APP_ID",
-            System.getenv("TFL_APP_ID")?:"${localProperties["tfl.appId"]}")
-        buildConfigField("String","TFL_APP_KEY",
-            System.getenv("TFL_APP_KEY")?:"${localProperties["tfl.appKey"]}")
+        buildConfigField(
+            "String", "TFL_APP_ID",
+            System.getenv("TFL_APP_ID") ?: "${localProperties["tfl.appId"]}"
+        )
+        buildConfigField(
+            "String", "TFL_APP_KEY",
+            System.getenv("TFL_APP_KEY") ?: "${localProperties["tfl.appKey"]}"
+        )
     }
 
     sourceSets["main"].java.srcDir("src/main/kotlin")
     sourceSets["debug"].java.srcDir("src/debug/kotlin")
     sourceSets["release"].java.srcDir("src/release/kotlin")
+}
+
+configure<coverage.CoveragePlugin.CoverageExtension> {
+    additionalSourceDirs = listOf("src/debug/kotlin", "src/release/kotlin")
 }
 
 dependencies {
