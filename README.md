@@ -1,3 +1,5 @@
+
+[![codecov](https://codecov.io/gh/mpierucci/last-train-to-london/branch/develop/graph/badge.svg)](https://codecov.io/gh/mpierucci/last-train-to-london)
 # last-train-to-london
 Pet project to apply new Android architectures, frameworks etc.
 
