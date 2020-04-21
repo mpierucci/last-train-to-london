@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import properties.gitHubProperties
 
 plugins {
-    kotlin("jvm") version Libs.kotlinVersion
+    kotlin("jvm")
 }
 buildscript {
     repositories {
@@ -15,6 +15,7 @@ buildscript {
         classpath(BuildPlugins.kotlinSerialization)
         classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.1.1")
         classpath(BuildPlugins.googlePlay)
+        classpath ("org.jacoco:org.jacoco.core:0.8.5")
     }
 }
 

@@ -1,3 +1,4 @@
+apply<coverage.CoveragePlugin>()
 plugins {
     id("com.android.library")
     id("kotlin-android")
@@ -5,6 +6,7 @@ plugins {
     id("kotlin-kapt")
     kotlin("plugin.serialization") // no version specified cause it's being added in the classpath
 }
+
 android {
     compileSdkVersion(Android.compileSdkVersion)
     buildToolsVersion(Android.buildToolsVersion)
@@ -16,6 +18,18 @@ android {
     }
 
     sourceSets["main"].java.srcDir("src/main/kotlin")
+}
+
+configure<coverage.CoveragePlugin.CoverageExtension> {
+    excludes = mutableListOf("**/di/**",
+        "**/*Screen*",
+        "**/*ViewHolder*",
+        "**/*Decorator*",
+        "**/*Adapter",
+        "**/*_Factory*",
+        "**/*RestLineMode*",
+        "**/BuildConfig*"
+        )
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
