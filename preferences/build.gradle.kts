@@ -4,6 +4,7 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 apply<coverage.CoveragePlugin>()
@@ -38,10 +39,12 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libs.kotlinStdlib)
     implementation(Libs.AndroidX.Ktx.preferences)
+    implementation(Libs.Hilt.core)
 
     api(Libs.Dagger.core)
 
     kapt(Libs.Dagger.compiler)
+    kapt(Libs.Hilt.compiler)
 
     debugImplementation(Libs.Stetho.stetho)
     debugImplementation(Libs.Stetho.stethoOk)

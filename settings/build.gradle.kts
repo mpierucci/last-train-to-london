@@ -4,6 +4,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-android-extensions")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 apply<coverage.CoveragePlugin>()
@@ -37,10 +38,12 @@ dependencies {
     implementation(project(":core"))
     implementation(Libs.kotlinStdlib)
     implementation(Libs.AndroidX.appCompat)
+    implementation(Libs.Hilt.core)
 
     api(Libs.AndroidX.Ktx.preferences)
 
     kapt(Libs.Dagger.compiler)
+    kapt(Libs.Hilt.compiler)
 
     testImplementation(TestLibs.mockitoKotlin)
     testImplementation(TestLibs.coroutinesTest)

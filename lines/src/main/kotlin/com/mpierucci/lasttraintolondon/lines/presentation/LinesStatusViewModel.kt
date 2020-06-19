@@ -1,5 +1,6 @@
 package com.mpierucci.lasttraintolondon.lines.presentation
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.mpierucci.android.architecture.usecase.functional.map
@@ -11,7 +12,7 @@ import kotlinx.coroutines.yield
 import javax.inject.Inject
 
 // TODO test
-class LinesStatusViewModel @Inject constructor(
+class LinesStatusViewModel @ViewModelInject constructor(
     private val getLinesStatusUseCase: GetLinesStatusUseCase,
     private val dispatcherProvider: DispatcherProvider
 ) : ViewModel() {

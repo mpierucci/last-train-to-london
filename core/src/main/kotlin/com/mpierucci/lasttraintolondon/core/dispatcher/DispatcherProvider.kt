@@ -2,6 +2,8 @@ package com.mpierucci.lasttraintolondon.core.dispatcher
 
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
@@ -21,6 +23,7 @@ interface DispatcherProvider {
 class ReleaseDispatcher @Inject constructor() : DispatcherProvider
 
 @Module
+@InstallIn(ApplicationComponent::class)
 abstract class DispatcherModule {
 
     @Binds

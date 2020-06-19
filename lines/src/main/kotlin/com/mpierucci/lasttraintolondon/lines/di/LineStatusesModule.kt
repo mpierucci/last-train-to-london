@@ -7,9 +7,12 @@ import com.mpierucci.lasttraintolondon.lines.domain.LineRepository
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 import retrofit2.Retrofit
 
 @Module
+@InstallIn(ActivityComponent::class)
 object LineStatusesModule {
 
     @Provides

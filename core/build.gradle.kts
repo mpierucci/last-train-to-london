@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 android {
     compileSdkVersion(Android.compileSdkVersion)
@@ -20,7 +21,9 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Libs.kotlinStdlib)
+    implementation(Libs.Hilt.core)
     kapt(Libs.Dagger.compiler)
+    kapt(Libs.Hilt.compiler)
 
 
     //SHARED DEPENDENCIES

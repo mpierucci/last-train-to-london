@@ -88,4 +88,7 @@ dependencies {
 
     androidTestImplementation(TestLibs.testRunner)
     androidTestImplementation(TestLibs.Esspresso.core)
+
+    kapt("androidx.hilt:hilt-compiler:1.0.0-alpha01")
+    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01")
 }

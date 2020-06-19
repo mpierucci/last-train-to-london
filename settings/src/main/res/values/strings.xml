@@ -2,6 +2,8 @@
     <!-- Keys -->
     <string name="key_theme_preference" translatable="false">app_theme</string>
 
+    <string name="entry_system_default_theme">System default</string>
+
     <string name="entry_light_theme">Light</string>
     <string name="entry_dark_theme">Dark</string>
     <string name="entry_battery_saver_theme">Follow battery saver</string>

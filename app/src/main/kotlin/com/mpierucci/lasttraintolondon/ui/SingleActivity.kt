@@ -6,10 +6,11 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.mpierucci.lasttraintolondon.R
 import com.mpierucci.lasttraintolondon.core.fragment.GenericFragmentFactory
-import com.mpierucci.lasttraintolondon.di.injector
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_lines.*
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class SingleActivity : AppCompatActivity() {
 
     @Inject
@@ -17,7 +18,7 @@ class SingleActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
-        injector.plus().inject(this)
+       // injector.plus().inject(this)
         supportFragmentManager.fragmentFactory = fragmentFactory
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lines)

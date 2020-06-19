@@ -1,7 +1,6 @@
 package com.mpierucci.lasttraintolondon.lines.presentation
 
 import android.content.Context
-import com.mpierucci.lasttraintolondon.core.di.CoreComponent
 import com.mpierucci.lasttraintolondon.core.dispatcher.DispatcherModule
 import com.mpierucci.lasttraintolondon.ristretto.di.TestNetworkModule
 import com.mpierucci.lasttraintolondon.lines.di.LineStatusesModule

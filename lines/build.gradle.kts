@@ -5,6 +5,7 @@ plugins {
     id("kotlin-android-extensions")
     id("kotlin-kapt")
     kotlin("plugin.serialization") // no version specified cause it's being added in the classpath
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -49,8 +50,10 @@ dependencies {
     implementation(Libs.AndroidX.Ktx.fragment)
     implementation(Libs.AndroidX.constraintLayout)
     implementation(TestLibs.Esspresso.idlingResources)
+    implementation(Libs.Hilt.core)
 
     kapt(Libs.Dagger.compiler)
+    kapt(Libs.Hilt.compiler)
 
 
     testImplementation(TestLibs.mockitoKotlin)
@@ -70,4 +73,8 @@ dependencies {
     androidTestImplementation(TestLibs.Esspresso.idlingResources)
     androidTestImplementation(TestLibs.Esspresso.contrib)
     androidTestImplementation(project(":ristretto"))
+
+    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01")
+    // When using Kotlin.
+    kapt("androidx.hilt:hilt-compiler:1.0.0-alpha01")
 }

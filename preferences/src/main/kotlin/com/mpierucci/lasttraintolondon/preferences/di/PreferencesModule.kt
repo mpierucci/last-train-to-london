@@ -5,14 +5,16 @@ import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 @Module
+@InstallIn(ApplicationComponent::class)
 object PreferencesModule {
 
-    @Reusable
     @Provides
     @DefaultPreferences
-    fun provideDefaultPreferences(context: Context): SharedPreferences =
+    fun provideDefaultPreferences(@ApplicationContext context: Context): SharedPreferences =
         PreferenceManager.getDefaultSharedPreferences(context)
 }
