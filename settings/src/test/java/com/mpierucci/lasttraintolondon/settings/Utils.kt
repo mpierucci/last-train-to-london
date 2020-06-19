@@ -12,4 +12,5 @@ internal val preferencesMockedContext = mock<Context> {
     on { getString(R.string.entry_dark_theme) } doReturn "Dark"
     on { getString(R.string.entry_system_default_theme) } doReturn "System default"
     on { getString(R.string.entry_battery_saver_theme) } doReturn "Follow battery saver"
+    on { getString(R.string.app_theme_default_value) } doReturn "Follow battery saver"
 }

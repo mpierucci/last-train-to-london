@@ -1,10 +1,12 @@
 <resources>
-    <!-- Keys -->
+    <!--Preference Keys -->
     <string name="key_theme_preference" translatable="false">app_theme</string>
 
+    <!-- Preference entries -->
     <string name="entry_light_theme">Light</string>
     <string name="entry_dark_theme">Dark</string>
     <string name="entry_battery_saver_theme">Follow battery saver</string>
+    <string name="entry_system_default_theme">System default</string>
 
     <string-array name="entries_app_theme">
         <item>@string/entry_light_theme</item>
@@ -14,4 +16,5 @@
 
     <!-- Values -->
     <string name="title_app_theme_preference">App theme</string>
+    <string name="app_theme_default_value">@string/entry_battery_saver_theme</string>
 </resources>

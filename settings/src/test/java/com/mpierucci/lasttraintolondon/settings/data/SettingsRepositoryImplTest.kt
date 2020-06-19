@@ -2,6 +2,7 @@ package com.mpierucci.lasttraintolondon.settings.data
 
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
+import com.google.common.truth.Truth.assertThat
 import com.mpierucci.lasttraintolondon.settings.R
 import com.mpierucci.lasttraintolondon.settings.preferencesMockedContext
 import com.mpierucci.lasttraintolondon.settings.ui.AppThemePreferenceMapper
@@ -9,7 +10,6 @@ import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.eq
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
-import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class SettingsRepositoryImplTest {
@@ -24,10 +24,10 @@ class SettingsRepositoryImplTest {
         context = context
     )
 
-    private fun mockPreferences(mockedThemePrefernece: String) {
+    private fun mockPreferences(mockedThemePreference: String) {
         whenever(
             sharedPreferences.getString(eq(context.getString(R.string.key_theme_preference)), any())
-        ).thenReturn(mockedThemePrefernece)
+        ).thenReturn(mockedThemePreference)
     }
 
 
@@ -35,34 +35,35 @@ class SettingsRepositoryImplTest {
     fun `Test light theme preference`() {
         mockPreferences(context.getString(R.string.entry_light_theme))
 
-        assertEquals(AppCompatDelegate.MODE_NIGHT_NO, repository.getAppThemeMode())
+        assertThat(repository.getAppThemeMode()).isEqualTo(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
     @Test
     fun `Test dark theme preference`() {
         mockPreferences(context.getString(R.string.entry_dark_theme))
 
-        assertEquals(AppCompatDelegate.MODE_NIGHT_YES, repository.getAppThemeMode())
+        assertThat(repository.getAppThemeMode()).isEqualTo(AppCompatDelegate.MODE_NIGHT_YES)
     }
 
     @Test
     fun `Test system default  theme preference`() {
         mockPreferences(context.getString(R.string.entry_system_default_theme))
 
-        assertEquals(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, repository.getAppThemeMode())
+        assertThat(repository.getAppThemeMode()).isEqualTo(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
     }
 
     @Test
     fun `Test  battery saver theme preference`() {
         mockPreferences(context.getString(R.string.entry_battery_saver_theme))
 
-        assertEquals(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY, repository.getAppThemeMode())
+
+        assertThat(repository.getAppThemeMode()).isEqualTo(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
     }
 
     @Test
     fun `Test  invalid  preference`() {
         mockPreferences("invalid")
 
-        assertEquals(AppCompatDelegate.MODE_NIGHT_NO, repository.getAppThemeMode())
+        assertThat(repository.getAppThemeMode()).isEqualTo(AppCompatDelegate.MODE_NIGHT_NO)
     }
 }
