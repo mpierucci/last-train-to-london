@@ -13,6 +13,8 @@ object TestLibs {
 
     const val uiAutomator = "androidx.test.uiautomator:uiautomator:2.2.0"
 
+    const val truth = "com.google.truth:truth:1.0.1"
+
     object Esspresso {
         const val core = "androidx.test.espresso:espresso-core:3.2.0"
         const val jUnit = "androidx.test.ext:junit:1.0.0"

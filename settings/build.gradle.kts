@@ -45,6 +45,7 @@ dependencies {
     testImplementation(TestLibs.mockitoKotlin)
     testImplementation(TestLibs.coroutinesTest)
     testImplementation(TestLibs.jUnit)
+    testImplementation(TestLibs.truth)
 
     androidTestImplementation(TestLibs.testRunner)
     androidTestImplementation(TestLibs.Esspresso.core)
