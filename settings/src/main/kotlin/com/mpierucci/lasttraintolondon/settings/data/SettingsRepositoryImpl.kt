@@ -17,7 +17,7 @@ class SettingsRepositoryImpl @Inject constructor(
     override fun getAppThemeMode(): Int {
         val preference = sharedPreferences.getString(
             context.getString(R.string.key_theme_preference),
-            context.getString(R.string.entry_light_theme)
+            context.getString(R.string.app_theme_default_value)
         ).orEmpty()
         return themePreferenceMapper.mapPreference(preference)
     }
