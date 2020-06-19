@@ -5,4 +5,5 @@ object BuildPlugins {
     const val googlePlay = "com.google.gms:google-services:4.3.2"
     const val detektPlugin = "io.gitlab.arturbosch.detekt"
     const val detektVersion = "1.1.1"
+    const val hilt = "com.google.dagger:hilt-android-gradle-plugin:2.28-alpha"
 }

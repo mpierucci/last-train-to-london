@@ -15,6 +15,7 @@ buildscript {
         classpath(BuildPlugins.kotlinSerialization)
         classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.1.1")
         classpath(BuildPlugins.googlePlay)
+        classpath(BuildPlugins.hilt)
         classpath ("org.jacoco:org.jacoco.core:0.8.5")
     }
 }

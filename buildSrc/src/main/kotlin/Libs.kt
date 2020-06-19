@@ -47,6 +47,12 @@ object Libs {
         const val compiler = "com.google.dagger:dagger-compiler:$daggerVersion"
     }
 
+    object Hilt {
+        private const val version = "2.28-alpha"
+        const val core = "com.google.dagger:hilt-android:$version"
+        const val compiler = "com.google.dagger:hilt-android-compiler:$version"
+    }
+
     object Rx {
         const val java = "io.reactivex.rxjava2:rxjava:2.2.13"
         const val android = "io.reactivex.rxjava2:rxandroid:2.1.1"
