@@ -1,10 +1,11 @@
-package com.mpierucci.lasttraintolondon.lines.presentation
+package com.mpierucci.lasttraintolondon.lines.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.mpierucci.lasttraintolondon.lines.R
+import com.mpierucci.lasttraintolondon.lines.presentation.PresentationLineStatus
 import kotlinx.android.synthetic.main.line_status_list_item.view.*
 
 internal class LineStatusViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(

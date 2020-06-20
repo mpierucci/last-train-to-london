@@ -1,4 +1,4 @@
-package com.mpierucci.lasttraintolondon.lines.presentation
+package com.mpierucci.lasttraintolondon.lines.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +12,8 @@ import androidx.test.espresso.idling.CountingIdlingResource
 import com.mpierucci.android.architecture.viewmodel.viewModel
 import com.mpierucci.lasttraintolondon.core.presentation.ViewContract
 import com.mpierucci.lasttraintolondon.lines.R
+import com.mpierucci.lasttraintolondon.lines.presentation.LinesStatusViewModel
+import com.mpierucci.lasttraintolondon.lines.presentation.PresentationLineStatus
 import kotlinx.android.synthetic.main.fragment_lines_status.*
 import javax.inject.Inject
 import javax.inject.Provider
@@ -38,8 +40,13 @@ import javax.inject.Provider
                 requireActivity(),
                 RecyclerView.VERTICAL, false
             )
-            addItemDecoration(LineStatusDecorator(R.dimen.grid_1))
-            adapter = LineStatusAdapter()
+            addItemDecoration(
+                LineStatusDecorator(
+                    R.dimen.grid_1
+                )
+            )
+            adapter =
+                LineStatusAdapter()
         }
     }
 

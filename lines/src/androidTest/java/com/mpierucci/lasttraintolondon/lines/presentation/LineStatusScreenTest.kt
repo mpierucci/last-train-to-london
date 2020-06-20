@@ -9,6 +9,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.mpierucci.lasttraintolondon.core.fragment.GenericFragmentFactory
 import com.mpierucci.lasttraintolondon.lines.R
+import com.mpierucci.lasttraintolondon.lines.ui.LineStatusScreen
 import com.mpierucci.lasttraintolondon.ristretto.assertions.RecyclerViewItemCountAssertion
 import com.mpierucci.lasttraintolondon.ristretto.mockwebserver.FileResponseDispatcher
 import com.mpierucci.lasttraintolondon.ristretto.rules.DisableAnimationsRule

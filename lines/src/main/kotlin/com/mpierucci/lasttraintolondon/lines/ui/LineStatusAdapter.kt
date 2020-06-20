@@ -1,18 +1,23 @@
-package com.mpierucci.lasttraintolondon.lines.presentation
+package com.mpierucci.lasttraintolondon.lines.ui
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import com.mpierucci.lasttraintolondon.lines.presentation.PresentationLineStatus
 
 internal class LineStatusAdapter :
-    ListAdapter<PresentationLineStatus, LineStatusViewHolder>(LINE_STATUS_DIFF) {
+    ListAdapter<PresentationLineStatus, LineStatusViewHolder>(
+        LINE_STATUS_DIFF
+    ) {
 
     override fun onBindViewHolder(holder: LineStatusViewHolder, position: Int) {
         holder.bindLineStatus(getItem(position))
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LineStatusViewHolder {
-        return LineStatusViewHolder(parent)
+        return LineStatusViewHolder(
+            parent
+        )
     }
 
     companion object {

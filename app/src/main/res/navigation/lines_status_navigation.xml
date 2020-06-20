@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/liveStatus"
-        android:name="com.mpierucci.lasttraintolondon.lines.presentation.LineStatusScreen"
+        android:name="com.mpierucci.lasttraintolondon.lines.ui.LineStatusScreen"
         android:label="LineStatusFragment" />
     <fragment
         android:id="@+id/settings"

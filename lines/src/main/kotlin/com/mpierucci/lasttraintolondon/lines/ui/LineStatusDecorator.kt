@@ -1,4 +1,4 @@
-package com.mpierucci.lasttraintolondon.lines.presentation
+package com.mpierucci.lasttraintolondon.lines.ui
 
 import android.graphics.Rect
 import android.view.View
