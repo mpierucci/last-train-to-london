@@ -5,16 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.observe
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.idling.CountingIdlingResource
 import com.mpierucci.android.architecture.viewmodel.viewModel
-import com.mpierucci.lasttraintolondon.core.presentation.ViewContract
 import com.mpierucci.lasttraintolondon.lines.R
 import com.mpierucci.lasttraintolondon.lines.databinding.FragmentLinesStatusBinding
 import com.mpierucci.lasttraintolondon.lines.presentation.LinesStatusViewModel
-import com.mpierucci.lasttraintolondon.lines.presentation.PresentationLineStatus
+import com.mpierucci.lasttraintolondon.lines.presentation.LinesViewAction
+import com.mpierucci.lasttraintolondon.lines.presentation.LinesViewState
+import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -26,6 +27,7 @@ class LineStatusScreen @Inject constructor(
     val idlingResource = CountingIdlingResource("linesScreen")
     private var _bindings: FragmentLinesStatusBinding? = null
     private val bindings get() = _bindings!!
+    private val viewModel by viewModel { vmProvider.get() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,13 +45,17 @@ class LineStatusScreen @Inject constructor(
                 requireActivity(),
                 RecyclerView.VERTICAL, false
             )
-            addItemDecoration(
-                LineStatusDecorator(
-                    R.dimen.grid_1
-                )
-            )
-            adapter =
-                LineStatusAdapter()
+            addItemDecoration(LineStatusDecorator(R.dimen.grid_1))
+            adapter = LineStatusAdapter()
+        }
+
+        bindings.swipeLayout.setOnRefreshListener {
+            idlingResource.increment()
+            viewModel.postAction(LinesViewAction.FetchStatus)
+        }
+
+        if (savedInstanceState == null) {
+            viewModel.postAction(LinesViewAction.FetchStatus)
         }
     }
 
@@ -60,21 +66,39 @@ class LineStatusScreen @Inject constructor(
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        val viewModel by viewModel { vmProvider.get() }
-
         idlingResource.increment()
-        viewModel.lineStatuses.observe(viewLifecycleOwner) {
-            when (it) {
-                is ViewContract.Success<List<PresentationLineStatus>> -> {
-                    (bindings.linesStatus.adapter as LineStatusAdapter).submitList(it.result)
-                    idlingResource.decrement()
-                }
-                is ViewContract.Error -> {
-                    idlingResource.decrement()
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
+            viewModel.lineStatuses.collect {
+                when (it) {
+                    is LinesViewState.Success -> {
+                        handleSuccessState(it)
+                    }
+                    is LinesViewState.Error -> {
+                        idlingResource.decrement()
+                    }
+                    is LinesViewState.Loading -> {
+                        handleLoadingState()
+                    }
                 }
             }
-
         }
+    }
+
+    private fun handleLoadingState() {
+        val swipeLayout = bindings.swipeLayout
+        if (!swipeLayout.isRefreshing) {
+            bindings.progressBar.show()
+        }
+    }
+
+    private fun handleSuccessState(it: LinesViewState.Success) {
+        (bindings.linesStatus.adapter as LineStatusAdapter).submitList(it.result)
+        bindings.linesStatus.visibility = View.VISIBLE
+        bindings.progressBar.hide()
+        val swipeLayout = bindings.swipeLayout
+        if (swipeLayout.isRefreshing) {
+            swipeLayout.isRefreshing = false
+        }
+        idlingResource.decrement()
     }
 }

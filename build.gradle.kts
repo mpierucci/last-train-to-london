@@ -15,7 +15,7 @@ buildscript {
         classpath(BuildPlugins.kotlinSerialization)
         classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.1.1")
         classpath(BuildPlugins.googlePlay)
-        classpath ("org.jacoco:org.jacoco.core:0.8.5")
+        classpath("org.jacoco:org.jacoco.core:0.8.5")
     }
 }
 
@@ -24,6 +24,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url = uri("https://dl.bintray.com/arrow-kt/arrow-kt/") }
         mavenCentral()
         maven {
             name = "GitHubPackages"

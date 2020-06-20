@@ -19,10 +19,16 @@ android {
     sourceSets["main"].java.srcDir("src/main/kotlin")
 
     viewBinding.isEnabled = true
+
+    packagingOptions {
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
+    }
 }
 
 configure<coverage.CoveragePlugin.CoverageExtension> {
-    excludes = mutableListOf("**/di/**",
+    excludes = mutableListOf(
+        "**/di/**",
         "**/*Screen*",
         "**/*ViewHolder*",
         "**/*Decorator*",
@@ -30,7 +36,7 @@ configure<coverage.CoveragePlugin.CoverageExtension> {
         "**/*_Factory*",
         "**/*RestLineMode*",
         "**/BuildConfig*"
-        )
+    )
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
@@ -49,10 +55,14 @@ dependencies {
     implementation(Libs.kotlinxSerialization)
     implementation(Libs.AndroidX.Ktx.fragment)
     implementation(Libs.AndroidX.constraintLayout)
+    implementation(Libs.AndroidX.swipeToRefresh)
     implementation(Libs.AndroidX.material)
     implementation(TestLibs.Esspresso.idlingResources)
+    implementation(Libs.Arrow.core)
+    implementation(Libs.Arrow.syntax)
 
     kapt(Libs.Dagger.compiler)
+    kapt(Libs.Arrow.compiler)
 
 
     testImplementation(TestLibs.mockitoKotlin)
