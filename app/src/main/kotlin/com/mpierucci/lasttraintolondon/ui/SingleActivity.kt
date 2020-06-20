@@ -21,7 +21,6 @@ class SingleActivity : AppCompatActivity() {
         supportFragmentManager.fragmentFactory = fragmentFactory
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lines)
-        setSupportActionBar(toolbar)
         val navigationController = Navigation.findNavController(
             this,
             R.id.linesNavigationHost

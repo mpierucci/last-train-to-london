@@ -72,6 +72,7 @@ dependencies {
     implementation(project(":settings"))
     implementation(Libs.kotlinStdlib)
     implementation(Libs.AndroidX.appCompat)
+    implementation(Libs.AndroidX.constraintLayout)
     implementation(Libs.FireBase.analytics)
 
     kapt(Libs.Dagger.compiler)
