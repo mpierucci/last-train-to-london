@@ -1,8 +1,10 @@
 package com.mpierucci.lasttraintolondon.lines.ui
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import com.mpierucci.lasttraintolondon.lines.databinding.LineStatusListItemBinding
 import com.mpierucci.lasttraintolondon.lines.presentation.PresentationLineStatus
 
 internal class LineStatusAdapter :
@@ -15,8 +17,9 @@ internal class LineStatusAdapter :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LineStatusViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
         return LineStatusViewHolder(
-            parent
+            LineStatusListItemBinding.inflate(inflater, parent, false)
         )
     }
 

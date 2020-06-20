@@ -18,6 +18,8 @@ android {
     }
 
     sourceSets["main"].java.srcDir("src/main/kotlin")
+
+    viewBinding.isEnabled = true
 }
 
 configure<coverage.CoveragePlugin.CoverageExtension> {

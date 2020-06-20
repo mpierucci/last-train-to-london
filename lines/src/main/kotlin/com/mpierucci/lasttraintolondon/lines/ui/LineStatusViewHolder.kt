@@ -1,28 +1,24 @@
 package com.mpierucci.lasttraintolondon.lines.ui
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.mpierucci.lasttraintolondon.lines.R
+import com.mpierucci.lasttraintolondon.lines.databinding.LineStatusListItemBinding
 import com.mpierucci.lasttraintolondon.lines.presentation.PresentationLineStatus
-import kotlinx.android.synthetic.main.line_status_list_item.view.*
 
-internal class LineStatusViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
-    LayoutInflater
-        .from(parent.context).inflate(R.layout.line_status_list_item, parent, false)
-) {
+internal class LineStatusViewHolder(
+    private val binding: LineStatusListItemBinding
+) : RecyclerView.ViewHolder(binding.root) {
 
     fun bindLineStatus(lineStatus: PresentationLineStatus) {
-        itemView.lineName.text = lineStatus.name
-        itemView.lineStatus.text = lineStatus.status
-        itemView.lineStatus.setTextColor(
+        binding.lineName.text = lineStatus.name
+        binding.lineStatus.text = lineStatus.status
+        binding.lineStatus.setTextColor(
             ContextCompat.getColor(
-                itemView.context,
+                binding.root.context,
                 lineStatus.statusColor
             )
         )
-        itemView.lineIcon.setImageResource(lineStatus.badgeId)
-        itemView.disruptionsIcon.visibility = lineStatus.disruptionVisibility
+        binding.lineIcon.setImageResource(lineStatus.badgeId)
+        binding.disruptionsIcon.visibility = lineStatus.disruptionVisibility
     }
 }
