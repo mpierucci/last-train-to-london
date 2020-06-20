@@ -12,30 +12,33 @@ import androidx.test.espresso.idling.CountingIdlingResource
 import com.mpierucci.android.architecture.viewmodel.viewModel
 import com.mpierucci.lasttraintolondon.core.presentation.ViewContract
 import com.mpierucci.lasttraintolondon.lines.R
+import com.mpierucci.lasttraintolondon.lines.databinding.FragmentLinesStatusBinding
 import com.mpierucci.lasttraintolondon.lines.presentation.LinesStatusViewModel
 import com.mpierucci.lasttraintolondon.lines.presentation.PresentationLineStatus
-import kotlinx.android.synthetic.main.fragment_lines_status.*
 import javax.inject.Inject
 import javax.inject.Provider
 
- class LineStatusScreen @Inject constructor(
+class LineStatusScreen @Inject constructor(
     private val vmProvider: Provider<LinesStatusViewModel>
 ) : Fragment() {
 
     //TODO https://github.com/mpierucci/last-train-to-london/issues/37
     val idlingResource = CountingIdlingResource("linesScreen")
+    private var _bindings: FragmentLinesStatusBinding? = null
+    private val bindings get() = _bindings!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_lines_status, container, false)
+        _bindings = FragmentLinesStatusBinding.inflate(inflater, container, false)
+        return bindings.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(linesStatus) {
+        with(bindings.linesStatus) {
             layoutManager = LinearLayoutManager(
                 requireActivity(),
                 RecyclerView.VERTICAL, false
@@ -50,6 +53,11 @@ import javax.inject.Provider
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _bindings = null
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -59,7 +67,7 @@ import javax.inject.Provider
         viewModel.lineStatuses.observe(viewLifecycleOwner) {
             when (it) {
                 is ViewContract.Success<List<PresentationLineStatus>> -> {
-                    (linesStatus.adapter as LineStatusAdapter).submitList(it.result)
+                    (bindings.linesStatus.adapter as LineStatusAdapter).submitList(it.result)
                     idlingResource.decrement()
                 }
                 is ViewContract.Error -> {

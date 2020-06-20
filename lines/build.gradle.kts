@@ -2,7 +2,6 @@ apply<coverage.CoveragePlugin>()
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("kotlin-android-extensions")
     id("kotlin-kapt")
     kotlin("plugin.serialization") // no version specified cause it's being added in the classpath
 }
