@@ -49,7 +49,7 @@ class LineStatusScreenTest {
     fun displayLineStatuses() {
         val scenario = launchFragmentInContainer<LineStatusScreen>(
             factory = fragmentFactory,
-            themeResId = R.style.Theme_AppCompat // Theme needed since you are testing fragment in isolation
+            themeResId = R.style.Theme_MaterialComponents // Theme needed since you are testing fragment in isolation
         )
 
         scenario.onFragment {

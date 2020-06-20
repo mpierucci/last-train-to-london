@@ -48,6 +48,7 @@ dependencies {
     implementation(Libs.kotlinxSerialization)
     implementation(Libs.AndroidX.Ktx.fragment)
     implementation(Libs.AndroidX.constraintLayout)
+    implementation(Libs.AndroidX.material)
     implementation(TestLibs.Esspresso.idlingResources)
 
     kapt(Libs.Dagger.compiler)
