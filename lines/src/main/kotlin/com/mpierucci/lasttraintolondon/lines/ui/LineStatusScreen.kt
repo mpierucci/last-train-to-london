@@ -16,6 +16,8 @@ import com.mpierucci.lasttraintolondon.lines.presentation.LinesStatusViewModel
 import com.mpierucci.lasttraintolondon.lines.presentation.LinesViewAction
 import com.mpierucci.lasttraintolondon.lines.presentation.LinesViewState
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -49,11 +51,6 @@ class LineStatusScreen @Inject constructor(
             adapter = LineStatusAdapter()
         }
 
-        bindings.swipeLayout.setOnRefreshListener {
-            idlingResource.increment()
-            viewModel.postAction(LinesViewAction.FetchStatus)
-        }
-
         if (savedInstanceState == null) {
             viewModel.postAction(LinesViewAction.FetchStatus)
         }
@@ -82,6 +79,13 @@ class LineStatusScreen @Inject constructor(
                 }
             }
         }
+        bindings.swipeLayout
+            .refreshes()
+            .onEach {
+                idlingResource.increment()
+                viewModel.postAction(LinesViewAction.FetchStatus)
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     private fun handleLoadingState() {
