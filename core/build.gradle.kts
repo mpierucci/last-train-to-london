@@ -44,4 +44,6 @@ dependencies {
     debugImplementation(Libs.Stetho.stetho)
 
     testImplementation(TestLibs.jUnit)
+    testImplementation(TestLibs.truth)
+    testImplementation(TestLibs.mockitoKotlin)
 }
