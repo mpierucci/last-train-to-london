@@ -5,7 +5,7 @@ object TestLibs {
 
     const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
 
-    const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.2"
+    const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.7"
 
     const val fragmentTesting = "androidx.fragment:fragment-testing:$fragmentXVersion"
 

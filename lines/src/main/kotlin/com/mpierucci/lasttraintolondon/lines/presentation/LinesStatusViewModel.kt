@@ -1,28 +1,62 @@
 package com.mpierucci.lasttraintolondon.lines.presentation
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import com.mpierucci.android.architecture.usecase.functional.map
+import androidx.lifecycle.viewModelScope
 import com.mpierucci.lasttraintolondon.core.dispatcher.DispatcherProvider
-import com.mpierucci.lasttraintolondon.core.presentation.ViewContract
-import com.mpierucci.lasttraintolondon.lines.domain.GetLinesStatusUseCase
-import kotlinx.coroutines.withContext
-import kotlinx.coroutines.yield
+import com.mpierucci.lasttraintolondon.lines.domain.LineRepository
+import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.actor
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.filterNotNull
 import javax.inject.Inject
 
+
 // TODO test
+@ExperimentalCoroutinesApi
 class LinesStatusViewModel @Inject constructor(
-    private val getLinesStatusUseCase: GetLinesStatusUseCase,
+    private val linesRepository: LineRepository,
     private val dispatcherProvider: DispatcherProvider
 ) : ViewModel() {
 
-    internal val lineStatuses = liveData {
-        emit(ViewContract.Loading(true))
-        with(getLinesStatusUseCase.execute(Unit)) {
-            yield()
-            withContext(dispatcherProvider.default()) {
-                map { lines -> lines.map { it.toPresentationModel() } }
-                    .fold({ emit(ViewContract.Error(it)) }, { emit(ViewContract.Success(it)) })
+    private val viewState = MutableStateFlow<LinesViewState?>(null)
+
+    private val viewActions = viewModelScope.actionsActor()
+
+    // this way we dont need the extra ViewContract
+    internal val lineStatuses = viewState.filterNotNull()
+
+    private fun fetchLinesStatues() {
+        viewModelScope.launch {
+            viewState.value = LinesViewState.Loading
+            with(linesRepository.getAll()) {
+                yield() //TODO right usage?
+                withContext(dispatcherProvider.default()) {
+                    map { lines -> lines.map { it.toPresentationModel() } }
+                        .fold(
+                            { error ->
+                                //TODO once approach is defined, re introduce Failure and map here
+                                viewState.value = LinesViewState.Error(error)
+                            },
+                            { lines ->
+                                viewState.value = LinesViewState.Success(lines)
+                            }
+                        )
+                }
+            }
+        }
+    }
+
+
+    internal fun postAction(action: LinesViewAction) = viewModelScope.launch {
+        viewActions.send(action)
+    }
+
+    private fun CoroutineScope.actionsActor() = actor<LinesViewAction> {
+        for (message in channel) {
+            when (message) {
+                LinesViewAction.FetchStatus -> {
+                    fetchLinesStatues()
+                }
             }
         }
     }

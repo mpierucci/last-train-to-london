@@ -1,6 +1,7 @@
 package com.mpierucci.lasttraintolondon.lines.domain
 
-interface LineRepository {
+import arrow.core.Either
 
-    suspend fun getAll(): List<Line>
+interface LineRepository {
+    suspend fun getAll(): Either<Throwable, List<Line>>
 }

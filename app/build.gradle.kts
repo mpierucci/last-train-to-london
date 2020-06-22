@@ -4,7 +4,6 @@ import properties.loadLocalProperties
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("kotlin-android-extensions")
     id("kotlin-kapt")
     id("com.google.gms.google-services")
 }
@@ -55,6 +54,13 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    viewBinding.isEnabled = true
+
+    packagingOptions {
+        exclude("META-INF/AL2.0")
+        exclude("META-INF/LGPL2.1")
+    }
 }
 
 tasks.withType<KotlinCompile> {
@@ -72,6 +78,7 @@ dependencies {
     implementation(project(":settings"))
     implementation(Libs.kotlinStdlib)
     implementation(Libs.AndroidX.appCompat)
+    implementation(Libs.AndroidX.constraintLayout)
     implementation(Libs.FireBase.analytics)
 
     kapt(Libs.Dagger.compiler)

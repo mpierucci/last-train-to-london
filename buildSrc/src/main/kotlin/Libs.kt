@@ -18,6 +18,7 @@ object Libs {
         const val appCompat = "androidx.appcompat:appcompat:1.1.0"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
         const val material = "com.google.android.material:material:1.1.0"
+        const val swipeToRefresh = "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
         object Ktx {
             const val core = "androidx.core:core-ktx:1.2.0"
@@ -67,7 +68,7 @@ object Libs {
     }
 
     object Coroutines {
-        private const val version = "1.3.5"
+        private const val version = "1.3.7"
 
         const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
     }
@@ -79,5 +80,12 @@ object Libs {
     object Jake {
         const val kotlinxConverter =
             "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.5.0"
+    }
+
+    object Arrow {
+        private const val arrowVersion = "0.10.5"
+        const val core = "io.arrow-kt:arrow-core:$arrowVersion"
+        const val syntax = "io.arrow-kt:arrow-syntax:$arrowVersion"
+        const val compiler = "io.arrow-kt:arrow-meta:$arrowVersion"
     }
 }
