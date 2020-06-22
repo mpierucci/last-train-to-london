@@ -1,6 +1,7 @@
 package com.mpierucci.lasttraintolondon.lines.data
 
 
+import com.mpierucci.lasttraintolondon.core.failure.DefaultFailureHandler
 import com.mpierucci.lasttraintolondon.ristretto.rules.CoroutineTestRule
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
@@ -18,7 +19,7 @@ class LineRepositoryImplTest {
 
     private val api: LineStatusApi = mock()
     private val repository =
-        LineRepositoryImpl(api, coroutinesTestRule.testDispatcherProvider)
+        LineRepositoryImpl(api, coroutinesTestRule.testDispatcherProvider, DefaultFailureHandler())
 
     @ExperimentalCoroutinesApi
     @Test

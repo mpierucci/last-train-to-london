@@ -2,6 +2,8 @@ package com.mpierucci.lasttraintolondon.lines.data
 
 import arrow.core.Either
 import com.mpierucci.lasttraintolondon.core.dispatcher.DispatcherProvider
+import com.mpierucci.lasttraintolondon.core.failure.Failure
+import com.mpierucci.lasttraintolondon.core.failure.FailureHandler
 import com.mpierucci.lasttraintolondon.lines.domain.LineRepository
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.yield
@@ -10,9 +12,10 @@ import com.mpierucci.lasttraintolondon.lines.domain.Line as DomainLineStatus
 
 internal class LineRepositoryImpl @Inject constructor(
     private val lineStatusApi: LineStatusApi,
-    private val dispatcher: DispatcherProvider
+    private val dispatcher: DispatcherProvider,
+    private val failureHandler: FailureHandler
 ) : LineRepository {
-    override suspend fun getAll(): Either<Throwable, List<DomainLineStatus>> {
+    override suspend fun getAll(): Either<Failure, List<DomainLineStatus>> {
         // TODO warning this may catch Cancelled exceptions and let the coroutine on dubious state
         return try {
             val lines = lineStatusApi.getStatus()
@@ -23,7 +26,7 @@ internal class LineRepositoryImpl @Inject constructor(
                 }
             )
         } catch (ex: Exception) {
-            Either.left(ex)
+            Either.left(failureHandler.getFailure(ex))
         }
     }
 }
