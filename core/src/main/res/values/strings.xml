@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Error UI -->
+    <string name="retry">Retry</string>
+    <string name="connection_error_message">Check your connection</string>
+    <string name="unhandled_error_message">Something went wrong</string>
+</resources>
