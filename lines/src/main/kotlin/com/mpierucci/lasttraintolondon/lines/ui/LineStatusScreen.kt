@@ -4,19 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.idling.CountingIdlingResource
 import com.mpierucci.android.architecture.viewmodel.viewModel
+import com.mpierucci.lasttraintolondon.core.failure.Failure
+import com.mpierucci.lasttraintolondon.core.view.goneIfNot
+import com.mpierucci.lasttraintolondon.core.view.visibleIfNot
 import com.mpierucci.lasttraintolondon.lines.R
 import com.mpierucci.lasttraintolondon.lines.databinding.FragmentLinesStatusBinding
 import com.mpierucci.lasttraintolondon.lines.presentation.LinesStatusViewModel
 import com.mpierucci.lasttraintolondon.lines.presentation.LinesViewAction
 import com.mpierucci.lasttraintolondon.lines.presentation.LinesViewState
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
@@ -63,6 +66,14 @@ class LineStatusScreen @Inject constructor(
                 viewModel.postAction(LinesViewAction.FetchStatus)
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)
+
+        bindings.retryButton
+            .clicks()
+            .onEach {
+                idlingResource.increment()
+                viewModel.postAction(LinesViewAction.FetchStatus)
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     override fun onDestroyView() {
@@ -75,11 +86,10 @@ class LineStatusScreen @Inject constructor(
         idlingResource.increment()
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             viewModel.lineStatuses.collect {
-                Toast.makeText(requireContext(),"sasas",Toast.LENGTH_SHORT).show()
                 when (it) {
                     is LinesViewState.Success -> handleSuccessState(it)
 
-                    is LinesViewState.Error -> handleError()
+                    is LinesViewState.Error -> handleError(it)
 
                     is LinesViewState.Loading -> handleLoadingState()
                 }
@@ -94,10 +104,11 @@ class LineStatusScreen @Inject constructor(
         }
     }
 
-    private fun handleSuccessState(it: LinesViewState.Success) {
-        (bindings.linesStatus.adapter as LineStatusAdapter).submitList(it.result)
-        bindings.linesStatus.visibility = View.VISIBLE
+    private fun handleSuccessState(state: LinesViewState.Success) {
+        (bindings.linesStatus.adapter as LineStatusAdapter).submitList(state.result)
         bindings.progressBar.hide()
+        bindings.errorGroup.goneIfNot()
+        bindings.linesStatus.visibleIfNot()
         val swipeLayout = bindings.swipeLayout
         if (swipeLayout.isRefreshing) {
             swipeLayout.isRefreshing = false
@@ -105,11 +116,24 @@ class LineStatusScreen @Inject constructor(
         idlingResource.decrement()
     }
 
-    private fun handleError() {
+    private fun handleError(state: LinesViewState.Error) {
         bindings.progressBar.hide()
         val swipeLayout = bindings.swipeLayout
         if (swipeLayout.isRefreshing) {
             swipeLayout.isRefreshing = false
+        }
+        bindings.linesStatus.goneIfNot()
+        bindings.errorGroup.visibleIfNot()
+
+        when (state.failure) {
+            is Failure.NetworkConnection -> {
+                bindings.errorMessage.text = getString(R.string.connection_error_message)
+                bindings.retryButton.visibleIfNot()
+            }
+            else -> {
+                bindings.errorMessage.text = getString(R.string.unhandled_error_message)
+                bindings.retryButton.goneIfNot()
+            }
         }
         idlingResource.decrement()
     }

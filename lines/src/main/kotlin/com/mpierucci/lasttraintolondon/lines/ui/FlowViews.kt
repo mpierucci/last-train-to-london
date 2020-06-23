@@ -1,5 +1,6 @@
 package com.mpierucci.lasttraintolondon.lines.ui
 
+import android.view.View
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -13,5 +14,16 @@ fun SwipeRefreshLayout.refreshes(): Flow<Unit> = callbackFlow {
     }
     awaitClose {
         setOnRefreshListener(null)
+    }
+}
+
+
+fun View.clicks() = callbackFlow {
+
+    setOnClickListener {
+        offer(Unit)
+    }
+    awaitClose {
+        setOnClickListener(null)
     }
 }
