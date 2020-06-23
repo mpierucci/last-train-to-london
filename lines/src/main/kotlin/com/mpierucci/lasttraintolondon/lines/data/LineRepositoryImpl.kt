@@ -1,6 +1,5 @@
 package com.mpierucci.lasttraintolondon.lines.data
 
-import arrow.core.Either
 import com.mpierucci.lasttraintolondon.core.dispatcher.DispatcherProvider
 import com.mpierucci.lasttraintolondon.lines.domain.LineRepository
 import kotlinx.coroutines.withContext
@@ -12,18 +11,12 @@ internal class LineRepositoryImpl @Inject constructor(
     private val lineStatusApi: LineStatusApi,
     private val dispatcher: DispatcherProvider
 ) : LineRepository {
-    override suspend fun getAll(): Either<Throwable, List<DomainLineStatus>> {
-        // TODO warning this may catch Cancelled exceptions and let the coroutine on dubious state
-        return try {
-            val lines = lineStatusApi.getStatus()
-            Either.right(
-                withContext(dispatcher.default()) {
-                    yield()
-                    lines.map { it.toDomain() }
-                }
-            )
-        } catch (ex: Exception) {
-            Either.left(ex)
+    //TODO https://github.com/mpierucci/last-train-to-london/issues/48
+    override suspend fun getAll(): List<DomainLineStatus> {
+        val lines = lineStatusApi.getStatus()
+        yield()
+        return withContext(dispatcher.default()) {
+            lines.map { it.toDomain() }
         }
     }
 }
