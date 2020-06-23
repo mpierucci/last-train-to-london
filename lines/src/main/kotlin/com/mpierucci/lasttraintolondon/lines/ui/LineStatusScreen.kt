@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,6 +55,14 @@ class LineStatusScreen @Inject constructor(
         if (savedInstanceState == null) {
             viewModel.postAction(LinesViewAction.FetchStatus)
         }
+
+        bindings.swipeLayout
+            .refreshes()
+            .onEach {
+                idlingResource.increment()
+                viewModel.postAction(LinesViewAction.FetchStatus)
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     override fun onDestroyView() {
@@ -66,26 +75,16 @@ class LineStatusScreen @Inject constructor(
         idlingResource.increment()
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             viewModel.lineStatuses.collect {
+                Toast.makeText(requireContext(),"sasas",Toast.LENGTH_SHORT).show()
                 when (it) {
-                    is LinesViewState.Success -> {
-                        handleSuccessState(it)
-                    }
-                    is LinesViewState.Error -> {
-                        idlingResource.decrement()
-                    }
-                    is LinesViewState.Loading -> {
-                        handleLoadingState()
-                    }
+                    is LinesViewState.Success -> handleSuccessState(it)
+
+                    is LinesViewState.Error -> handleError()
+
+                    is LinesViewState.Loading -> handleLoadingState()
                 }
             }
         }
-        bindings.swipeLayout
-            .refreshes()
-            .onEach {
-                idlingResource.increment()
-                viewModel.postAction(LinesViewAction.FetchStatus)
-            }
-            .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     private fun handleLoadingState() {
@@ -98,6 +97,15 @@ class LineStatusScreen @Inject constructor(
     private fun handleSuccessState(it: LinesViewState.Success) {
         (bindings.linesStatus.adapter as LineStatusAdapter).submitList(it.result)
         bindings.linesStatus.visibility = View.VISIBLE
+        bindings.progressBar.hide()
+        val swipeLayout = bindings.swipeLayout
+        if (swipeLayout.isRefreshing) {
+            swipeLayout.isRefreshing = false
+        }
+        idlingResource.decrement()
+    }
+
+    private fun handleError() {
         bindings.progressBar.hide()
         val swipeLayout = bindings.swipeLayout
         if (swipeLayout.isRefreshing) {

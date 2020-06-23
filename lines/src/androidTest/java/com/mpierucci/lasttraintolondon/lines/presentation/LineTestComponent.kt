@@ -3,9 +3,10 @@ package com.mpierucci.lasttraintolondon.lines.presentation
 import android.content.Context
 import com.mpierucci.lasttraintolondon.core.di.CoreComponent
 import com.mpierucci.lasttraintolondon.core.dispatcher.DispatcherModule
-import com.mpierucci.lasttraintolondon.ristretto.di.TestNetworkModule
+import com.mpierucci.lasttraintolondon.core.failure.FailureModule
 import com.mpierucci.lasttraintolondon.lines.di.LineStatusesModule
 import com.mpierucci.lasttraintolondon.preferences.di.PreferencesModule
+import com.mpierucci.lasttraintolondon.ristretto.di.TestNetworkModule
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -16,7 +17,8 @@ import javax.inject.Singleton
         BindLineFragmentsModule::class,
         TestNetworkModule::class,
         DispatcherModule::class,
-        PreferencesModule::class]
+        PreferencesModule::class,
+        FailureModule::class]
 )
 @Singleton
 interface LineTestComponent : CoreComponent {

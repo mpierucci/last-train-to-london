@@ -68,7 +68,11 @@ dependencies {
     testImplementation(TestLibs.mockitoKotlin)
     testImplementation(TestLibs.coroutinesTest)
     testImplementation(TestLibs.jUnit)
+    testImplementation(TestLibs.truth)
     testImplementation(project(":ristretto"))
+
+    //FOr live data in view model test
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
 
     kaptAndroidTest(Libs.Dagger.compiler)
     androidTestImplementation(Libs.Dagger.core)
