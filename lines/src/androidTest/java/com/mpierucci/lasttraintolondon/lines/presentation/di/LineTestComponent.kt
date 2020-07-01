@@ -1,10 +1,11 @@
-package com.mpierucci.lasttraintolondon.lines.presentation
+package com.mpierucci.lasttraintolondon.lines.presentation.di
 
 import android.content.Context
 import com.mpierucci.lasttraintolondon.core.di.CoreComponent
 import com.mpierucci.lasttraintolondon.core.dispatcher.DispatcherModule
 import com.mpierucci.lasttraintolondon.core.failure.FailureModule
 import com.mpierucci.lasttraintolondon.lines.di.LineStatusesModule
+import com.mpierucci.lasttraintolondon.lines.presentation.LineStatusScreenTest
 import com.mpierucci.lasttraintolondon.preferences.di.PreferencesModule
 import com.mpierucci.lasttraintolondon.ristretto.di.TestNetworkModule
 import dagger.BindsInstance

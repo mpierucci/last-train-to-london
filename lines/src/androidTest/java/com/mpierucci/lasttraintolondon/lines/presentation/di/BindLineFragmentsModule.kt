@@ -1,4 +1,4 @@
-package com.mpierucci.lasttraintolondon.lines.presentation
+package com.mpierucci.lasttraintolondon.lines.presentation.di
 
 import androidx.fragment.app.Fragment
 import com.mpierucci.lasttraintolondon.core.fragment.FragmentClassKey
