@@ -35,6 +35,7 @@ dependencies {
     implementation(TestLibs.Esspresso.contrib)
     implementation(TestLibs.coroutinesTest)
     implementation(TestLibs.jUnit)
+    implementation(TestLibs.mockWebServer)
 }
 
 

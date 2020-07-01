@@ -3,8 +3,9 @@ package com.mpierucci.lasttraintolondon.ristretto.rules
 import com.mpierucci.lasttraintolondon.core.dispatcher.DispatcherProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.test.TestCoroutineDispatcher
+import javax.inject.Inject
 
-class TestDispatcherProvider : DispatcherProvider {
+class TestDispatcherProvider @Inject constructor() : DispatcherProvider {
 
     private val testDispatcher = TestCoroutineDispatcher()
 
