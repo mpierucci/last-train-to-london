@@ -18,7 +18,9 @@ android {
 
     sourceSets["main"].java.srcDir("src/main/kotlin")
 
-    viewBinding.isEnabled = true
+    buildFeatures {
+        viewBinding =  true
+    }
 
     packagingOptions {
         exclude("META-INF/AL2.0")
@@ -85,5 +87,8 @@ dependencies {
     androidTestImplementation(TestLibs.fragmentTesting)
     androidTestImplementation(TestLibs.Esspresso.idlingResources)
     androidTestImplementation(TestLibs.Esspresso.contrib)
+    androidTestImplementation(Libs.okHttp)
+
     androidTestImplementation(project(":ristretto"))
+    androidTestImplementation("com.jakewharton.espresso:okhttp3-idling-resource:1.0.0")
 }

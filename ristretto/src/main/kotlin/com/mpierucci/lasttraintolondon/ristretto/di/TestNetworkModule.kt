@@ -1,5 +1,7 @@
 package com.mpierucci.lasttraintolondon.ristretto.di
 
+import com.mpierucci.lasttraintolondon.core.dispatcher.DispatcherProvider
+import com.mpierucci.lasttraintolondon.ristretto.rules.TestDispatcherProvider
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -24,4 +26,9 @@ object TestNetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideDispatcher(testDispatcherProvider: TestDispatcherProvider): DispatcherProvider =
+        testDispatcherProvider
 }

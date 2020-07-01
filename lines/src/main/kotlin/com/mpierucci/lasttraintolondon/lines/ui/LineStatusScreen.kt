@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.test.espresso.idling.CountingIdlingResource
 import com.mpierucci.android.architecture.viewmodel.viewModel
 import com.mpierucci.lasttraintolondon.core.failure.Failure
 import com.mpierucci.lasttraintolondon.core.view.goneIfNot
@@ -19,7 +18,6 @@ import com.mpierucci.lasttraintolondon.lines.presentation.LinesStatusViewModel
 import com.mpierucci.lasttraintolondon.lines.presentation.LinesViewAction
 import com.mpierucci.lasttraintolondon.lines.presentation.LinesViewState
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
@@ -29,8 +27,6 @@ class LineStatusScreen @Inject constructor(
     private val vmProvider: Provider<LinesStatusViewModel>
 ) : Fragment() {
 
-    //TODO https://github.com/mpierucci/last-train-to-london/issues/37
-    val idlingResource = CountingIdlingResource("linesScreen")
     private var _bindings: FragmentLinesStatusBinding? = null
     private val bindings get() = _bindings!!
     private val viewModel by viewModel { vmProvider.get() }
@@ -61,18 +57,12 @@ class LineStatusScreen @Inject constructor(
 
         bindings.swipeLayout
             .refreshes()
-            .onEach {
-                idlingResource.increment()
-                viewModel.postAction(LinesViewAction.FetchStatus)
-            }
+            .onEach { viewModel.postAction(LinesViewAction.FetchStatus) }
             .launchIn(viewLifecycleOwner.lifecycleScope)
 
         bindings.retryButton
             .clicks()
-            .onEach {
-                idlingResource.increment()
-                viewModel.postAction(LinesViewAction.FetchStatus)
-            }
+            .onEach { viewModel.postAction(LinesViewAction.FetchStatus) }
             .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
@@ -83,7 +73,6 @@ class LineStatusScreen @Inject constructor(
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        idlingResource.increment()
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             viewModel.lineStatuses.collect {
                 when (it) {
@@ -113,7 +102,6 @@ class LineStatusScreen @Inject constructor(
         if (swipeLayout.isRefreshing) {
             swipeLayout.isRefreshing = false
         }
-        idlingResource.decrement()
     }
 
     private fun handleError(state: LinesViewState.Error) {
@@ -135,6 +123,5 @@ class LineStatusScreen @Inject constructor(
                 bindings.retryButton.goneIfNot()
             }
         }
-        idlingResource.decrement()
     }
 }

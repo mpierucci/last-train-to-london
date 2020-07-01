@@ -2,7 +2,6 @@ package com.mpierucci.lasttraintolondon.lines.presentation.di
 
 import android.content.Context
 import com.mpierucci.lasttraintolondon.core.di.CoreComponent
-import com.mpierucci.lasttraintolondon.core.dispatcher.DispatcherModule
 import com.mpierucci.lasttraintolondon.core.failure.FailureModule
 import com.mpierucci.lasttraintolondon.lines.di.LineStatusesModule
 import com.mpierucci.lasttraintolondon.lines.presentation.LineStatusScreenTest
@@ -17,13 +16,11 @@ import javax.inject.Singleton
         LineStatusesModule::class,
         BindLineFragmentsModule::class,
         TestNetworkModule::class,
-        DispatcherModule::class,
         PreferencesModule::class,
         FailureModule::class]
 )
 @Singleton
 interface LineTestComponent : CoreComponent {
-
 
     @Component.Factory
     interface Factory {
