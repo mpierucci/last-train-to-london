@@ -13,7 +13,7 @@ import com.mpierucci.lasttraintolondon.lines.ui.LineStatusScreen
 import com.mpierucci.lasttraintolondon.ristretto.assertions.RecyclerViewItemCountAssertion
 import com.mpierucci.lasttraintolondon.ristretto.mockwebserver.FileResponseDispatcher
 import com.mpierucci.lasttraintolondon.ristretto.rules.DisableAnimationsRule
-import okhttp3.mockwebserver.MockWebServer
+import com.mpierucci.lasttraintolondon.ristretto.rules.MockWebServerRule
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -28,17 +28,19 @@ class LineStatusScreenTest {
     @Inject
     lateinit var fragmentFactory: GenericFragmentFactory
 
-    private val mockWebServer = MockWebServer()
 
     private var idlingResource: IdlingResource? = null
 
     @get:Rule
     val animationRule = DisableAnimationsRule()
 
+    @get:Rule
+    val webServerRule = MockWebServerRule()
+
+
     @Before
     fun setup() {
-        mockWebServer.start(8080)
-        mockWebServer.dispatcher = FileResponseDispatcher("lineStatusResponse")
+        webServerRule.mockWebServer.dispatcher = FileResponseDispatcher(pathToFilesMap)
 
         DaggerLineTestComponent.factory().create(
             InstrumentationRegistry.getInstrumentation().context
@@ -63,6 +65,12 @@ class LineStatusScreenTest {
     @After
     fun teardown() {
         idlingResource?.let { IdlingRegistry.getInstance().unregister(it) }
-        mockWebServer.shutdown()
+
+    }
+
+    companion object {
+        val pathToFilesMap = mapOf(
+            "/line/mode/tube,dlr,overground/status" to "lineStatusResponse"
+        )
     }
 }
