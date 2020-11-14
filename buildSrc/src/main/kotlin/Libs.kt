@@ -1,9 +1,9 @@
 object Libs {
-    const val kotlinVersion = "1.3.72"
+    const val kotlinVersion = "1.4.10"
 
     const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
 
-    const val kotlinxSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.20.0"
+    const val kotlinxSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1"
 
     const val leakCanary = "com.squareup.leakcanary:leakcanary-android:2.2"
 
@@ -79,7 +79,7 @@ object Libs {
 
     object Jake {
         const val kotlinxConverter =
-            "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.5.0"
+            "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
     }
 
     object Arrow {
