@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mpierucci.android.architecture.viewmodel.viewModel
+import com.mpierucci.lasttraintolondon.core.edgetoede.accountStatusBarSpace
 import com.mpierucci.lasttraintolondon.core.failure.Failure
 import com.mpierucci.lasttraintolondon.core.view.goneIfNot
 import com.mpierucci.lasttraintolondon.core.view.visibleIfNot
@@ -42,6 +43,10 @@ class LineStatusScreen @Inject constructor(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        /*
+        Initial offset it to below the status  bar, but enable edge to edge if scroll (clip to padding false on the recycler is  needed)
+         */
+        bindings.linesStatus.accountStatusBarSpace()
         with(bindings.linesStatus) {
             layoutManager = LinearLayoutManager(
                 requireActivity(),

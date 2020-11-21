@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Platform.V29.Theme.Lttl" parent="Platform.V21.Theme.Lttl">
+        <!-- v29 specific attributes -->
+
+
+        <!-- edge to edge -->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Platform.Theme.Lttl" parent="Platform.V29.Theme.Lttl" />
+</resources>

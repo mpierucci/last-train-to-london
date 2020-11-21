@@ -1,28 +1,5 @@
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/dodgerBlue</item>
-        <item name="colorPrimaryVariant">@color/navyBlue</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondary">@color/persianRed</item>
-        <item name="colorSecondaryVariant">@color/sangria</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <item name="android:colorBackground">@color/alabaster</item>
-        <item name="colorOnBackground">@color/black</item>
-        <item name="colorError">@color/pomegranate</item>
-        <item name="colorOnError">@color/white</item>
-        <item name="colorSurface">@color/white</item>
-        <item name="colorOnSurface">@color/black</item>
-    </style>
-
-    <style name="AppTheme.Splash">
+    <style name="Theme.Lttl.Splash">
         <item name="android:windowBackground">@drawable/splash_drawable</item>
     </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
 </resources>

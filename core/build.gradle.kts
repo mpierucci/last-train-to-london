@@ -13,9 +13,18 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     sourceSets["main"].java.srcDir("src/main/kotlin")
+    sourceSets["main"].java.srcDir("src/main/kotlinx")
     sourceSets["debug"].java.srcDir("src/debug/kotlin")
     sourceSets["release"].java.srcDir("src/release/kotlin")
 }
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs = listOf("-XXLanguage:+InlineClasses")
+    }
+}
+
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))

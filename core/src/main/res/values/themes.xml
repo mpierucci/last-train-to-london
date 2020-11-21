@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Platform layer: api lvl specific attributes  -->
+
+    <style name="Platform.V21.Theme.Lttl" parent="Theme.MaterialComponents.DayNight.NoActionBar"></style>
+
+    <style name="Platform.Theme.Lttl" parent="Platform.V21.Theme.Lttl" />
+
+    <!-- Base layer base theme attributes -->
+
+    <style name="Base.Theme.Lttl" parent="Platform.Theme.Lttl">
+        <!--  default view styles, text appearances  etc-->
+    </style>
+
+
+    <!-- Theme layer: simple specific overrides only (dark mode coloru ie= -->
+
+    <style name="Theme.Lttl" parent="Base.Theme.Lttl">
+        <item name="colorPrimary">@color/dodgerBlue</item>
+        <item name="colorPrimaryVariant">@color/navyBlue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/persianRed</item>
+        <item name="colorSecondaryVariant">@color/sangria</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:colorBackground">@color/alabaster</item>
+        <item name="colorOnBackground">@color/black</item>
+        <item name="colorError">@color/pomegranate</item>
+        <item name="colorOnError">@color/white</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/black</item>
+
+    </style>
+
+</resources>
