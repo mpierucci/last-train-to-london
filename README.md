@@ -14,6 +14,7 @@ Pet project to apply new Android architectures, frameworks etc.
 * UI Test
 * Kotlin serializaiton
 * Inline classes
+* Edge to edge
 
 # Soon:
 * Room
