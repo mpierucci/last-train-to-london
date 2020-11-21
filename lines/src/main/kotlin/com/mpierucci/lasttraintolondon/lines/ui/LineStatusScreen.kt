@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mpierucci.android.architecture.viewmodel.viewModel
+import com.mpierucci.lasttraintolondon.core.edgetoede.accountStatusBarSpace
 import com.mpierucci.lasttraintolondon.core.failure.Failure
 import com.mpierucci.lasttraintolondon.core.view.goneIfNot
 import com.mpierucci.lasttraintolondon.core.view.visibleIfNot
@@ -45,15 +43,10 @@ class LineStatusScreen @Inject constructor(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         /*
         Initial offset it to below the status  bar, but enable edge to edge if scroll (clip to padding false on the recycler is  needed)
          */
-        ViewCompat.setOnApplyWindowInsetsListener(bindings.linesStatus) { v, insets ->
-            v.updatePadding(top = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top)
-            insets
-        }
+        bindings.linesStatus.accountStatusBarSpace()
         with(bindings.linesStatus) {
             layoutManager = LinearLayoutManager(
                 requireActivity(),
