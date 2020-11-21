@@ -18,7 +18,7 @@ class SingleActivity : AppCompatActivity() {
     lateinit var fragmentFactory: GenericFragmentFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.AppTheme)
+        setTheme(R.style.Theme_Lttl)
         injector.plus().inject(this)
         supportFragmentManager.fragmentFactory = fragmentFactory
 
